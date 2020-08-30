@@ -1,8 +1,8 @@
-# Row, Column, Table
+# Data structure of objects in SeaTable
 
-## Row (行)
+## Row
 
-Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 有一些特殊的字段如下:
+Row is an javascript object, use `row['colum_name']` to get the value of a specific cell. There are a few special columns:
 
 * `_id` : The id of the row
 * `_creator` : The creator for this row
@@ -10,7 +10,7 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 * `_last_modifier` : The last modifier for this row
 * `_mtime`: The last modified time for this row
 
-不同的列类型的单元格的值有不同的数据类型，如下:
+Different column types have different type of values:
 
 * `simple-text` : string
 * `number` : number
@@ -24,10 +24,11 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 * `link` : array, each element of the array is a link name
 * `file` : array, each element of the array is a file object  `[{name: string, url: string, size: number, type: 'file'}]`
 
-## Column (列)
+## Column
 
-一个 column 对象有以下的字段:
+A column object has following fields:
 
+* `key`:  The key of the column, string
 * `type` : The type of the column(long-text, single-select, number, file and so on), string
 * `name` : The name of the table, string
 
@@ -35,4 +36,5 @@ Row 是一个对象, 使用 `row['colum_name']` 可以访问特定列的内容. 
 
 一个 table 对象有以下的字段:
 
-* `name` : The name of the table, string
+* `_id`: The id of the table 
+* `name`: The name of the table, string

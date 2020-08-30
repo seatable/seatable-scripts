@@ -1,15 +1,15 @@
-# SeaTable 脚本编程手册
+# SeaTable scripts programming manual
 
-SeaTable 脚本使用 Javascript 语言编写。一个脚本一般用于表格中数据的处理。脚本可以在用户的浏览器中或者后台运行。(目前仅支持在用户的浏览器中运行)
+SeaTable scirpts are written in Javascript language. They are designed for you to manipulate data in a base easily. A script can be run in users' browser or in background inside a Docker container. (Currently running in browser is supported yet)
 
-脚本执行器提供了两个对象供你使用:
+There are some pre-defined objects:
 
-1. base 对象。一个 base 代表了 SeaTable 中的一个表格。通过 base 对象可以操作表格中的数据。
-2. output 对象。用于输出结果。
+1. base, you can use base object to manipulate data in a base.
+2. output, you can use output object to output some feedbacks.
 
-一个 base 包含多个子表 (Table)。每个子表包含多个行。行中的单元格由对应的列类型来规定数据格式。具体可以参考
+You can find some easi to understand examples here: 
 
-* [数据结构](data-structure.md)
+* [Data structure](data-structure.md)
 
 ## base 对象
 

@@ -1,11 +1,11 @@
-site_name: SeaTable 脚本编程手册
+site_name: SeaTable Scripts Programming Manual
 site_author: seatable
 docs_dir: ./manual
-site_url: https://seatable.github.io/seatable-scripts-cn/
+site_url: https://seatable.github.io/seatable-scripts/
 
 
-repo_name: seatable/seatable-scripts-cn
-repo_url: https://github.com/seatable/seatable-scripts-cn/
+repo_name: seatable/seatable-scripts
+repo_url: https://github.com/seatable/seatable-scripts/
 
 copyright: Copyright &copy; 2020 seatable
 
@@ -28,7 +28,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/seatable/seatable-scripts-cn/
+      link: https://github.com/seatable/seatable-scripts/
 
 # Extensions
 markdown_extensions:
@@ -47,4 +47,4 @@ markdown_extensions:
 # Page tree
 nav:
   - Home: README.md
-  - SeaTable 中对象的数据结构: data-structure.md
+  - Data structure of SeaTable: data-structure.md
