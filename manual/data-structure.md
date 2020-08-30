@@ -32,9 +32,15 @@ A column object has following fields:
 * `type` : The type of the column(long-text, single-select, number, file and so on), string
 * `name` : The name of the table, string
 
-## Table (子表)
+## Table
 
-一个 table 对象有以下的字段:
+A table object has following fields:
 
 * `_id`: The id of the table 
 * `name`: The name of the table, string
+
+## View
+
+A view object has following fields:
+
+* `name`: The name of the view, string

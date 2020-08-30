@@ -48,3 +48,6 @@ markdown_extensions:
 nav:
   - Home: README.md
   - Data structure of SeaTable: data-structure.md
+  - Base: base.md
+  - Output: output.md
+  - Utils: utils.md
