@@ -172,6 +172,7 @@ const columns = base.getColumns(table);
 column.forEach((column) => {
 	output.text(column.name);
 })
+```
 
 
 #### getShownColumns
@@ -181,7 +182,6 @@ Get all visible columns in a view
 ```javascript
 const columns = base.getShownColumns(table: Object, view: Object);
 ```
-
 
 ##### Example
 
@@ -288,7 +288,6 @@ base.addRow(table: Object, rowData: Object, viewName?: String)
 
 ```javascript
 const table = base.getTableByName('table');
-
 // use case
 base.addRow(table, {'Name': 'Joe Key', 'Age': '18'});
 
