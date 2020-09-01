@@ -222,7 +222,7 @@ const columns = base.getColumnsByType(table, "text");
 output.text(column.length);
 ```
 
-### Row
+## Row
 
 #### getRows
 
