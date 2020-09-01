@@ -87,7 +87,8 @@ Get all views of a table.
 ##### Example
 
 ```javascript
-const views = base.getViewsByName('Table name');
+const table = base.getTableByName('Table1');
+const views = base.getViews(table);
 output.text(views.length);
 ```
 
@@ -95,9 +96,14 @@ output.text(views.length);
 
 Get a view by table object and view name.
 
+```javascript
+const view = base.getViewByName(table: Object, viewName: String);
+```
+
 ##### Example
 
 ```javascript
+const table = base.getTableByName('Table1'); 
 const view = base.getViewByName(table, 'View Name');
 output.text(view.name);
 ```
@@ -107,13 +113,14 @@ output.text(view.name);
 Add a view to a table
 
 ```javascript
-base.addView(tableName: String, viewName: String);
+base.addView(table: Object, viewName: String);
 ```
 
 ##### Example
 
 ```javascript
-base.addView('table', 'view1');
+const table = base.getTableByName('Table1'); 
+base.addView(table, 'view1');
 ```
 
 #### renameView
@@ -121,13 +128,14 @@ base.addView('table', 'view1');
 Rename a view
 
 ```javascript
-base.renameView(tableName: String, currentViewName: String, nextViewName: String);
+base.renameView(table: Object, currentViewName: String, newViewName: String);
 ```
 
 ##### Example
 
 ```javascript
-base.renameView('table', 'view1', 'view2');
+const table = base.getTableByName('Table1'); 
+base.renameView(table, 'view1', 'view2');
 ```
 
 #### deleteView
@@ -135,13 +143,14 @@ base.renameView('table', 'view1', 'view2');
 Delete a view
 
 ```javascript
-base.deleteView(tableName: String, viewName: String);
+base.deleteView(table: Object, viewName: String);
 ```
 
 ##### Example
 
 ```javascript
-base.deleteView('table', 'view2');
+const table = base.getTableByName('Table1'); 
+base.deleteView(table, 'view2');
 ```
 
 ## Column
@@ -163,6 +172,7 @@ const columns = base.getColumns(table);
 column.forEach((column) => {
 	output.text(column.name);
 })
+```
 
 
 #### getShownColumns
@@ -172,7 +182,6 @@ Get all visible columns in a view
 ```javascript
 const columns = base.getShownColumns(table: Object, view: Object);
 ```
-
 
 ##### Example
 
@@ -272,17 +281,18 @@ base.deleteRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
 Add a row to a table. The new row will append at the end of the table. If view is given, append the row at the end of that view.
 
 ```javascript
-base.addRow(tableName: String, rowData: Object, viewName?: String)
+base.addRow(table: Object, rowData: Object, viewName?: String)
 ```
 
 ##### Example
 
 ```javascript
+const table = base.getTableByName('table');
 // use case
-base.addRow('Table1', {'Name': 'Joe Key', 'Age': '18'});
+base.addRow(table, {'Name': 'Joe Key', 'Age': '18'});
 
 // use case
-base.addRow('Table1', {'Name': 'Joe Key', 'Age': '18'}, 'Default View');
+base.addRow(table, {'Name': 'Joe Key', 'Age': '18'}, 'Default View');
 ```
 
 #### modifyRow
