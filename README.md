@@ -1,13 +1,5 @@
-# SeaTable 脚本编程手册和例子
+# SeaTable scripts manual
 
-## 编写手册
+This repository contains the document and examples for you to learn how to write SeaTable scripts.
 
-[编程手册](https://seatable.github.io/seatable-scripts-cn/)
-
-## 例子
-
-##### 增量计算
-
-从累计数值列计算增量，并更新到增量列
-
-* [get-incremental.js](examples/get-incremental.js)
+The web site: https://seatable.github.io/seatable-scripts/
