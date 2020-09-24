@@ -84,6 +84,10 @@ output.text(view.name);
 
 Get all views of a table.
 
+```javascript
+const view = base.getViews(table: Object/String, viewName: String);
+```
+
 ##### Example
 
 ```javascript
@@ -92,12 +96,16 @@ const views = base.getViews(table);
 output.text(views.length);
 ```
 
+```javascript
+const views = base.getViews('Table1');
+```
+
 #### getViewByName
 
 Get a view by table object and view name.
 
 ```javascript
-const view = base.getViewByName(table: Object, viewName: String);
+const view = base.getViewByName(table: Object/String, viewName: String);
 ```
 
 ##### Example
@@ -108,12 +116,17 @@ const view = base.getViewByName(table, 'View Name');
 output.text(view.name);
 ```
 
+```javascript
+const view = base.getViewByName('Table1', 'View Name');
+output.text(view.name);
+```
+
 #### addView
 
 Add a view to a table
 
 ```javascript
-base.addView(table: Object, viewName: String);
+base.addView(table: Object/String, viewName: String);
 ```
 
 ##### Example
@@ -123,12 +136,16 @@ const table = base.getTableByName('Table1');
 base.addView(table, 'view1');
 ```
 
+```javascript
+base.addView('Table1', 'view1');
+```
+
 #### renameView
 
 Rename a view
 
 ```javascript
-base.renameView(table: Object, currentViewName: String, newViewName: String);
+base.renameView(table: Object/String, currentViewName: String, newViewName: String);
 ```
 
 ##### Example
@@ -138,19 +155,22 @@ const table = base.getTableByName('Table1');
 base.renameView(table, 'view1', 'view2');
 ```
 
+```javascript
+base.renameView('Table1', 'view1', 'view2');
+```
+
 #### deleteView
 
 Delete a view
 
 ```javascript
-base.deleteView(table: Object, viewName: String);
+base.deleteView(table: Object/String, viewName: String);
 ```
 
 ##### Example
 
 ```javascript
-const table = base.getTableByName('Table1'); 
-base.deleteView(table, 'view2');
+base.deleteView('Table1', 'view2');
 ```
 
 ## Column
@@ -160,13 +180,14 @@ base.deleteView(table, 'view2');
 Get columns of a table.
 
 ```javascript
-base.getColumns(table: Object);
+base.getColumns(table: Object/String);
 ```
 
 
 ###### Example
 
 ```javascript
+const table = base.getTableByName('Table1');
 const columns = base.getColumns(table);
 
 column.forEach((column) => {
@@ -174,13 +195,16 @@ column.forEach((column) => {
 })
 ```
 
+```javascript
+const columns = base.getColumns('Table1');
+```
 
 #### getShownColumns
 
 Get all visible columns in a view
 
 ```javascript
-const columns = base.getShownColumns(table: Object, view: Object);
+const columns = base.getShownColumns(table: Object/String, view: Object/String);
 ```
 
 ##### Example
@@ -192,18 +216,28 @@ column.forEach((column) => {
 });
 ```
 
+```javascript
+const columns = base.getShownColumns('Table1', 'view1');
+```
+
 #### getColumnByName
 
 Get column object by name.
 
 ```javascript
-const column = base.getColumnByName(table: Object, name: String);
+const column = base.getColumnByName(table: Object/String, name: String);
 ```
 
 ##### Example
 
 ```javascript
+const table = base.getTableByName('Table1');
 const column = base.getColumnByName(table, "A test column");
+output.text(column.name);
+```
+
+```javascript
+const column = base.getColumnByName('Table1', "A test column");
 output.text(column.name);
 ```
 
@@ -212,13 +246,19 @@ output.text(column.name);
 Get columns of a specific type.
 
 ```javascript
-const columns = base.getColumnsByType(table: Object, type: String);
+const columns = base.getColumnsByType(table: Object/String, type: String);
 ```
 
 ##### Example
 
 ```javascript
+const table = base.getTableByName('Table1');
 const columns = base.getColumnsByType(table, "text");
+output.text(column.length);
+```
+
+```javascript
+const columns = base.getColumnsByType('Table1', "text");
 output.text(column.length);
 ```
 
@@ -229,7 +269,19 @@ output.text(column.length);
 Get rows of a specific view.
 
 ```javascript
-const rows = base.getRows(table: Object, view: Object);
+const rows = base.getRows(table: Object/String, view: Object/String);
+```
+
+##### Example
+
+```javascript
+const table = base.getTableByName('Table1');
+const view = base.getViewByName(table, 'view1');
+const rows = base.getRows(table, view);
+```
+
+```javascript
+const rows = base.getRows('Table1', 'view1');
 ```
 
 #### getGroupedRows
@@ -237,7 +289,7 @@ const rows = base.getRows(table: Object, view: Object);
 Get grouped rows of a specific view. The view should be a view containing group of rows.
 
 ```javascript
-base.getGroupedRows(table: Object, view: Object);
+base.getGroupedRows(table: Object/String, view: Object/String);
 ```
 
 ##### Example
@@ -248,12 +300,16 @@ const view = base.getViewByName(table, 'grouped view');
 const groupViewRows = base.getGroupedRows(table, view);
 ```
 
+```javascript
+const groupViewRows = base.getGroupedRows('Table1', 'grouped view');
+```
+
 ##### getRowById
 
 Get a row by its ID.
 
 ```javascript
-const row = base.getRowById(table: Object, rowId: String);
+const row = base.getRowById(table: Object/String, rowId: String);
 ```
 
 ##### Example
@@ -262,12 +318,16 @@ const row = base.getRowById(table: Object, rowId: String);
 const row = base.getRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
+```javascript
+const row = base.getRowById('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
+```
+
 #### deleteRowById
 
 Delete a row in a table by its ID.
 
 ```javascript
-base.deleteRowById(table: Object, rowId: String);
+base.deleteRowById(table: Object/String, rowId: String);
 ```
 
 ##### Example
@@ -276,12 +336,16 @@ base.deleteRowById(table: Object, rowId: String);
 base.deleteRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
+```javascript
+base.deleteRowById('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
+```
+
 #### addRow
 
 Add a row to a table. The new row will append at the end of the table. If view is given, append the row at the end of that view.
 
 ```javascript
-base.addRow(table: Object, rowData: Object, viewName?: String)
+base.addRow(table: Object/String, rowData: Object, viewName?: String)
 ```
 
 ##### Example
@@ -295,18 +359,31 @@ base.addRow(table, {'Name': 'Joe Key', 'Age': '18'});
 base.addRow(table, {'Name': 'Joe Key', 'Age': '18'}, 'Default View');
 ```
 
+```javascript
+// use case
+base.addRow('Table1', {'Name': 'Joe Key', 'Age': '18'});
+
+// use case
+base.addRow('Table1', {'Name': 'Joe Key', 'Age': '18'}, 'Default View');
+```
+
 #### modifyRow
 
 Modify a row in a table.
 
 ```javascript
-base.modifyRow(table: Object, row: Object, updateRowData: Object);
+base.modifyRow(table: Object/String, row: Object, updateRowData: Object);
 ```
 
 ##### Example
 
 ```javascript
-const table = base.getTableByName('table');
+const table = base.getTableByName('Table1');
 const row = base.getRowById(table, "M_lSEOYYTeuKTaHCEOL7nw");
 base.modifyRow(table, row, {'Name': 'new name', 'number': 100});
+```
+
+```javascript
+const row = base.getRowById('Table1', "M_lSEOYYTeuKTaHCEOL7nw");
+base.modifyRow('Table1', row, {'Name': 'new name', 'number': 100});
 ```
