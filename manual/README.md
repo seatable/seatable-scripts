@@ -1,8 +1,14 @@
-# Introduction
+# SeaTable scripts manual
 
-SeaTable scirpts are written in Javascript language. They are designed for you to manipulate data in a base easily. A script can be run in users' browser or in background inside a Docker container. (Currently running in browser is supported yet)
+SeaTable support you to write scripts to meet individual needs. Currently supported scripting language include Javascript and Python.
+
+The Javascript script runs directly in the current browser and is suitable for simple data processing. The Python script runs on the server side and can be set to automatically run periodically, which is suitable for more complex data processing scenarios.
 
 ## Quick start
+
+In SeaTable, a base includes multiple sub-table, and a sub-table contains multiple rows and columns. A row contains multiple fields.
+
+### Javascript
 
 There are two pre-defined objects:
 
@@ -34,19 +40,26 @@ for (var i=0; i<rows.length; i++) {
 
 From the two examples, we can see that via calling the corresponding methods of base object, we can read and write data in a base easily.
 
+### Python
+
+When writing the script, you need to import Base objects from seatable_api and init it, and then you can call functions to operate the table. The following is a simple example, to add a row to a table:
+
+```
+from seatable_api import Base
+
+server_url = os.environ.get('dtable_web_url')
+api_token = os.environ.get('api_token')
+base = Base(api_token, server_url)
+base.auth()
+
+row_data = {
+    "Name": "I am new Row"
+}
+base.append_row('Table1', row_data)
+```
 
 ## Reference
 
-Understanding the data structure of base object will help to manipulate base:
-
 * [Data structure](data-structure.md)
-
-Programming reference:
-
-* [base](base.md)
-* [output](output.md)
-* [utilities](utils.md)
-
-## Examples
-
-You can find some easy to understand examples here: [https://github.com/seatable/seatable-scripts/tree/master/examples](https://github.com/seatable/seatable-scripts/tree/master/examples)
+* [Javascript](javascript/README.md)
+* [Python](python/README.md)
