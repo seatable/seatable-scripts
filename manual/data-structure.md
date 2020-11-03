@@ -1,8 +1,8 @@
-# Data structure of objects in SeaTable
+# Row, Column, Table
 
 ## Row
 
-Row is an javascript object, use `row['colum_name']` to get the value of a specific cell. There are a few special columns:
+Row is an object, use `row['colum_name']` to get the value of a specific cell. There are a few special columns:
 
 * `_id` : The id of the row
 * `_creator` : The creator for this row
@@ -30,7 +30,7 @@ A column object has following fields:
 
 * `key`:  The key of the column, string
 * `type` : The type of the column(long-text, single-select, number, file and so on), string
-* `name` : The name of the table, string
+* `name` : The name of the column, string
 
 ## Table
 

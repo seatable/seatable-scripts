@@ -52,6 +52,8 @@ The target table only has the user names
 
 We need to copy the Email information in the source table to the target table, then this function can be used.
 
+##### Example
+
 ```javascript
   
   // Match the rows with the same content in the Name column of Table1 and Table2, copy the contents of the Email column of the row in Table1 to the Email column of the corresponding row in Table2
