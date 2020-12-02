@@ -12,6 +12,6 @@ output.text(table.name);
 ##### Markdown
 
 ```javascript
-const table = base.getActiveTable()；
+const table = base.getActiveTable();
 output.markdown(`##### ${table.name}`);
 ```
