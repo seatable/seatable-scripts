@@ -23,12 +23,12 @@ if (view.groupbys && view.groupbys.length > 0) {
       	// get current row value
     	const currentNumber = row[columnName];
       	if (!currentNumber) return;
-        // caculate increment
+        // calculate increment
         const previousRow = rows[index - 1];
         // if there is no previousRow, set increaseCount to 0
         const previousNumber = previousRow ? previousRow[columnName] : currentNumber;
       	const increaseCount = currentNumber - previousNumber;
-        // set caculated increment to row
+        // set calculated increment to row
       	base.modifyRow(table, row, {[incrementalColumnName]: increaseCount});
     });
   });
@@ -36,14 +36,14 @@ if (view.groupbys && view.groupbys.length > 0) {
     // get current view rows
     const rows = base.getRows(table, view);
     rows.map((row, rowIndex, rows) => {
-    // caculate increment
+    // calculate increment
     const currentNumber = row[columnName];
     if (!currentNumber) return;
     const previousRow = rows[rowIndex - 1];
     // if there is no previousRow, set increaseCount to 0
     const previousNumber = previousRow ? previousRow[columnName] : currentNumber;
     const increaseCount = currentNumber - previousNumber;
-    // set caculated increment to row
+    // set calculated increment to row
     base.modifyRow(table, row, {[incrementalColumnName]: increaseCount});
   });
 }
