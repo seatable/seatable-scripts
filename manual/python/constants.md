@@ -7,7 +7,7 @@ In the script there may be some constants we need to know
 Column type, when insert/add columns, change column types, etc. need to be used
 
 ```python
-from seatable_api import ColumnTypes
+from seatable_api.constants import ColumnTypes
 
 ColumnTypes.NUMBER              # number
 ColumnTypes.TEXT                # text
