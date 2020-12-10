@@ -6,6 +6,7 @@ site_url: https://seatable.github.io/seatable-scripts/
 
 repo_name: seatable/seatable-scripts
 repo_url: https://github.com/seatable/seatable-scripts/
+edit_uri: edit/master/manual/
 
 copyright: Copyright &copy; 2020 seatable
 
@@ -48,6 +49,19 @@ markdown_extensions:
 nav:
   - Home: README.md
   - Data structure: data-structure.md
-  - Base: base.md
-  - Output: output.md
-  - Utils: utils.md
+  - JavaScript:
+    - Introduction: javascript/README.md
+    - Base: javascript/base.md
+    - Output: javascript/output.md
+    - Utils: javascript/utils.md
+  - Python:
+    - Introduction: python/README.md
+    - Base: python/base.md
+    - Rows: python/rows.md
+    - Links: python/links.md
+    - Columns: python/columns.md
+    - Files: python/files.md
+    - Account: python/account.md
+    - Constants: python/constants.md
+    - Context: python/context.md
+    - Libraries supported in cloud environment: python/libs.md
