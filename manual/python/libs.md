@@ -13,3 +13,4 @@ The following modules are available
 * SeaTable API, [seatable-api](https://pypi.org/project/seatable-api/)
 * Date/time calculation tool library, [dateutils](https://pypi.org/project/dateutils/)
 * http request, [requests](https://pypi.org/project/requests/)
+* OpenSSL library, [pyOpenSSL](https://pypi.org/project/pyOpenSSL/)
