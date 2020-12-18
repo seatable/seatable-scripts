@@ -125,9 +125,9 @@ base.filter_rows(table_name, filters, view_name=None, filter_conjunction='And')
 
 ```python
 filters = [{
-    "column_key":"0000",
-    "filter_predicate":"contains",
+    "column_name":"Name",
+    "filter_predicate":"contains", # support "contains" and "is", which are used for fuzzy and precise query respectively
     "filter_term":"a"
 }],
-base.filter_rows('Table1', filters=filters)
+base.filter_rows('Table1', filters=filters) # filter the rows which name contains character "a" 
 ```
