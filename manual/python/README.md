@@ -72,6 +72,7 @@ SeaTable API introduction:
 * [Links](links.md)
 * [Columns](columns.md)
 * [Files](files.md)
+* [QuerySet](queryset.md)
 * [Account](account.md)
 * [Context](context.md)
 * [Constants](constants.md): Some constant definitions
