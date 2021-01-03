@@ -113,21 +113,3 @@ base.delete_row(table_name, row_id)
 base.delete_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
-#### filter rows
-
-Filter rows
-
-```python
-base.filter_rows(table_name, filters, view_name=None, filter_conjunction='And')
-```
-
-##### Example
-
-```python
-filters = [{
-    "column_name":"Name",
-    "filter_predicate":"contains", # support "contains" and "is", which are used for fuzzy and precise query respectively
-    "filter_term":"a"
-}],
-base.filter_rows('Table1', filters=filters) # filter the rows which name contains character "a" 
-```

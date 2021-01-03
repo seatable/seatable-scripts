@@ -1,6 +1,6 @@
 # QuerySet
 
-This document will show how to operate row through QuerySet object
+This document will show how to operate row through QuerySet object.
 
 #### get a queryset
 

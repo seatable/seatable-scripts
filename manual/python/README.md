@@ -35,6 +35,25 @@ Requirements
 * requests
 * socketIO-client-nexus
 
+## A simple example
+
+This following example shows how to query records from a base and update them using queryset.
+
+```
+base = Base(api_token, server_url)
+base.auth()
+
+queryset = base.filter('Table1', "age>18 and gender='male'")
+elder_queryset = queryset.filter("age > 70")
+for row in elder_queryset:
+    print(row)
+
+update_row_data = {'paid': True}
+updated_rows = elder_queryset.update(update_row_data)
+
+deleted_count = elder_queryset.delete()
+```
+
 ## How to monitor base changes when you run script locally
 
 You can run monitor base changes using socketIO as following:
@@ -69,10 +88,10 @@ SeaTable API introduction:
 
 * [Base](base.md)
 * [Rows](rows.md)
+* [QuerySet](queryset.md)
 * [Links](links.md)
 * [Columns](columns.md)
 * [Files](files.md)
-* [QuerySet](queryset.md)
 * [Account](account.md)
 * [Context](context.md)
 * [Constants](constants.md): Some constant definitions
