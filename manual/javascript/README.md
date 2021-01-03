@@ -1,4 +1,4 @@
-# SeaTable Javascript script program
+# SeaTable Javascript script
 
 The Javascript script runs directly in the current browser and is suitable for simple data processing. 
 

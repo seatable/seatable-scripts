@@ -1,4 +1,4 @@
-# SeaTable Python script program
+# SeaTable Python script
 
 The Python script runs on the server side and can be set to automatically run periodically, which is suitable for more complex data processing scenarios.
 
