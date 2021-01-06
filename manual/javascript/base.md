@@ -421,31 +421,6 @@ base.modifyRow('Table1', row, {'Name': 'new name', 'number': 100});
 Modify multiple rows in the table at once
 
 ```javascript
-base.modifyRow(table: Object/String, rows: Array, updateRows: Array);
-```
-
-##### Example
-
-```javascript
-const table = base.getTableByName('Table1');
-const rows = base.getRows('Table1', 'Default view');
-const selectedColumnName = 'Name';
-const selectedRows = [], updatedRows = [];
-
-rows.forEach((row) => {
-	if (row[columnName] === 'name') {
-    selectedRows.push(row);
-    updatedRows.push({columnName: 'name1'});
-  }
-});
-base.modifyRow(table, selectedRows, updatedRows);
-```
-
-#### modifyRows
-
-Modify multiple rows in the table at once
-
-```javascript
 base.modifyRow(table: Object/String, rows: Array, updatedRows: Array);
 ```
 
