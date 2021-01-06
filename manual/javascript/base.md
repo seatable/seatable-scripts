@@ -433,9 +433,9 @@ const selectedColumnName = 'Name';
 const selectedRows = [], updatedRows = [];
 
 rows.forEach((row) => {
-	if (row[columnName] === 'xxx') {
+	if (row[columnName] === 'name') {
     selectedRows.push(row);
-    updatedRows.push({columnName: 'xxxx1'});
+    updatedRows.push({columnName: 'name1'});
   }
 });
 base.modifyRow(table, selectedRows, updatedRows);
