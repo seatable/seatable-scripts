@@ -1,11 +1,5 @@
 # Row
 
-This document will show how to operate row through Base object
-
-If you do not yet understand the Base object, please refer to this document
-
-* [Base](base.md)
-
 #### list rows
 
 Get all rows of the table

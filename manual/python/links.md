@@ -1,11 +1,5 @@
 # Links
 
-This document will show how to manipulate links through the Base object
-
-If you do not yet understand the Base object, please refer to this document
-
-* [Base](base.md)
-
 
 #### add link
 

@@ -1,11 +1,5 @@
 # Files
 
-This document will show you how to upload/download files through the Base object
-
-If you do not yet understand the Base object, please refer to this document
-
-* [Base](base.md)
-
 #### get downlaod link by path
 
 Get the file download link

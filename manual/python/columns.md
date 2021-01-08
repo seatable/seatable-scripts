@@ -1,11 +1,5 @@
 # Column
 
-This document will show how the columns are operated by Base Object
-
-If you do not yet understand the Base object, please refer to this document
-
-* [Base](base.md)
-
 #### list columns
 
 List all rows of the table/view
