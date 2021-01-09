@@ -39,8 +39,9 @@ Insert a row
 
 ```python
 base.insert_row(table_name, row_data, anchor_row_id)
-# anchor_row_id is the id of the anchored row, the new row will be inserted below this row
 ```
+
+* anchor_row_id: the row under which the new row will be inserted
 
 ##### Example
 

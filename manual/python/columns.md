@@ -23,9 +23,9 @@ Insert/Append column
 base.insert_column(table_name, column_name, column_type, column_key=None)
 ```
 
-`column_key` is the key of the previous column at the position to be inserted, if omitted, it will be appended as the last column by default
+* column_key: the key of column after which the new column will be inserted, it will be appended to the last column by default
 
-column_type please refer to [constants](constants.md)
+* column_type: please refer to [constants](constants.md)
 
 ##### Example
 
@@ -37,7 +37,7 @@ base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, column_key=ColumnTy
 
 #### rename column
 
-Rename the column
+Rename a column
 
 ```python
 base.rename_column(table_name, column_key, new_column_name)
@@ -51,7 +51,7 @@ base.rename_column('Table1', 'kSiR', 'new-python-api')
 
 #### resize column
 
-Set the column width
+Set a column width
 
 ```python
 base.resize_column(table_name, column_key, new_column_width)
@@ -67,7 +67,7 @@ base.resize('Table1', 'asFV', 500)
 
 #### freeze column
 
-Freeze the column
+Freeze a column
 
 ```python
 base.freeze_column(table_name, column_key, frozen)
@@ -87,9 +87,9 @@ base.freeze_column('Table1', '0000', True)
 base.move_column(table_name, column_key, target_column_key)
 ```
 
-column_key is the key of the column you want to move
+* column_key:  the key of the column you want to move
 
-target_column_key is the key of the anchor column, the moved column will be moved to the right of the column
+* target_column_key:  is the key of the anchor column, the moved column will be moved to the right of the column
 
 ##### Example
 
@@ -101,7 +101,7 @@ In this example, the 'loPx' column will be moved to the right of the '0000' colu
 
 #### modify column type
 
-Transform the column type
+Transform a column type
 
 ```python
 base.modify_column_type(table_name, column_key, new_column_type)
@@ -119,7 +119,7 @@ base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
 
 #### delete column
 
-Delete the column
+Delete a column
 
 ```python
 base.delete_column(table_name, column_key)
