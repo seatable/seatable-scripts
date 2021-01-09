@@ -1,6 +1,6 @@
 # Files
 
-There are two scenarios we designed for calling the interface of file manipulation including download and upload. First one is the dummy method, and the other one is the regular method, which split the process of download/upload into two steps: 1. get the url link; 2. request the link for download/upload behavior. The regular method is more agree with some complicated situation such as file bulk download or large file upload. Here are the interface introductions in detail. 
+There are two scenarios we provided for calling the interface of file manipulation including download and upload. First one is the dummy method, and the other one is the regular method, which split the process of download/upload into two steps: 1. get the url link; 2. request the link for download/upload behavior. The regular method is more agree with some complicated situation such as file bulk download or large file upload and so on. Here are the interface introductions in detail. 
 
 ## Download
 
