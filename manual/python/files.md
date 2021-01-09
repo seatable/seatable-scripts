@@ -1,162 +1,167 @@
 # Files
 
-This document will show you how to upload/download files through the Base object
+There are two scenarios we provided for calling the interface of file manipulation including download and upload. First one is the dummy method, and the other one is the regular method, which split the process of download/upload into two steps: 1. get the url link; 2. request the link for download/upload behavior. The regular method is more agree with some complicated situation such as file bulk download or large file upload and so on. Here are the interface introductions in detail. 
 
-If you do not yet understand the Base object, please refer to this document
+## Download
 
-* [Base](base.md)
+### Dummy method
 
-#### get downlaod link by path
-
-Get the file download link
+download file 
 
 ```python
-# path: The relative path of the file in the Base
-base.get_file_download_link(path)
-```
-
-##### Example
-
-```python
-# Suppose you get the url of a file from Base's data:
-# https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip
-# The way to get the download link is:
-download_link = base.get_file_download_link('files/2020-10/aur7e-jqc19.zip')
-# If you want to download, use this link to download, in the example, using the requests library, which you can do with other libraries
-response = requests.get(download_link)
-```
-
-#### get file upload link
-
-Get the upload link to upload the file, return a dictionary with the upload link in it
-When you upload, requires two parameters, parent_dir and relative_path, please see the example for details
-
-```python
-# return a dict
-# {
-#     "parent_path": "xxxxx",
-#     "upload_link": "https://xxxxxx"
-# }
-base.get_file_upload_link()
-```
-
-##### Example
-
-```python
-upload_link_dict = base.get_file_upload_link()
-# Upload files, use the requests library, you can use other library operations
-parent_dir = upload_link_dict['parent_path']
-upload_link = upload_link_dict['upload_link'] + '?ret-json=1'
-response = requests.post(upload_link, data={
-    'parent_dir': parent_dir,
-    'relative_path': relative_path,
-    'replace': 1 if replace else 0  # Do you want to replace if the file with the same name has been uploaded
-}, files={
-    'file': (name, open(file_path, 'rb'))  # The file to be uploaded
-})
-```
-
-Pure API operation is very simple, but if it is a complete operation, such as:
-
-Intercept path, get download link, download, save
-
-Or
-
-Get upload link, read the file, set parameters, upload
-
-If the code is more rigorous, you must also check the status of each request in the middle, etc.
-
-Very cumbersome, so the following will show the upload/download file API after wrap the above process for your use
-
-#### download file
-
-Download the file
-
-```python
-# Save the file to the path save_path
 base.download_file(file_url, save_path)
 ```
 
-##### Example
+* file_url:  url link of the file, obtained from the cell of file-type column
+* save_path: local path in which the file will be saved after download
+
+##### Example 
 
 ```python
-# Download the file to this file path
-base.download_file('https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/screen%20(3).png', 'files/screen.png')
+file_url = "https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip"
+save_path = "/tmp/files/custom.zip"
+base.download_file(file_url, save_path)
 ```
 
-#### upload file in memory
+### Regular method
+
+1)  Get the download link by the url link of file
+
+Consider that your have a file in your base which url is https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip
 
 ```python
-# name: File name after upload
-# content: File contents, is a bytes object
-# relative_path: Upload relative path, is the path of the Base's attachments
-# file_type: image or file, default is file
-# relative_path and file_type cannot be Note at the same time, if relative_path is None, the value is {file_type}s/{today-month}, like: files/2020-09
-# replace: Whether to replace if there is a file with the same name in the directory
-# return: Return the info dict of the uploaded file
-# {
-#     'type': str,
-#     'size': int,
-#     'name': str,
-#     'url': str
-# }
-base.upload_bytes_file(name, content: bytes, relative_path=None, file_type=None, replace=False)
+# Call the API by using the cut of url after the uuid str
+download_link = base.get_file_download_link('files/2020-10/aur7e-jqc19.zip')
 ```
 
-##### Example
+2)  Get the file content by requesting the download link
 
 ```python
-reponse = requests.get('http://xxxxxx.png')
-info_dict = base.upload_bytes_file('file.png', response.content, file_type='file', replace=False)
-with open('file.png', 'rb') as f:
-    content = f.read()
-info_dict = base.upload_bytes_file('file.png', content, file_type='image', replace=False)
+import requests
+response = requests.get(download_link)
+```
 
-# If you need to update row
-# Update the image column, assuming that the picture column named img, then:
-row['img'].append(info_dict.get('url'))
-base.update_row('TableName', row['_id'], row)
+## Upload
 
-# Update the file column, assuming that the file column named file, then:
-row['file'].append(info_dict)
-base.update_row('TableName', row['_id'], row)
+### Dummy method
 
-# Of course, if there is no picture/file column in that row, then:
-row['img'] = [info_dict.get('url')]
-# row['file'] = [info_dict]
-base.update_row('TableName', row['_id'], row)
+#### Upload file from memory
 
-# If insert a new row
-row = {
-    'img': [info_dict.get('url')],
-    'file': [info_dict]
+```python
+base.upload_bytes_file(name, content, file_type='file', replace=False)
+```
+
+* name: the file name after uploading 
+* content:  file content , which is a bytes object
+* file_type:  image or file, default by file if set to None
+* replace: replace the file of save name,  default by False
+
+Return 
+
+```python
+{
+    'type': str,  
+    'size': int, 
+    'name': str, 
+    'url': str, 
 }
-base.append_row('real-img-files', row)
 ```
 
-#### upload local file
+##### Example 1, upload a file from website
 
 ```python
-# file_path: The file path
-# name: File name after upload, if it is None, it is the name of the file
-# relative_path: Upload relative path, is the path of the Base's attachments
-# file_type: image or file，default is file
-# relative_path and file_type cannot be Note at the same time, if relative_path is None, the value is {file_type}s/{today-month}, like files/2020-09
-# replace: Whether to replace if there is a file with the same name in the directory
-# return: Return the info dict of the uploaded file
-# {
-#     'type': str,
-#     'size': int,
-#     'name': str,
-#     'url': str
-# }
-base.upload_local_file(file_path, name=None, relative_path=None, file_type=None, replace=False)
+import requests
+file_url = 'http://www.google.com/xxx/xxx/xxx.txt'
+response = requests.get(file_url)
+info_dict = base.upload_bytes_file = ('my_uploaded_file.txt', response.content)
 ```
+
+##### Example 2, upload a file from local
+
+```python
+local_img_file = '/Users/Desktop/a.png'
+with open (local_img_file, 'rb') as f:
+  content = f.read()
+info_dict = base.upload_bytes_file = ('my_uploaded_img.png', content, file_type='image')
+```
+
+
+#### Upload file by local file path
+
+```python
+base.upload_local_file(file_path, name=None, file_type='file', replace=False)
+```
+
+* file_path: loacl path of file
+* name:  the file name after uploading , default by using local file name if set to None
+
+Same usage as `upload_bytes_file` of the params `file_type` and `replace`
 
 ##### Example
 
 ```python
-info_dict = base.upload_local_file('files/file.png', name='upload.png', relative_path=None, file_type='image', replace=True)
-
-# If you need to update row, please refer to the example of upload file in memory
+local_file = '/Users/Desktop/a.png'
+info_dict = base.upload_local_file(local_file, name='my_uploaded_img.png', file_type='image', replace=True)
 ```
+
+#### Table Update
+
+The step we discussed above is just for uploading file, moreover, we can insert the uploaded file/image into our table by using the returned data `info_dict`.  Here is an example of updating a sub-table named 'Table1' of our base.  
+
+```python
+# Insert a image into a cell which in the image-type column named 'img_col'
+img_url = info_dict.get('url')
+row['img_col'] = [img_url]
+base.update_row('Table1', row['_id'], row)
+
+# Insert a file into a cell which in the file-type column named 'file_col'
+row['file_col'] = [info_dict]
+base.update_row('Table1', row['_id'], row)
+
+# Insert a file/image into a cell which is taken by other files/images
+row['img_col'].append([img_url])
+base.update_row('TableName', row['_id'], row)
+row['file_col'].append([info_dict])
+base.update_row('Table1', row['_id'], row)
+```
+
+### Regular method
+
+Get the upload link and file path
+
+```python
+base.get_file_upload_link()
+```
+
+Return
+
+```python
+{
+  "parent_path": "/asset/3a9d8266-78.....",		
+  "upload_link": "http://..../upload-api/ea44c4f4...../"
+}
+```
+
+* parent_path:  the relative path allocated by server, which will be used when uploading  specific files
+
+##### Example
+
+Consider that we want to upload the local file "/User/Desktop/file.txt" to the server
+
+```python
+# Get the upload link and file path allocated by server
+upload_link_dict = base.get_file_upload_link()
+parent_dir = upload_link_dict['parent_path']
+upload_link = upload_link_dict['upload_link'] + '?ret-json=1'
+
+# Upload files by requesting the upload link
+upload_file_name = "file_uploaded.txt" 
+replace = 1 
+response = requests.post(upload_link, data={
+    'parent_dir': parent_dir,
+    'replace': 1 if replace else 0 
+}, files={
+    'file': (upload_file_name, open('/User/Desktop/file.txt', 'rb'))
+})
+```
+
