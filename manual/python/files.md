@@ -1,40 +1,40 @@
 # Files
 
-There are two scenarios we provided for calling the interface of file manipulation including download and upload. First one is the dummy method, and the other one is the regular method, which split the process of download/upload into two steps: 1. get the url link; 2. request the link for download/upload behavior. The regular method is more agree with some complicated situation such as file bulk download or large file upload and so on. Here are the interface introductions in detail. 
+We provides two sets of functions for file uploading and downloading. The first is simple ones, the second is detailed ones, which split the process of downloading/uploading into two steps: 1. get the downloading/uploading link; 2. downloading/uploading the files. The second set is for handling complicated situations such as large file uploading.
 
 ## Download
 
-### Dummy method
+### Simple method
 
-download file 
+Download a file to a local path
 
 ```python
 base.download_file(file_url, save_path)
 ```
 
-* file_url:  url link of the file, obtained from the cell of file-type column
-* save_path: local path in which the file will be saved after download
+* file_url:  URL of the file, obtained from the cell of file or image column
+* save_path: local path in which the file will be saved after downloading
 
 ##### Example 
 
 ```python
-file_url = "https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip"
+file_url = "https://cloud.seatable.io/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip"
 save_path = "/tmp/files/custom.zip"
 base.download_file(file_url, save_path)
 ```
 
-### Regular method
+### Detailed method
 
-1)  Get the download link by the url link of file
+1)  Get the download link by the URL of the file
 
-Consider that your have a file in your base which url is https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip
+Consider that your have a file in your base with URL https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip
 
 ```python
-# Call the API by using the cut of url after the uuid str
+# Call the API by using the part of the URL after the UUID str
 download_link = base.get_file_download_link('files/2020-10/aur7e-jqc19.zip')
 ```
 
-2)  Get the file content by requesting the download link
+2)  Get the file content
 
 ```python
 import requests
@@ -43,9 +43,9 @@ response = requests.get(download_link)
 
 ## Upload
 
-### Dummy method
+### Simple method
 
-#### Upload file from memory
+#### Upload a file from memory
 
 ```python
 base.upload_bytes_file(name, content, file_type='file', replace=False)
@@ -53,7 +53,7 @@ base.upload_bytes_file(name, content, file_type='file', replace=False)
 
 * name: the file name after uploading 
 * content:  file content , which is a bytes object
-* file_type:  image or file, default by file if set to None
+* file_type:  image or file, default is file if not set
 * replace: replace the file of save name,  default by False
 
 Return 
@@ -93,9 +93,20 @@ base.upload_local_file(file_path, name=None, file_type='file', replace=False)
 ```
 
 * file_path: loacl path of file
-* name:  the file name after uploading , default by using local file name if set to None
+* name:  the file name after uploading, using local file name if it is not set
+* file_type:  image or file, default is file if not set
+* replace: replace the file of save name,  default by False
 
-Same usage as `upload_bytes_file` of the params `file_type` and `replace`
+Return 
+
+```python
+{
+    'type': str,  
+    'size': int, 
+    'name': str, 
+    'url': str, 
+}
+```
 
 ##### Example
 
@@ -104,30 +115,30 @@ local_file = '/Users/Desktop/a.png'
 info_dict = base.upload_local_file(local_file, name='my_uploaded_img.png', file_type='image', replace=True)
 ```
 
-#### Table Update
+#### Update image/file cells in table
 
-The step we discussed above is just for uploading file, moreover, we can insert the uploaded file/image into our table by using the returned data `info_dict`.  Here is an example of updating a sub-table named 'Table1' of our base.  
+The step we discussed above is just for uploading file. We need to update the contents of the cells using the returned information too. Here is an example of updating a table named 'Table1' in a base.  
 
 ```python
-# Insert a image into a cell which in the image-type column named 'img_col'
+# Insert a image into a cell in the image column named 'img_col'
 img_url = info_dict.get('url')
 row['img_col'] = [img_url]
 base.update_row('Table1', row['_id'], row)
 
-# Insert a file into a cell which in the file-type column named 'file_col'
+# Insert a file into a cell in the file column named 'file_col'
 row['file_col'] = [info_dict]
 base.update_row('Table1', row['_id'], row)
 
-# Insert a file/image into a cell which is taken by other files/images
+# Insert a file/image into a cell which already have contents
 row['img_col'].append([img_url])
 base.update_row('TableName', row['_id'], row)
 row['file_col'].append([info_dict])
 base.update_row('Table1', row['_id'], row)
 ```
 
-### Regular method
+### Detailed method
 
-Get the upload link and file path
+Get a file upload link
 
 ```python
 base.get_file_upload_link()
@@ -138,11 +149,11 @@ Return
 ```python
 {
   "parent_path": "/asset/3a9d8266-78.....",		
-  "upload_link": "http://..../upload-api/ea44c4f4...../"
+  "upload_link": "https://..../upload-api/ea44c4f4...../"
 }
 ```
 
-* parent_path:  the relative path allocated by server, which will be used when uploading  specific files
+* parent_path: the relative parent folder assigned by the server, which will be used when uploading files
 
 ##### Example
 
@@ -154,7 +165,7 @@ upload_link_dict = base.get_file_upload_link()
 parent_dir = upload_link_dict['parent_path']
 upload_link = upload_link_dict['upload_link'] + '?ret-json=1'
 
-# Upload files by requesting the upload link
+# Upload the file
 upload_file_name = "file_uploaded.txt" 
 replace = 1 
 response = requests.post(upload_link, data={
@@ -164,4 +175,3 @@ response = requests.post(upload_link, data={
     'file': (upload_file_name, open('/User/Desktop/file.txt', 'rb'))
 })
 ```
-
