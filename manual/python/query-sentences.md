@@ -30,7 +30,7 @@ Here is an example based on the code `queryset = base.filter("Table1", "age>18")
 
 ### String-based Column
 
-*  Column types include **Text, Long Text, URL, Email, Checkbox**.
+* Column types include **Text, Long Text, URL, Email, Checkbox**.
 
 ```python
 # 1. equal-unequal query
