@@ -96,6 +96,7 @@ SeaTable API introduction:
 * [Context](context.md)
 * [Constants](constants.md): Some constant definitions
 * [Libs](libs.md): List of Python libraries supported for import in the cloud
+* [Query Statements](query-sentences.md)
 
 
 ## Example
