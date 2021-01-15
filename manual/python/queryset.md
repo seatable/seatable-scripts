@@ -1,6 +1,8 @@
 # QuerySet
 
-This document will show how to operate row through QuerySet object.
+This document will show how to operate row through QuerySet object. Regards to the format of query statements, please refer to the link bellow for more details. 
+
+* [Query Statements](query-sentences.md)
 
 #### get a queryset
 
