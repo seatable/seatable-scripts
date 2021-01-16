@@ -12,6 +12,8 @@ Get a QuerySet and perform the query
 base.filter(table_name, conditions="", view_name=None)
 ```
 
+**Note, if you don't specify a view name, the first view of a table will be used.**
+
 ##### Example
 
 ```python
