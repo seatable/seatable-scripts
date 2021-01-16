@@ -22,7 +22,7 @@ account.auth()
 
 A Workspace is a collection of user's Bases or a collection of group's Bases
 
-#### list workspaces
+#### List workspaces
 
 Get all your workspaces and its Bases
 
@@ -66,7 +66,7 @@ Return
 
 Add/copy/delete Base, interface to get access to Base
 
-#### add a base
+#### Add a base
 
 Add a base to a Workspace 
 
@@ -83,7 +83,7 @@ account.add_base('new-base')
 account.add_base('new-base', 35)
 ```
 
-#### copy a base
+#### Copy a base
 
 Copy a base to a workspace
 
@@ -102,7 +102,7 @@ Copy a base named base_name from src_workspace to dst_workspace
 account.copy_base(35, 'img-file', 74)
 ```
 
-#### get a base
+#### Get a base
 
 Get a base object
 

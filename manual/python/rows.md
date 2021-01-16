@@ -1,6 +1,6 @@
 # Row
 
-#### list rows
+#### List rows
 
 Get all rows of the table
 
@@ -15,7 +15,7 @@ rows = base.list_rows('Table1')
 rows = base.list_rows('Table1', view_name='default')
 ```
 
-#### append row
+#### Append row
 
 Append a row
 
@@ -33,7 +33,7 @@ row_data = {
 base.append_row('Table1', row_data)
 ```
 
-#### insert row
+#### Insert row
 
 Insert a row
 
@@ -53,7 +53,7 @@ row_data = {
 base.insert_row('Table1', row_data, 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
-#### batch append rows
+#### Batch append rows
 
 Batch append rows
 
@@ -77,7 +77,7 @@ rows_data = [{
 base.batch_append_rows('Table6', rows_data)
 ```
 
-#### update row
+#### Update row
 
 Update a row
 
@@ -94,7 +94,7 @@ row_data = {
 base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
 ```
 
-#### delete row
+#### Delete row
 
 Delete a row
 

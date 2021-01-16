@@ -4,7 +4,7 @@ This document will show how to operate row through QuerySet object. Regards to t
 
 * [Query Statements](query-sentences.md)
 
-#### get a queryset
+#### Get a queryset
 
 Get a QuerySet and perform the query
 
@@ -22,7 +22,7 @@ queryset = base.filter("Table1", "age>18")
 queryset = base.filter("Table1", "age>18", view_name="default")
 ```
 
-#### filter
+#### Filter
 
 Perform the query on a QuerySet
 
@@ -38,7 +38,7 @@ new_queryset = queryset.filter("gender='female' or 'work place'='New York'")
 new_queryset = queryset.filter("gender='female' and 'work place'!='New York'")
 ```
 
-#### get a single row
+#### Get a single row
 
 Perform the query and get a single row
 
@@ -52,7 +52,7 @@ queryset.get(conditions)
 row = queryset.get("name=Angela")
 ```
 
-#### copy queryset
+#### Copy queryset
 
 Copy QuerySet
 
@@ -66,7 +66,7 @@ queryset.all()
 new_queryset = queryset.all()
 ```
 
-#### update rows
+#### Update rows
 
 Update rows
 

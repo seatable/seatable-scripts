@@ -1,6 +1,6 @@
 # Column
 
-#### list columns
+#### List columns
 
 List all rows of the table/view
 
@@ -15,7 +15,7 @@ base.list_columns('Table1')
 base.list_columns('Table1', view_name='default')
 ```
 
-#### insert column
+#### Insert column
 
 Insert/Append column
 
@@ -35,7 +35,7 @@ base.insert_column('Table1', 'python-api', ColumnTypes.TEXT)
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, column_key=ColumnTypes.TEXT)
 ```
 
-#### rename column
+#### Rename column
 
 Rename a column
 
@@ -49,7 +49,7 @@ base.rename_column(table_name, column_key, new_column_name)
 base.rename_column('Table1', 'kSiR', 'new-python-api')
 ```
 
-#### resize column
+#### Resize column
 
 Set a column width
 
@@ -65,7 +65,7 @@ The default width of a column is 200, if you need to adjust the column width, su
 base.resize('Table1', 'asFV', 500)
 ```
 
-#### freeze column
+#### Freeze column
 
 Freeze a column
 
@@ -81,7 +81,7 @@ frozon: True/False
 base.freeze_column('Table1', '0000', True)
 ```
 
-#### move column
+#### Move column
 
 ```python
 base.move_column(table_name, column_key, target_column_key)
@@ -99,7 +99,7 @@ base.move_column('Table1', 'loPx', '0000')
 
 In this example, the 'loPx' column will be moved to the right of the '0000' column
 
-#### modify column type
+#### Modify column type
 
 Transform a column type
 
@@ -117,7 +117,7 @@ from seatable_api.constants import ColumnTypes
 base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
 ```
 
-#### delete column
+#### Delete column
 
 Delete a column
 
