@@ -81,7 +81,7 @@ row_data = {'work place': 'London'}
 new_rows = queryset.update(row_data)
 ```
 
-#### delete rows
+#### Delete rows
 
 Delete rows
 
@@ -95,7 +95,7 @@ queryset.delete()
 count = queryset.delete()
 ```
 
-#### get a row
+#### Get a row
 
 Get a row
 
@@ -123,7 +123,7 @@ row = queryset.last()
 row = queryset[1]
 ```
 
-#### attributes
+#### Attributes
 
 Attributes
 
