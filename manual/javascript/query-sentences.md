@@ -6,7 +6,7 @@ The table query will become simpler and more efficiency by using the sql-like st
 
 * **greater-less query:**  >， >， =， \<， \<=
 * **equal-unequal query:**  =,  \<>
-*  **computation: **+, -, \*, /
+* **computation:** +, -, *, /, ^, %
 
 ## Overview
 
@@ -70,10 +70,9 @@ base.filter('Table1', 'view_name', "column_name+3>18")
 base.filter('Table1', 'view_name', "column_name*=18")
 base.filter('Table1', 'view_name', "column_name-2=18")
 base.filter('Table1', 'view_name', "column_name/2=18")
-
+base.filter('Table1', 'view_name', "column_name^2=18")
+base.filter('Table1', 'view_name', "column_name%2=1")
 ```
-
-
 
 ### Date-based Column
 
