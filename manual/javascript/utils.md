@@ -28,7 +28,7 @@ let formatDate = base.utils.formatDateWithMinutes(date);
 output.text(formatDate); // 2020-08-20 14:00
 ```
 
-### lookupAndCopy（）
+### lookupAndCopy
 
 ```javascript
 base.lookupAndCopy(targetTable, targetColumn, targetColumnToCompare, sourceTableName, sourceColumnName, sourceColumnToCompare = null);
@@ -61,4 +61,16 @@ We need to copy the Email information in the source table to the target table, t
   
   // Match the rows with the same content in the Name column in Table1 and the Name1 column in Table2, and copy the contents of the Email column of the row in Table1 to the Email1 column of the corresponding row in Table2
   base.lookupAndCopy('Table2', 'Email1', 'Name1', 'Table1', 'Email', 'Name');
+```
+
+### query
+
+Filter and summary the table data by SQL like statements
+
+#### Example
+
+```javascript
+ // Filter out the rows where the sum of the three columns 'number', 'number1', and 'number2' is greater than 5 then sum the number and number2 columns in these rows, return {number: 12, number2: 23}
+ base.utils.query('Table1', 'select sum(number), sum(number2) where number + number1 + number2 > 5');
+  
 ```
