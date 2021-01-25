@@ -67,7 +67,7 @@ base.filter('Table1', 'view_name',"column_name=''")
 
 ```javascript
 base.filter('Table1', 'view_name', "column_name+3>18")
-base.filter('Table1', 'view_name', "column_name*=18")
+base.filter('Table1', 'view_name', "column_name*2=18")
 base.filter('Table1', 'view_name', "column_name-2=18")
 base.filter('Table1', 'view_name', "column_name/2=18")
 base.filter('Table1', 'view_name', "column_name^2=18")
