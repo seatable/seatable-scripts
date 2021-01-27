@@ -445,99 +445,13 @@ base.modifyRow(table, selectedRows, updatedRows);
 
 Pass a conditional statement, filter out the rows that meet the conditions in the table, and return a querySet object
 
+* [查询语句规范](query-sentences.md)
+
+* [QuerySet](queryset.md)
+
 #### Example
 
 ```javascript
 // Filter out rows whose number column is equal to 5, and return a querySet object
 const querySet = base.filter('Table1', 'Default', 'number = 5');
-```
-
-#### querySet object
-
-This object provides some methods to manipulate the data filtered by the filter method
-
-* [Query Statements](query-sentences.md)
-
-
-##### querySet.all
-
-Returns all filtered data in the form of a list
-
-###### Example
-
-```javascript
-const list = querySet.all();
-```
-
-##### querySet.count
-
-Returns the number of filtered rows
-
-###### Example
-
-```javascript
-const count = querySet.count();
-```
-
-##### querySet.last
-
-Return the last filtered data
-
-###### Example
-
-```javascript
-const row = querySet.last();
-```
-
-##### querySet.first
-
-Return the first filtered data
-
-###### Example
-
-```javascript
-const row = querySet.first();
-```
-
-##### querySet.delete
-
-Delete all filtered rows and return the number of successfully deleted
-
-###### Example
-
-```javascript
-const count = querySet.delete();
-```
-
-##### querySet.update
-
-Modify the row data and return the updated data
-
-###### Example
-
-```javascript
-// Modify the contents of the Name column of all filtered rows to xxxx
-const rows = querySet.update({Name: 'xxxx'});
-```
-
-##### querySet.filter
-
-Further filtering, return a querySet object
-
-###### Example
-
-```javascript
-// Filter out the rows with the value of Tom in the Name column of the querySe
-const querySet1 = querySet.filter('Name = "Tom"');
-```
-
-##### querySet.get
-
-Get a piece of data in the querySet that meets the conditions, and return a row
-
-###### Example
-
-```javascript
-// Get the first data of Tom in the Name column of the querySet
-const row = querySet.get('Name = "Tom"');
 ```
