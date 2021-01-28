@@ -31,7 +31,7 @@ output.text(formatDate); // 2020-08-20 14:00
 ### lookupAndCopy
 
 ```javascript
-base.lookupAndCopy(targetTable, targetColumn, targetColumnToCompare, sourceTableName, sourceColumnName, sourceColumnToCompare = null);
+base.utils.lookupAndCopy(targetTable, targetColumn, targetColumnToCompare, sourceTableName, sourceColumnName, sourceColumnToCompare = null);
 ```
 
 Similar to the vlookup function in Excel. Find a matching row in the source table for each row of the target table, and then copy the data of the specified cell of the matching row to the specified cell of the target row.
@@ -57,10 +57,10 @@ We need to copy the Email information in the source table to the target table, t
 ```javascript
   
   // Match the rows with the same content in the Name column of Table1 and Table2, copy the contents of the Email column of the row in Table1 to the Email column of the corresponding row in Table2
-  base.lookupAndCopy('Table2', 'Email', 'Name', 'Table1', 'Name');
+  base.utils.lookupAndCopy('Table2', 'Email', 'Name', 'Table1', 'Name');
   
   // Match the rows with the same content in the Name column in Table1 and the Name1 column in Table2, and copy the contents of the Email column of the row in Table1 to the Email1 column of the corresponding row in Table2
-  base.lookupAndCopy('Table2', 'Email1', 'Name1', 'Table1', 'Email', 'Name');
+  base.utils.lookupAndCopy('Table2', 'Email1', 'Name1', 'Table1', 'Email', 'Name');
 ```
 
 ### query
