@@ -20,6 +20,70 @@ base = Base(api_token, server_url)
 base.auth()
 ```
 
+## Metadata
+
+#### Get metadata
+
+##### Example
+
+```python
+base.get_metadata()
+```
+
+Return
+
+```python
+{
+	'tables': [{
+		'_id': '4krH',
+		'name': 'Contact',
+		'is_header_locked': False,
+		'columns': [{
+			'key': '0000',
+			'type': 'text',
+			'name': 'Name',
+			'editable': True,
+			'width': 200,
+			'resizable': True,
+			'draggable': True,
+			'data': None,
+			'permission_type': '',
+			'permitted_users': []
+		}, {
+			'key': 'M31F',
+			'type': 'text',
+			'name': 'Email',
+			'editable': True,
+			'width': 200,
+			'resizable': True,
+			'draggable': True,
+			'data': None,
+			'permission_type': '',
+			'permitted_users': []
+		}],
+		'views': [{
+			'_id': '0000',
+			'name': 'Default view',
+			'type': 'table',
+			'is_locked': False,
+			'filter_conjunction': 'And',
+			'filters': [],
+			'sorts': [],
+			'groupbys': [],
+			'group_rows': [],
+			'groups': [],
+			'colorbys': {},
+			'hidden_columns': [],
+			'rows': [],
+			'formula_rows': {},
+			'link_rows': {},
+			'summaries': {},
+			'colors': {}
+		}]
+	}]
+}
+```
+
 ## Operation on Base
 
 The Base object provides interfaces for operating rows and columns, uploading and downloading files, etc. Please refer to the following documents
