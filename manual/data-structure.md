@@ -12,17 +12,28 @@ Row is an object, use `row['colum_name']` to get the value of a specific cell. T
 
 Different column types have different type of values:
 
+Basic column types:
+
 * `simple-text` : string
 * `number` : number
-* `single-select` : option name, string
+* `checkbox` : boolean
 * `date` : string, in format `2020-01-01` or `2020-01-01 10:00` 
-* `check` : boolean
+* `single-select` : option name, string
 * `long-text` : Markdown string
 * `image` : array, each element of the array is the URL of image
-* `multi-select` : array, each element of the array is an option name
-* `collaborator` : array, each element of the array is a collaborator's ID
-* `link` : array, each element of the array is a link name
 * `file` : array, each element of the array is a file object  `[{name: string, url: string, size: number, type: 'file'}]`
+* `multi-select` : array, each element of the array is an option name
+* `collaborator` : array, each element of the array is a collaborator's email
+* `URL` : string
+* `email` :  string
+* `duration` : string, in format `h:mm(1:30)` or `h:mm:ss(0:20:30)` 
+
+Advanced column types:
+
+* `formula` : string
+* `geolocation` : object, in format `{province: xxx, city: xxx, district: xxx, detail: xxx}`
+* `link` : array, each element of the array is a link name
+* `auto-number` : number, auto increase
 
 ## Column
 
