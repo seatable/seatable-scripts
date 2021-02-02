@@ -19,7 +19,7 @@ Basic column types:
 * `checkbox` : boolean
 * `date` : string, in format `2020-01-01` or `2020-01-01 10:00` 
 * `single-select` : option name, string
-* `long-text` : Markdown string
+* `long-text` : markdown string
 * `image` : array, each element of the array is the URL of image
 * `file` : array, each element of the array is a file object  `[{name: string, url: string, size: number, type: 'file'}]`
 * `multi-select` : array, each element of the array is an option name
