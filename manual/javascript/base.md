@@ -455,3 +455,70 @@ Pass a conditional statement, filter out the rows that meet the conditions in th
 // Filter out rows whose number column is equal to 5, and return a querySet object
 const querySet = base.filter('Table1', 'Default', 'number = 5');
 ```
+
+## Links
+
+#### addLink
+
+Add link, link other table records
+
+```javascript
+base.addLink(linkId, tableName, linkedTableName, rowId, linkedRowId)
+```
+
+* linkId:  link_id in the data attribute of the link column
+* tableName: the name of the link table
+* linkedTableName: the name of the linked table
+* rowId: id of link row
+* linkedRowId: id of the linked row 
+
+##### Example
+
+```javascript
+base.addLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 'PALm2wPKTCy-jdJNv_UWaQ')
+```
+
+#### removeLink
+
+Delete the link row
+
+```javascript
+base.removeLink(linkId, tableName, linkedTableName, rowId, linkedRowId)
+```
+
+##### Example
+
+```javascript
+base.removeLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 'PALm2wPKTCy-jdJNv_UWaQ')
+```
+
+#### getColumnLinkId
+
+Get the link id by column name
+
+```javascript
+base.getColumnLinkId(tableName, columnName)
+```
+
+##### Example
+
+```javascript
+base.getColumnLinkId('Table1', 'Record')
+```
+
+#### updateLinks
+
+Remove all existing row links and add new links
+
+```javascript
+base.utils.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedRowIds)
+```
+
+##### Example
+
+```javascript
+const rows = base.getRows('contact', 'Default_view');
+
+// Update row links to [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id]
+base.utils.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
+```
