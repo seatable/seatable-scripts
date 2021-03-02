@@ -511,7 +511,7 @@ base.getColumnLinkId('Table1', 'Record')
 Remove all existing row links and add new links
 
 ```javascript
-base.utils.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedRowIds)
+base.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedRowIds)
 ```
 
 ##### Example
@@ -520,5 +520,5 @@ base.utils.updateLinks(linkId, tableName, linkedTableName, rowId, updatedlinkedR
 const rows = base.getRows('contact', 'Default_view');
 
 // Update row links to [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id]
-base.utils.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
+base.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
 ```
