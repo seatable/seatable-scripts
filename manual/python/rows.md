@@ -15,6 +15,20 @@ rows = base.list_rows('Table1')
 rows = base.list_rows('Table1', view_name='default')
 ```
 
+#### Get row
+
+Get a row of the table by row ID.
+
+```python
+base.get_row(table_name, row_id)
+```
+
+##### Example
+
+```python
+row = base.get_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
+```
+
 #### Append row
 
 Append a row
