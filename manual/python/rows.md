@@ -17,7 +17,7 @@ rows = base.list_rows('Table1', view_name='default')
 
 #### Get row
 
-Get a row of the table
+Get a row of the table by row ID.
 
 ```python
 base.get_row(table_name, row_id)
