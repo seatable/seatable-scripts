@@ -84,6 +84,26 @@ Return
 }
 ```
 
+## Table
+
+#### add table
+
+Add a table into a base
+
+```python
+base.add_table(table_name, lang='en')
+```
+
+* lang: languages, default by English ('en'), currently support English('en') and Chinese('zh-cn')
+
+##### Example
+
+```python
+base.add_table('Investigation', lang='zh-cn')
+```
+
+
+
 ## Operation on Base
 
 The Base object provides interfaces for operating rows and columns, uploading and downloading files, etc. Please refer to the following documents
