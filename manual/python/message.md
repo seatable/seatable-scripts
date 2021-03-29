@@ -25,8 +25,8 @@ base.send_email(account_name, msg, **kwargs)
 * msg：message you want to send
 
 * kwargs including：
-    * send_to (neccessary)：email receivers, can be set to a list.
-    * subject  (necessary)： email subject.
+    * send_to (neccessary)：email receivers, can be set to a list
+    * subject  (necessary)： email subject
     * from：email sender, default by host user
     * copy_to:  the email which you want to copy to , can be set to a list
     * reply_to: the email to which you want the receivers reply 
