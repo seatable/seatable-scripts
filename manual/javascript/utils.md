@@ -38,14 +38,14 @@ Similar to the vlookup function in Excel. Find a matching row in the source tabl
 
 For example, we have a source table that contains the correspondence between user names and email addresses:
 
-| Name | Email | 
+| Name | Email |
 |-----|-------|
 | xxx | xxxx |
 | yyy | yyyy |
 
 The target table only has the user names
 
-| Name | Email | 
+| Name | Email |
 |-----|-------|
 | xxx |       |
 | yyy |       |
@@ -71,6 +71,6 @@ Filter and summary the table data by SQL like statements
 
 ```javascript
  // Filter out the rows where the sum of the three columns 'number', 'number1', and 'number2' is greater than 5 then sum the number and number2 columns in these rows, return {number: 12, number2: 23}
- base.utils.query('Table1', 'select sum(number), sum(number2) where number + number1 + number2 > 5');
+ base.utils.query('Table1', 'View_name', 'select sum(number), sum(number2) where number + number1 + number2 > 5');
   
 ```
