@@ -1,4 +1,4 @@
-# Row, Column, Table
+# Row, Column, Table, View
 
 ## Row
 
@@ -9,6 +9,14 @@ Row is an object, use `row['colum_name']` to get the value of a specific cell. T
 * `_ctime`: The create time for this row
 * `_last_modifier` : The last modifier for this row
 * `_mtime`: The last modified time for this row
+
+## Column
+
+A column object has following fields:
+
+* `key`:  The key of the column, string
+* `type` : The type of the column(long-text, single-select, number, file and so on), string
+* `name` : The name of the column, string
 
 Different column types have different type of values:
 
@@ -34,14 +42,6 @@ Advanced column types:
 * `geolocation` : object, in format `{province: xxx, city: xxx, district: xxx, detail: xxx}`
 * `link` : array, each element of the array is a link name
 * `auto-number` : number, auto increase
-
-## Column
-
-A column object has following fields:
-
-* `key`:  The key of the column, string
-* `type` : The type of the column(long-text, single-select, number, file and so on), string
-* `name` : The name of the column, string
 
 ## Table
 
