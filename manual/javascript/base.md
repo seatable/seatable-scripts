@@ -349,12 +349,12 @@ const row = base.getRowById(table: Object/String, view: Object/String, rowId: St
 
 ```javascript
 const table = base.getTableByName('Table1');
-const view = base.getViewByName('默认视图');
+const view = base.getViewByName('view1');
 const row = base.getRowById(table, view, "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
 ```javascript
-const row = base.getRowById('Table1', '默认视图', "M_lSEOYYTeuKTaHCEOL7nw");
+const row = base.getRowById('Table1', 'view1', "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
 #### deleteRowById
@@ -408,12 +408,12 @@ base.modifyRow(table: Object/String, row: Object, updateRowData: Object);
 
 ```javascript
 const table = base.getTableByName('Table1');
-const row = base.getRowById(table, '默认视图', "M_lSEOYYTeuKTaHCEOL7nw");
+const row = base.getRowById(table, 'view1', "M_lSEOYYTeuKTaHCEOL7nw");
 base.modifyRow(table, row, {'Name': 'new name', 'number': 100});
 ```
 
 ```javascript
-const row = base.getRowById('Table1', '默认视图', "M_lSEOYYTeuKTaHCEOL7nw");
+const row = base.getRowById('Table1', 'view1', "M_lSEOYYTeuKTaHCEOL7nw");
 base.modifyRow('Table1', row, {'Name': 'new name', 'number': 100});
 ```
 
