@@ -349,7 +349,7 @@ const row = base.getRowById(table: Object/String, view: Object/String, rowId: St
 
 ```javascript
 const table = base.getTableByName('Table1');
-const view = base.getViewByName('view1');
+const view = base.getViewByName(table, 'view1');
 const row = base.getRowById(table, view, "M_lSEOYYTeuKTaHCEOL7nw");
 ```
 
