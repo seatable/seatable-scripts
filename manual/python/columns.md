@@ -20,12 +20,12 @@ base.list_columns('Table1', view_name='default')
 Insert/Append column
 
 ```python
-base.insert_column(table_name, column_name, column_type, column_key=None)
+base.insert_column(table_name, column_name, column_type, column_key=None, column_data=None)
 ```
 
 * column_key: the key of column after which the new column will be inserted, it will be appended to the last column by default
-
 * column_type: please refer to [constants](constants.md)
+* column_data: config info of column, required for link-type column, optional for other type columns
 
 ##### Example
 
@@ -33,6 +33,10 @@ base.insert_column(table_name, column_name, column_type, column_key=None)
 from seatable_api.constants import ColumnTypes
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT)
 base.insert_column('Table1', 'python-api', ColumnTypes.TEXT, column_key=ColumnTypes.TEXT)
+base.insert_column('Table1', 'Link', ColumnTypes.LINK, column_data={
+        'table':'Table1',
+        'other_table':'Test_User'
+    })
 ```
 
 #### Rename column
@@ -115,6 +119,24 @@ column_type please refer to [constants](constants.md)
 from seatable_api.constants import ColumnTypes
 
 base.modify_column_type('Table1', 'nePI', ColumnTypes.NUMBER)
+```
+
+#### Add column options
+
+Used by single-select or multiple-select type columns
+
+```
+add_column_options(self, table_name, column, options)
+```
+
+##### Example
+
+```python
+base.add_column_options('Table1', 'My choices', [
+        {"name": "ddd", "color": "#aaa", "textColor": "#000000"},
+        {"name": "eee", "color": "#aaa", "textColor": "#000000"},
+        {"name": "fff", "color": "#aaa", "textColor": "#000000"},
+])
 ```
 
 #### Delete column
