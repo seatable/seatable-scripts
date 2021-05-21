@@ -5,14 +5,18 @@
 Get all rows of the table
 
 ```python
-base.list_rows(table_name, view_name=None)
+base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None, limit=None)
 ```
+
+* order_by:  column name based on which ordering the data
+* start: start position of rows
+* limit:  number of rows returned
 
 ##### Example
 
 ```python
 rows = base.list_rows('Table1')
-rows = base.list_rows('Table1', view_name='default')
+rows = base.list_rows('Table1', view_name='default', order_by='Age', desc=True, start=5, limit=20)
 ```
 
 #### Get row
@@ -106,6 +110,43 @@ row_data = {
     "dcXS": "123"
 }
 base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
+```
+
+#### Batch update rows
+
+Batch update rows
+
+```
+batch_update_rows(table_name, rows_data)
+```
+
+##### Example
+
+```python
+updates_data = [
+        {
+            "row_id": "fMmCFyoxT4GN5Y2Powbl0Q",
+            "row": {
+                "Name": "Ranjiwei",
+                "age": "36"
+            }
+        },
+        {
+            "row_id": "cF5JTE99Tae-VVx0BGT-3A",
+            "row": {
+                "Name": "Huitailang",
+                "age": "33"
+            }
+        },
+        {
+            "row_id": "WP-8rb5PSUaM-tZRmTOCPA",
+            "row": {
+                "Name": "Yufeng",
+                "age": "22"
+            }
+        }
+    ]
+base.batch_update_rows('Table1', rows_data=updates_data)
 ```
 
 #### Delete row
