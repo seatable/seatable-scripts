@@ -34,7 +34,8 @@ Basic column types:
 * `collaborator` : array, each element of the array is a collaborator's email
 * `URL` : string
 * `email` :  string
-* `duration` : string, in format `h:mm(1:30)` or `h:mm:ss(0:20:30)` 
+* `duration` : string, in format `h:mm(1:30)` or `h:mm:ss(0:20:30)`
+* `rating`: number, indicates a rating
 
 Advanced column types:
 
