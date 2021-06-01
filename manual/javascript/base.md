@@ -337,7 +337,7 @@ const groupViewRows = base.getGroupedRows(table, view);
 const groupViewRows = base.getGroupedRows('Table1', 'GroupedView');
 ```
 
-##### getRowById
+#### getRowById
 
 Get a row via its id and return a row object
 
