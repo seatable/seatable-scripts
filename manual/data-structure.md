@@ -22,7 +22,7 @@ Different column types have different type of values:
 
 Basic column types:
 
-* `simple-text` : string
+* `text` : string
 * `number` : number
 * `checkbox` : boolean
 * `date` : string, in format `2020-01-01` or `2020-01-01 10:00` 
