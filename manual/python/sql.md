@@ -13,11 +13,11 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
 Notes:
 * Selecting from multiple tables (`JOIN`) is not supported.
 * Most SQL syntax can be used in where clause, including arithmetic expressions, comparison operators, `[NOT] LIKE`, `IN`, `BETWEEN ... AND ...`, `AND`, `OR`, `NOT`, `IS [NOT] TRUE`, `IS [NOT] NULL`.
-    * Arithmetic expressions only supports numbers.
+    * Arithmetic expressions only support numbers.
     * `LIKE` only supports strings.
-    * `BETWEEN ... AND ...` only supports numbers and time. Time constants should be strings with ISO format (e.g. "2020-09-08 00:11:23").
-* `GROUP BY` uses strict syntax. The selected fields must appears in group by list, except for aggregation functions (`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`) and formulas (see extended syntax section below).
-* Fields in "order by" list must be in selected fields or an expression in the select list. For example, `select a from table order by b` is invalid; `select abs(a), b from table order by abs(a)` is valid.
+    * `BETWEEN ... AND ...` only supports numbers and time. Time constants should be strings in ISO format (e.g. "2020-09-08 00:11:23").
+* `GROUP BY` uses strict syntax. The selected fields must appear in group by list, except for aggregation functions (`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`) and formulas (see extended syntax section below).
+* Fields in "order by" list must be a column or an expression in the selected fields. For example, `select a from table order by b` is invalid; while `select a from table order by b` and `select abs(a), b from table order by abs(a)` are valid.
 * Limit options are in MySQL format. The general syntax is `OFFSET ... LIMIT ...`. You may obmit `OFFSET` or `LIMIT`.
 
 Each returned row is a JSON map. The key is the column key, NOT column name.
@@ -31,10 +31,10 @@ Below is mapping from SeaTable column types to SQL column types.
 | text                 | String                |
 | long-text            | String                |
 | number          | Float                |
-| single-select   | String. Contains option key, NOT option name.     |
-| multiple-select | List of strings. Contains option key, NOT option name.     |
-| checkbox        | Bool    |
-| date            | Datetime. Constants are expressed in strings with ISO format. e.g. "2006-1-2" or “2006-1-2 15:04:05“.|
+| single-select   | String. When used in where clause, you should refer an option by its name. E.g. `where single_select = "New York"`. However, when you query rows with a `select` query, option keys (NOT option names) are returned for single-select columns in the rows. You have to convert the return keys to names for displaying them in the UI (if necessary).    |
+| multiple-select | List of strings. When used in where clause, you should refer an option by its name. E.g. `where multi_select = "New York"`. However, when you query rows with a `select` query, option keys (NOT option names) are returned for multi-select columns in the rows. You have to convert the return keys to names for displaying them in the UI (if necessary).    |
+| checkbox        | Bool.     |
+| date            | Datetime. Constants are expressed in strings in ISO format. e.g. "2006-1-2" or “2006-1-2 15:04:05“.|
 | image            | List of URL for images  |
 | file            | Cannot be used in where clause. Will be returned as JSON format string when queried. |
 | collaborator   | List of user IDs. Format is like 5758ecdce3e741ad81293a304b6d3388@auth.local. If you need user names, you have to convert with seatable APIs. |
@@ -45,8 +45,11 @@ Below is mapping from SeaTable column types to SQL column types.
 | \_last_modifier      | User ID as string. |
 | \_mtime              | Datetime  |
 | auto number          | String |
+| url                  | String |
+| email                | String |
+| duration             | Float |
 
-In a where clause, if a list type is matched against a string, it will be evaluated to true when anyone of the strings matches the condition. Types such as collaborator, multi-select are mapped to a string list. For example, `SELECT * FROM tb3 where multi-select ='select 1' and multi-select='select 2'` if the column `multi-select` contains both 'select 1' and 'select 2'. 
+In a where clause, if a list type is compared against a string, it will be evaluated to true when anyone of the strings matches the condition. Types such as collaborator, multi-select are mapped to a string list. For example, `SELECT * FROM tb3 where multi_select ='select 1' and multi_select='select 2'` if a cell in the column `multi-select` contains both 'select 1' and 'select 2'. 
 
 ## Extended Syntax
 
