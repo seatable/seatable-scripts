@@ -68,3 +68,5 @@ nav:
     - Context: python/context.md
     - Libraries supported in cloud environment: python/libs.md
     - Query Statements: python/query-sentences.md
+  - SQL:
+    - SQL Reference: python/sql.md
