@@ -11,6 +11,7 @@ SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByC
 ```
 
 Notes:
+
 * Selecting from multiple tables (`JOIN`) is not supported.
 * Most SQL syntax can be used in where clause, including arithmetic expressions, comparison operators, `[NOT] LIKE`, `IN`, `BETWEEN ... AND ...`, `AND`, `OR`, `NOT`, `IS [NOT] TRUE`, `IS [NOT] NULL`.
     * Arithmetic expressions only support numbers.
