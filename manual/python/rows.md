@@ -163,3 +163,19 @@ base.delete_row(table_name, row_id)
 base.delete_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
+#### Batch delete rows
+
+Batch delete rows
+
+```python
+base.batch_delete_rows(table_name, row_ids)
+```
+
+##### Example
+
+```python
+del_rows = rows[:3]
+row_ids = [row['_id'] for row in del_rows]
+base.batch_delete_rows('Table1', row_ids)
+```
+
