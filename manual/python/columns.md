@@ -139,6 +139,27 @@ base.add_column_options('Table1', 'My choices', [
 ])
 ```
 
+#### Add column cascade settings
+
+Used by single-select column, to add a limitation of child column options according to the option of parent column
+
+```python
+add_column_cascade_settings(table_name, child_column, parent_column, cascade_settings)
+```
+
+* child_column: name of child column
+* parent_column: name of parent column
+
+##### Example
+
+```python
+base.add_column_cascade_settings("Table1", "single-op-col-c", "single-op-col", {
+  "aaa": ["aaa-1", "aaa-2"], # If “aaa” is selected by parent column, the available options of child column are "aaa-1 and aaa-2"
+  "bbb": ["bbb-1", "bbb-2"],
+  "ccc": ["ccc-1", "ccc-2"]
+})
+```
+
 #### Delete column
 
 Delete a column
