@@ -58,15 +58,14 @@ nav:
   - Python:
     - Introduction: python/README.md
     - Base: python/base.md
-    - QuerySet: python/queryset.md
     - Rows: python/rows.md
     - Links: python/links.md
     - Columns: python/columns.md
     - Files: python/files.md
+    - Query with SQL: python/query.md
     - Account: python/account.md
     - Constants: python/constants.md
     - Context: python/context.md
     - Libraries supported in cloud environment: python/libs.md
-    - Query Statements: python/query-sentences.md
   - SQL:
     - SQL Reference: python/sql.md
