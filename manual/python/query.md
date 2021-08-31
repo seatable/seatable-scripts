@@ -1,6 +1,6 @@
 # Query with SQL
 
-#### Query
+## Query
 
 Use sql to query a base
 
@@ -10,7 +10,19 @@ base.query(sql)
 
 * sql: sql statement
 
-##### Example
+
+Possible exceptions
+
+* ValueError: sql can not be empty
+* ConnectionError: network error
+* Exception: no such table
+* Exception: no such column
+* Exception: columns in group by should match columns in select
+
+
+## Example
+
+### Basic
 
 ```python
 base.query('select name, price, year from Bill')
@@ -30,16 +42,8 @@ Result
 ]
 ```
 
-Errors
 
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
-
-#### WHERE
-
-##### Example
+### WHERE
 
 ```python
 base.query('select name, price from Bill where year = 2021')
@@ -55,16 +59,7 @@ Result
 ]
 ```
 
-Errors
-
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
-
-#### ORDER BY
-
-##### Example
+### ORDER BY
 
 ```python
 base.query('select name, price, year from Bill order by year')
@@ -84,16 +79,7 @@ Result
 ]
 ```
 
-Errors
-
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
-
-#### GROUP BY
-
-##### Example
+### GROUP BY
 
 ```python
 base.query('select name, sum(price) from Bill group by name')
@@ -109,17 +95,7 @@ Result
 ]
 ```
 
-Errors
-
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
-* Exception: columns in group by should match columns in select
-
-#### DISTINCT
-
-##### Example
+## DISTINCT
 
 ```python
 base.query('select distinct name from Bill')
@@ -134,10 +110,3 @@ Result
     {'_id': 'EvwCWtX3RmKYKHQO9w2kLg', 'name': 'Jane'}
 ]
 ```
-
-Errors
-
-* ValueError: sql can not be empty
-* ConnectionError: network error
-* Exception: no such table
-* Exception: no such column
