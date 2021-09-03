@@ -26,7 +26,7 @@ Possible exceptions
 ### Basic
 
 ```python
-base.query('select name, price, year from Bill')
+base.query('select name, price, year from Bill limit 1000')
 ```
 
 Result
