@@ -69,3 +69,4 @@ nav:
     - Libraries supported in cloud environment: python/libs.md
   - SQL:
     - SQL Reference: python/sql.md
+    - SQL Function Reference: python/function.md

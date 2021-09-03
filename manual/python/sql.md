@@ -73,6 +73,8 @@ A few extended formulas are supported:
 
 The above formulas can be used for group by week, quater, date and month. E.g. `select sum(sale) from SalesRecord group by ISODate(SalesTime);` will return the total sales amount for each day.
 
+For more details, please refer to \[./function.md].
+
 ### Querying String Lists
 
 Collaborators and Multiple Select are mapped to string lists type. The SeaTable UI supports a few special filters for such types. They are `HAS ANY OF`, `HAS ALL OF`, `HAS NONE OF`, `IS EXACTLY`. You may also use the same syntax to filter such columns with SQL.
