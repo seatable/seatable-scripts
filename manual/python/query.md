@@ -10,6 +10,7 @@ base.query(sql)
 
 * sql: sql statement
 
+**Note: Only 100 results will be returned by default. To get more results, add `limit` in SQL statement.**
 
 Possible exceptions
 
