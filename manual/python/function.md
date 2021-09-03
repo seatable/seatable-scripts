@@ -15,7 +15,7 @@ FunctionName(parameters...)
 
 ```
 
-The parameters can be number,string,constants,column name or other functions.The quoted column name cannot be an alias. If the column name contains "-", you can use "\`" to widen it.
+The parameters can be number,string,constants,column name or other functions. Column name cannot be an alias. If the column name contains "-", you can use "`" to enclose it.
 
 Currently SQL query offers the following functions:
 
