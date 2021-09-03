@@ -6,14 +6,16 @@ You can use supported functions in SQL query statements.
 
 With functions you can transform, calculate, combine or merge the values of other columns from the current table. On top of that, functions can refer to each other. 
 
+The functions supported in SQL are roughly the same as the set of functions supported by formulas in SeaTable.
+
 The basic syntax of functions is as follows:
 
 ```
 FunctionName(parameters...)
-The parameters can be number,string,constants,column name or other functions.
-
 
 ```
+
+The parameters can be number,string,constants,column name or other functions.The quoted column name cannot be an alias. If the column name contains "-", you can use "\`" to widen it.
 
 Currently SQL query offers the following functions:
 
@@ -39,8 +41,6 @@ You can use the following constants in the function:
 
 ### Operands
 
-
-
 | OPERATOR                           | DESCRIPTION                                                                                                                       | INPUT                                                       | RESULT                            |
 | :--------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------- | :---------------------------------------------------------- | :-------------------------------- |
 | add(num1,num2)                     | Adds two numeric values (num1 and num2) and returns the result.                                                                   | add(1,2)                                                    | 3                                 |
@@ -58,8 +58,6 @@ You can use the following constants in the function:
 | concatenate(string1, string2, ...) | Combines several character strings (string1, string 2, ...) into one character string.                                            | concatenate(\`Supplier\`, " has the product ", \`Product\`) | Microsoft has the product Windows |
 
 ### Mathematical functions
-
-
 
 | OPERATOR                      | DESCRIPTION                                                                                                                                                                                                                                                     | INPUT              | RESULT     |
 | :---------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------------- | :--------- |
@@ -82,11 +80,8 @@ You can use the following constants in the function:
 | roundup(number, digits)       | Rounds a number from zero to the nearest whole number. If no decimal place (digits) is given, the number is rounded to the 1st digit left of the decimal point.                                                                                                 | roundup(-3.15)     | \-4        |
 | sign(number)                  | Checks whether a number is greater, equal or less than 0. Returns the values 1, 0 and -1 respectively. In other words: it returns the sign of a number, for '+', 'zero' and '-' with 1, 0, and -1 respectively.                                                 | sign(-2)           | \-1        |
 | sqrt(number)                  | Returns the square root of a number.                                                                                                                                                                                                                            | sqrt(81)           | 9          |
-|                               |                                                                                                                                                                                                                                                                 |                    |            |
 
 ### Text functions
-
-
 
 | OPERATOR                                               | DESCRIPTION                                                                                                                                                                                                                                                                                                                                                                                                                           | INPUT                                             | RESULT                       |
 | :----------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------ | :--------------------------- |
@@ -100,7 +95,7 @@ You can use the following constants in the function:
 |                                                        | Start position (startPosition) and count must not be empty, negative or zero. However, if start position (startPosition) and number (count) are given as decimal, they are rounded down. Too much count is ignored.                                                                                                                                                                                                                   | mid('SeaTable is the best.', 10.9, 27.3)          | is the best.                 |
 | replace(sourceString, startPosition, count, newString) | Replaces a part (count) of a character string (sourceString) from a certain start position (startPosition) with another character string (newString). The number (count) of characters is only taken into account for the old string (sourceString), but not for the new string (newString).                                                                                                                                          | replace('SeaTable is the best.', 1, 8, 'Seafile') | Seafile is the best.         |
 |                                                        | If number (count) is given as zero, the new string (newString) is simply added to the old string (sourceString) from the start position (startPosition).                                                                                                                                                                                                                                                                              | replace('SeaTable is the best.', 1, 0, 'Seafile') | SeafileSeaTable is the best. |
-| rept(string, number)                                   | Repeats a string as often (number) as specified.                                                                                                                                                                                                                                                                                                                                                                                      | rept('Sea ', 3)                                   |  SeaSeaSea                   |
+| rept(string, number)                                   | Repeats a string as often (number) as specified.                                                                                                                                                                                                                                                                                                                                                                                      | rept('Sea ', 3)                                   | SeaSeaSea                    |
 | right(string, count)                                   | Returns the specified number (count) of characters at the end of a string.                                                                                                                                                                                                                                                                                                                                                            | right('SeaTable', 5)                              | Table                        |
 | search(findString, sourceString, startPosition)        | Returns the start position of a string (findString) within another string (sourceString). It is not case-sensitive. Without find, 0 is returned. If the start position (startPosition) is given as decimal, it is rounded down. If the cell in the column for the keyword (findString) is still empty, 1 is returned. If the cell in the column for the target string (sourceString) is still empty, an empty value ('') is returned. | search('Sea', 'seaTable', 1)                      | 1                            |
 |                                                        | The search will start from the given 'startPosition'. This 'startPosition' has no influence on the result: it always returns the absolute start position. If the 'startPosition' of the character string to be searched for (findString) is given after the actual start position of the character string (sourceString), 0 is returned, since nothing was found from this position.                                                  | search('table', 'big table', 6)                   | 0                            |
@@ -114,8 +109,6 @@ You can use the following constants in the function:
 | value(string)                                          | Converts a text (string) representing a number into a number.                                                                                                                                                                                                                                                                                                                                                                         | value('123')                                      | 123                          |
 
 ### Date functions
-
-
 
 | OPERATOR                                                 | DESCRIPTION                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | INPUT                                                                                      | RESULT              |
 | :------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------------------------------------------------------------------------------------- | :------------------ |
@@ -154,8 +147,6 @@ You can use the following constants in the function:
 
 ### Logical functions
 
-
-
 | OPERATOR                                                          | DESCRIPTION                                                                                                                                                                                                                                                                                | INPUT                                                                                   | RESULT    |
 | :---------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------- | :-------- |
 | and(logical1, logical2, ...)                                      | Checks if all arguments (logical1, logical2, ...) are true (valid, not empty and not equal to zero). If yes, 'true' is returned, otherwise 'false'.                                                                                                                                        | and(1, '', 2)                                                                           | false     |
@@ -169,8 +160,6 @@ You can use the following constants in the function:
 | xor(logical1, logical2, ...)                                      | Returns the contravalence of all arguments. In other words, checks if the number of true arguments is (logical) odd and returns 'true'.                                                                                                                                                    | xor(1, 0, 2\<1)                                                                         | false     |
 
 ### Statistical functions
-
-
 
 | OPERATOR                                      | DESCRIPTION                                                                                                                                                                                | INPUT                   | RESULT |
 | :-------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------------------- | :----- |
