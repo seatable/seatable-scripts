@@ -32,14 +32,14 @@ Below is mapping from SeaTable column types to SQL column types.
 | text                 | String                |
 | long-text            | String                |
 | number          | Float                |
-| single-select   | String. When used in where clause, you should refer an option by its name. E.g. `where single_select = "New York"`. However, when you query rows with a `select` query, option keys (NOT option names) are returned for single-select columns in the rows. You have to convert the return keys to names for displaying them in the UI (if necessary).    |
-| multiple-select | List of strings. When used in where clause, you should refer an option by its name. E.g. `where multi_select = "New York"`. However, when you query rows with a `select` query, option keys (NOT option names) are returned for multi-select columns in the rows. You have to convert the return keys to names for displaying them in the UI (if necessary).    |
+| single-select   | String. When used in where clause, you should refer an option by its name. E.g. `where single_select = "New York"`. Returned rows contain the option key by default. To return the option name, the `convert_keys` parameter (available since version 2.4) in query request should be TRUE. |
+| multiple-select | List of strings. When used in where clause, you should refer an option by its name. E.g. `where multi_select = "New York"`. Returned rows contain the option key by default. To return the option name, the `convert_keys` parameter (available since version 2.4) in query request should be TRUE. |
 | checkbox        | Bool.     |
 | date            | Datetime. Constants are expressed in strings in ISO format. e.g. "2006-1-2" or “2006-1-2 15:04:05“.|
 | image            | List of URL for images  |
 | file            | Cannot be used in where clause. Will be returned as JSON format string when queried. |
 | collaborator   | List of user IDs. Format is like 5758ecdce3e741ad81293a304b6d3388@auth.local. If you need user names, you have to convert with seatable APIs. |
-| link to other records          | When queried, values of the first column from linked rows will be returned. Only the first 10 row IDs are returned, which is sorted by the creation time of the linked rows. |
+| link to other records          | List of strings. It can be referenced in the where clause (available since version 2.4), and used along with string functions (e.g. `=`, `LIKE`, `IS NULL`). The value of display column from linked rows will be calculated and returned. Also, only up to 10 linked rows will be included, which is sorted by the creation time of the linked rows. |
 | formula              | The type depends on the return value of the formula. |
 | \_creator            | User ID as stirng. |
 | \_ctime              | Datetime |
