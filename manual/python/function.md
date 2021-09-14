@@ -2,7 +2,7 @@
 
 You can use supported functions in SQL query statements.
 
-## Function for SQL
+## Functions for SQL
 
 With functions you can transform, calculate, combine or merge the values of other columns from the current table. On top of that, functions can refer to each other. 
 
@@ -28,7 +28,7 @@ Currently SQL query offers the following functions:
 
 In this article, we will show you a complete overview of all functions with examples. If you are looking for a specific function, you can use the Ctrl+F to quickly find an entry on this page.
 
-## Function with examples
+## Functions with examples
 
 You can use the following constants in the function:
 
