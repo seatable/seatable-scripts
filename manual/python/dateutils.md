@@ -167,3 +167,13 @@ Return the week number of given date based on ISO standard
 dateutils.isoweeknum('2012-1-2') # 1
 ```
 
+#### isomonth
+
+返回某个日期字符串的 ISO 格式的月份
+
+Return the ISO formatted month
+
+~~~python
+dateutils.isomonth("2012-1-2") # 2012-01
+~~~
+
