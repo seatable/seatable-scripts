@@ -66,6 +66,7 @@ nav:
     - Account: python/account.md
     - Constants: python/constants.md
     - Context: python/context.md
+    - Dateutils: python/dateutils.md
     - Libraries supported in cloud environment: python/libs.md
   - SQL:
     - SQL Reference: python/sql.md
