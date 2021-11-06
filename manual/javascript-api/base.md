@@ -25,7 +25,7 @@ await base.auth()
 
 #### Get metadata
 
-获取 base 的 metadata 信息
+Get base metadata information
 
 ```javascript
 base.getMetadata();
