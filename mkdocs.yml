@@ -68,6 +68,14 @@ nav:
     - Context: python/context.md
     - Dateutils: python/dateutils.md
     - Libraries supported in cloud environment: python/libs.md
+  - JavaScript API:
+    - Introduction: javascript-api/README.md
+    - Base: javascript-api/base.md
+    - Rows: javascript-api/rows.md
+    - Links: javascript-api/links.md
+    - Columns: javascript-api/columns.md
+    - Query with SQL: javascript-api/query.md
+    - Constants: javascript-api/constants.md
   - SQL:
     - SQL Reference: python/sql.md
     - SQL Function Reference: python/function.md
