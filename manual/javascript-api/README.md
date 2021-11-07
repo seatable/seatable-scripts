@@ -19,7 +19,7 @@ SeaTable APIs:
 * [Columns](columns.md)
 * [Constants](constants.md): Some constant definitions
 
-To use SeaTable APIS, you should first initialize a base object and call `base.auth()`. `base.auth()` is an async function, which needs to be executed in async functions. Other APIs all return a promise object. There are two ways to use them
+To use SeaTable APIs, you should first initialize a base object and call `base.auth()`. `base.auth()` is an async function, which needs to be executed in async functions. Other APIs all return a promise object. There are two ways to use them
 
 The first way:
 
