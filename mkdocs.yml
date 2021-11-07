@@ -1,4 +1,4 @@
-site_name: SeaTable Scripts Programming Manual
+site_name: SeaTable Programming Manual
 site_author: seatable
 docs_dir: ./manual
 site_url: https://seatable.github.io/seatable-scripts/
@@ -8,7 +8,7 @@ repo_name: seatable/seatable-scripts
 repo_url: https://github.com/seatable/seatable-scripts/
 edit_uri: edit/master/manual/
 
-copyright: Copyright &copy; 2020 seatable
+copyright: Copyright &copy; 2021 seatable
 
 theme:
   name: material
@@ -49,13 +49,13 @@ markdown_extensions:
 nav:
   - Home: README.md
   - Data structure: data-structure.md
-  - JavaScript:
+  - JavaScript script:
     - Introduction: javascript/README.md
     - Base: javascript/base.md
     - Output: javascript/output.md
     - Utils: javascript/utils.md
     - Context: javascript/context.md
-  - Python:
+  - Python script and API:
     - Introduction: python/README.md
     - Base: python/base.md
     - Rows: python/rows.md

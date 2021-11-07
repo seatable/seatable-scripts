@@ -1,8 +1,8 @@
 # JavaScript API 
 
-JavaScript API is a package of SeaTable Server Restful API. You can call it in your front-end page or Node.js program.
+JavaScript API encapsulates SeaTable Server Restful API. You can call it in your front-end page or Node.js program.
 
-> Note: JavaScript API cannot be used for scripts in SeaTable tables. For script programming, please refer to another document.
+> Note: JavaScript API cannot be used for scripts in SeaTable bases. For script programming, please refer to another document.
 
 ## Reference
 
@@ -10,7 +10,7 @@ Data structure of object in SeaTable:
 
 * [Data structure](../data-structure.md)
 
-SeaTable API introduction:
+SeaTable APIs:
 
 * [Base](base.md)
 * [Query](query.md)
@@ -19,20 +19,21 @@ SeaTable API introduction:
 * [Columns](columns.md)
 * [Constants](constants.md): Some constant definitions
 
-SeaTable API instructions
+To use SeaTable APIS, you should first initialize a base object and call `base.auth()`. `base.auth()` is an async function, which needs to be executed in async functions. Other APIs all return a promise object. There are two ways to use them
 
-1. Authorization api(base.auth()) is an async function, which needs to be executed in the async function
-2. Other apis all return a promise object. There are two ways to use it
+The first way:
+
 ```
-The first:
 base.listViews(tableName).then(views => {
   // Use views to complete the requirements
 }).catch(error => {
   // Exception handling
 })
+```
 
-The second:
+The second way:
 
+```
 try {
   const views = await base.listViews(tableName);
   // Use views to complete the requirements
@@ -41,7 +42,7 @@ try {
 }
 ```
 
-Seatable API Errors
+SeaTable API Errors
 
 * 400 Params invalid
 * 403 Permission denied

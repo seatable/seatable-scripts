@@ -1,14 +1,17 @@
-# SeaTable scripts manual
+# SeaTable programming manual
 
-SeaTable support you to write scripts to meet individual needs. Currently supported scripting language include Javascript and Python.
+There are various ways to build extentions for SeaTable, including
 
-The Javascript script runs directly in the current browser and is suitable for simple data processing. The Python script runs on the server side and can be set to automatically run periodically, which is suitable for more complex data processing scenarios.
+* Writing a [JavaScript script](javascript/README.md): The script runs directly in the current browser and is suitable for simple data processing.
+* Writing a [Python script](python/README.md): The Python runs on the server side and can be set to automatically run periodically, which is suitable for more complex data processing scenarios. You can also use the same API in your standalone Python program.
+* Writing a standalone web page or accessing data in SeaTable in your Node.js program: in both case, you can accessing data in SeaTable using [SeaTable JavaScript API](javascript-api/README.md)
+
 
 ## Quick start
 
-In SeaTable, a base includes multiple sub-table, and a sub-table contains multiple rows and columns. A row contains multiple fields.
+In SeaTable, a base includes multiple tables, and a table contains multiple rows and columns. A row contains multiple fields.
 
-### Javascript
+### JavaScript script
 
 There are two pre-defined objects:
 
@@ -40,7 +43,7 @@ for (var i=0; i<rows.length; i++) {
 
 From the two examples, we can see that via calling the corresponding methods of base object, we can read and write data in a base easily.
 
-### Python
+### Python script
 
 When writing the script, you need to import Base objects from seatable_api and init it, and then you can call functions to operate the table. The following is a simple example, to add a row to a table:
 
@@ -61,6 +64,6 @@ base.append_row('Table1', row_data)
 ## Reference
 
 * [Data structure](data-structure.md)
-* [Javascript](javascript/README.md)
-* [Python](python/README.md)
+* [JavaScript script](javascript/README.md)
+* [Python script and API](python/README.md)
 * [Javascript API](javascript-api/README.md)
