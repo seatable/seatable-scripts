@@ -2,17 +2,17 @@
 
 ## addTable
 
-添加子表
+add table
 
 ```javascript
 dtable.addTable(tableName);
 ```
 
-其中
+Arguments
 
-* tableName: 添加子表的名称
+* tableName: Add the name of the table
 
-例子
+Example
 
 ```javascript
 dtable.addTable('newTable');
@@ -20,17 +20,17 @@ dtable.addTable('newTable');
 
 ## deleteTable
 
-删除子表
+Delete table
 
 ```javascript
 dtable.deleteTable(tableName);
 ```
 
-其中
+Arguments
 
-* tableName: 删除子表的名称
+* tableName: Delete the name of the table
 
-例子
+Example
 
 ```javascript
 dtable.deleteTable('newTable');
@@ -38,18 +38,18 @@ dtable.deleteTable('newTable');
 
 ## renameTable
 
-修改子表名字
+Modify the name of the table
 
 ```javascript
 dtable.renameTable(oldTableName, newTableName);
 ```
 
-其中
+Arguments
 
-* oldTableName: 更新子表的旧名字
-* newTableName: 更新子表的新名字
+* oldTableName: Update the old name of the table
+* newTableName: Update the new name of the table
 
-例子
+Example
 
 ```javascript
 dtable.renameTable('oldTableName', 'newTableName');
@@ -57,13 +57,13 @@ dtable.renameTable('oldTableName', 'newTableName');
 
 ## getTables
 
-获取 base 中所有的子表
+Get all the tables in base
 
 ```javascript
 dtable.getTables();
 ```
 
-例子
+Example
 
 ```javascript
 const tables = dtable.getTables();
@@ -71,13 +71,13 @@ const tables = dtable.getTables();
 
 ## getActiveTable
 
-获取当前 base 正在访问的子表
+Get the table currently being accessed by base
 
 ```javascript
 dtable.getActiveTable();
 ```
 
-例子
+Example
 
 ```javascript
 const table = dtable.getActiveTable();
@@ -85,17 +85,17 @@ const table = dtable.getActiveTable();
 
 ## getTableByName
 
-通过 name 获取子表内容
+Get the contents of the table by name
 
 ```javascript
 dtable.getTableByName(tableName);
 ```
 
-其中
+Arguments
 
-* tableName: 子表的 name 值
+* tableName: The name value of the table
 
-例子
+Example
 
 ```javascript
 dtable.getTableByName('tableName');
@@ -103,17 +103,17 @@ dtable.getTableByName('tableName');
 
 ## getTableById
 
-通过 id 获取子表内容
+Get the content of the table by id
 
 ```javascript
 dtable.getTableById(tableId);
 ```
 
-其中
+Arguments
 
-* tableId: 子表的 id 值
+* tableId: Id value of the table
 
-例子
+Example
 
 ```javascript
 dtable.getTableById('0000');
@@ -121,19 +121,19 @@ dtable.getTableById('0000');
 
 ## importDataIntoNewTable
 
-向 base 中添加新的子表,并包含默认数据
+Add a new table to base and include default data
 
 ```javascript
 dtable.importDataIntoNewTable(tableName, columns, rows);
 ```
 
-其中
+Arguments
 
-tableName: 新表的名字
-columns: 新表的列数据
-rows: 新表的行数据
+- tableName: The name of the new table
+- columns: Column data of the new table
+- rows: Row data of the new table
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';
@@ -155,9 +155,10 @@ const columns = [
   }
 ];
 const rows = [
-  {'0000': '小强', '1111': '1993-03-03'},
-  {'0000': '小明', '1111': '1993-04-04'},
-  {'0000': '小红', '1111': '1994-04-05'},
+  {'0000': 'Mike', '1111': '1993-03-03'},
+  {'0000': 'Tom', '1111': '1993-04-04'},
+  {'0000': 'Makino', '1111': '1994-04-05'},
 ];
 dtable.importDataIntoNewTable(tableName, columns, rows);
 ```
+

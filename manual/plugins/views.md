@@ -2,18 +2,18 @@
 
 ## addView
 
-添加视图
+add a view
 
 ```javascript
 dtable.addView(tableName, viewName);
 ```
 
-其中
+Arguments
 
-* tableName: 子表名字
-* viewName: 添加视图的名字
+* tableName: name of table
+* viewName: Add the name of the view
 
-例子
+Example
 
 ```javascript
 dtable.addView('tableName', 'viewName');
@@ -21,18 +21,18 @@ dtable.addView('tableName', 'viewName');
 
 ## deleteView
 
-删除视图
+delete a view
 
 ```javascript
 dtable.deleteView(tableName, viewName);
 ```
 
-其中
+Arguments
 
-* tableName: 子表名字
-* viewName: 删除视图的名字
+* tableName: name of table
+* viewName: Delete the name of the view
 
-例子
+Example
 
 ```javascript
 dtable.deleteView('TableName', ViewName);
@@ -40,19 +40,19 @@ dtable.deleteView('TableName', ViewName);
 
 ## renameView
 
-修改子表名字
+modify view name
 
 ```javascript
 dtable.renameView(tableName, oldViewName, newViewName);
 ```
 
-其中
+Arguments
 
-* tableName: 子表的名字
-* oldViewName: 更视图的旧名字
-* newViewName: 更视图的新名字
+* tableName: name of table
+* oldViewName: The old name of the view
+* newViewName: The new name of the view
 
-例子
+Example
 
 ```javascript
 dtable.renameView('tableName', 'oldViewName', 'newViewName');
@@ -60,17 +60,17 @@ dtable.renameView('tableName', 'oldViewName', 'newViewName');
 
 ## getViews
 
-获取 table 中的所有视图
+Get all the views in the table
 
 ```javascript
 dtable.getViews(table);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
+* table: table object
 
-例子
+Example
 
 ```javascript
 const tableId = '0000';
@@ -80,17 +80,17 @@ const views = dtable.getViews(table);
 
 ## getNonArchiveViews
 
-获取 table 中的所有非归档视图
+Get all non-archive views in the table
 
 ```javascript
 dtable.getNonArchiveViews(table);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
+* table: table object
 
-例子
+Example
 
 ```javascript
 const tableId = '0000';
@@ -100,13 +100,13 @@ const views = dtable.getNonArchiveViews(table);
 
 ## getActiveView
 
-获取当前 base 正在访问的视图
+Get the view currently being accessed by base
 
 ```javascript
 dtable.getActiveView();
 ```
 
-例子
+Example
 
 ```javascript
 const view = dtable.getActiveView();
@@ -114,18 +114,18 @@ const view = dtable.getActiveView();
 
 ## getViewByName
 
-通过 name 获取视图内容
+Get view content by name
 
 ```javascript
 dtable.getViewByName(table, viewName);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* viewName: 获取视图的名字
+* table: table object
+* viewName: Get the name of the view
 
-例子
+Example
 
 ```javascript
 const tableId = '0000';
@@ -136,18 +136,18 @@ const view = dtable.getViewByName(table, viewName);
 
 ## getViewById
 
-通过 id 获取视图内容
+Get view content by id
 
 ```javascript
 dtable.getViewById(table, viewId);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* viewId: 获取视图的id
+* table: table object
+* viewId: Get the id of the view
 
-例子
+Example
 
 ```javascript
 const tableId = '0000';
@@ -158,18 +158,18 @@ const view = dtable.getViewById(table, viewId);
 
 ## isDefaultView
 
-判断是否为默认视图(不包含分组, 过滤, 排序等条件)
+Determine whether it is the default view (does not include grouping, filtering, sorting, etc.)
 
 ```javascript
 dtable.isDefaultView(view, columns);
 ```
 
-其中
+Arguments
 
-* view: 视图对象
-* columns: 子表中所有的列内容
+* view: view object
+* columns: all column contents in the table
 
-例子
+Example
 
 ```javascript
 const tableId = '0000';
@@ -182,18 +182,18 @@ const isDefaultView = dtable.isDefaultView(view, columns);
 
 ## isGroupView
 
-判断是否为包含分组的视图(包含分组条件)
+Determine whether it is a view containing grouping (including grouping conditions)
 
 ```javascript
 dtable.isGroupView(view, columns);
 ```
 
-其中
+Arguments
 
-* view: 视图对象
-* columns: 子表中所有的列内容
+* view: view object
+* columns: all column contents in the table
 
-例子
+Example
 
 ```javascript
 const tableId = '0000';
@@ -206,18 +206,18 @@ const isGroupView = dtable.isGroupView(view, columns);
 
 ## isFilterView
 
-判断是否为过滤视图(包含过滤条件)
+Determine whether it is a filter view (including filter conditions)
 
 ```javascript
 dtable.isFilterView(view, columns);
 ```
 
-其中
+Arguments
 
-* view: 视图对象
-* columns: 子表中所有的列内容
+* view: view object
+* columns: all column contents in the table
 
-例子
+Example
 
 ```javascript
 const tableId = '0000';

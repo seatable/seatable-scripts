@@ -1,43 +1,42 @@
 # Constants
 
-在脚本中可能会有一些常量需要我们了解下
+There may be some constants in the script that we need to understand
 
 ## ColumnTypes
 
-列类型，当插入/追加列、更改列类型, 获取 formatter 等情况需要使用到
+Column type, when inserting/adding column, changing column type, obtaining formatter, etc. need to be used
 
 ```javascript
 import { CELL_TYPE } from 'dtable-sdk';
 
-CELL_TYPE.NUMBER              // 数字
-CELL_TYPE.TEXT                // 文本
-CELL_TYPE.LONG_TEXT           // 长文本
-CELL_TYPE.CHECKBOX            // 勾选
-CELL_TYPE.DATE                // 日期时间
-CELL_TYPE.SINGLE_SELECT       // 单选
-CELL_TYPE.MULTIPLE_SELECT     // 多选
-CELL_TYPE.LONG_TEXT           // 长文本
-CELL_TYPE.IMAGE               // 图片
-CELL_TYPE.FILE                // 文件
-CELL_TYPE.COLLABORATOR        // 协作人
-CELL_TYPE.LINK                // 链接其他记录
-CELL_TYPE.FORMULA             // 公式
-CELL_TYPE.LINK_FORMULA        // 链接公式
-CELL_TYPE.CREATOR             // 创建者
-CELL_TYPE.CTIME               // 创建时间
-CELL_TYPE.LAST_MODIFIER       // 修改者
-CELL_TYPE.MTIME               // 修改时间
-CELL_TYPE.GEOLOCATION         // 地址
-CELL_TYPE.AUTO_NUMBER         // 自动序号
-CELL_TYPE.URL                 // 链接
-CELL_TYPE.EMAIL               // 邮箱
-CELL_TYPE.BUTTON              // 按钮
-CELL_TYPE.RATE                // 等级
+CELL_TYPE.NUMBER              // number
+CELL_TYPE.TEXT                // text
+CELL_TYPE.LONG_TEXT           // long text
+CELL_TYPE.CHECKBOX            // checkbox
+CELL_TYPE.DATE                // date
+CELL_TYPE.SINGLE_SELECT       // single select
+CELL_TYPE.MULTIPLE_SELECT     // multiple select
+CELL_TYPE.IMAGE               // image
+CELL_TYPE.FILE                // file
+CELL_TYPE.COLLABORATOR        // collaborator
+CELL_TYPE.LINK                // Link to other records
+CELL_TYPE.FORMULA             // formula
+CELL_TYPE.LINK_FORMULA        // link formula
+CELL_TYPE.CREATOR             // creator
+CELL_TYPE.CTIME               // created time
+CELL_TYPE.LAST_MODIFIER       // modifier
+CELL_TYPE.MTIME               // modified time
+CELL_TYPE.GEOLOCATION         // geolocation
+CELL_TYPE.AUTO_NUMBER         // auto number
+CELL_TYPE.URL                 // URL
+CELL_TYPE.EMAIL               // enail
+CELL_TYPE.BUTTON              // button
+CELL_TYPE.RATE                // rate
 ```
 
 ## Column icon configs
 
-列类型对应的图标配置信息
+Icon configuration information corresponding to the column type
 
 ```javascript
 import { CELL_TYPE, COLUMNS_ICON_CONFIG } from 'dtable-store';
@@ -53,12 +52,12 @@ const singleSelectIconClass = COLUMNS_ICON_CONFIG[single_select];
 ...
 
 
-// 注: iconClass 用来显示列的图标(需要引入dtable-font)
+// Note: iconClass is used to display the icon of the column (dtable-font needs to be introduced)
 ```
 
 ## Column options
 
-列的基本配置信息, 获取列的 icon 配置和不同列类型的提示信息时需要使用到
+The basic configuration information of the column, it is necessary to obtain the icon configuration of the column and the prompt information of different column types
 
 ```javascript
 import { CELL_TYPE, COLUMN_OPTIONS } from 'dtable-sdk';
@@ -83,14 +82,14 @@ const singleSelectOption = COLUMN_OPTIONS.find(option => option.type === singleS
 
 ...
 
-// 注: iconClass 用来显示列的图标(需要引入dtable-font)
-//     iconName 可以用来国际化, 显示提示信息或文本信息
+// Note: iconClass is used to display the icon of the column (dtable-font needs to be introduced)
+//     iconName can be used for internationalization, display prompt messages or text messages
 
 ```
 
 ## Formula result type
 
-公式列, 链接公式列计算结果类型汇总, 用于确定与计算有关的列类型的计算结果
+Formula column, link formula column calculation result type summary, used to determine the calculation result of the column type related to the calculation
 
 ```javascript
 
@@ -106,7 +105,7 @@ FORMULA_RESULT_TYPE.ARRAY      // array
 
 ## Select option colors
 
-创建, 修改单选列/多选列选项时, 提供选项的文本颜色, 背景颜色, 边框颜色
+When creating and modifying single-choice column/multi-choice column options, the text color, background color, and border color of the option are provided
 
 ```javascript
 
@@ -139,7 +138,7 @@ import { SELECT_OPTION_COLORS } from 'dtable-sdk';
 //   {COLOR: '#C2C2C2', BORDER_COLOR: '#ADADAD', TEXT_COLOR: '#FFFFFF'},
 // ];
 
-// 创建选项时, 可以提供相关选项, 也可以通过随机函数, 自动生成相应的选项颜色
+// When creating an option, you can provide related options, or you can use a random function to automatically generate the corresponding option color
 
 const colorIndex = (Math.random() * SELECT_OPTION_COLORS.length).toFix(0);
 const selectColor = SELECT_OPTION_COLORS[colorIndex];
@@ -148,15 +147,14 @@ const selectColor = SELECT_OPTION_COLORS[colorIndex];
 
 ## Table permission type
 
-子表的权限类型
+Permission type of table
 
 ```javascript
-
 import { TABLE_PERMISSION_TYPE } from 'dtable-sdk';
 
-TABLE_PERMISSION_TYPE.DEFAULT              // default 默认权限
-TABLE_PERMISSION_TYPE.ADMINS               // admins  有管理权限的人
-TABLE_PERMISSION_TYPE.SPECIFIC_USERS       // specific_users 特定用户
-TABLE_PERMISSION_TYPE.NONE                 // none 谁都不能更改
-
+TABLE_PERMISSION_TYPE.DEFAULT              // defailt, default permissions
+TABLE_PERMISSION_TYPE.ADMINS               // admins, person with administrative rights  
+TABLE_PERMISSION_TYPE.SPECIFIC_USERS       // specific_users, Specific user 
+TABLE_PERMISSION_TYPE.NONE                 // none, No one can change
 ```
+

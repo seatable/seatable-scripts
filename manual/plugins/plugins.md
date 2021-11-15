@@ -2,17 +2,17 @@
 
 ## getPluginSettings
 
-获取插件的配置参数
+Get the configuration parameters of the plug-in
 
 ```javascript
 dtable.getPluginSettings(pluginName);
 ```
 
-其中
+Arguments
 
-* pluginName: 插件名字
+* pluginName: Plugin name
 
-例子
+Example
 
 ```javascript
 const pluginName = 'gallery';
@@ -21,18 +21,18 @@ const pluginSetting = dtable.getPluginSettings(pluginName);
 
 ## updatePluginSettings
 
-更新插件的配置参数
+Update the configuration parameters of the plugin
 
 ```javascript
 dtable.updatePluginSettings(pluginName, pluginSettings);
 ```
 
-其中
+Arguments
 
-* pluginName: 插件名字
-* pluginSettings: 插件的配置参数
+* pluginName: Plugin name
+* pluginSettings: Plugin configuration parameters
 
-例子
+Example
 
 ```javascript
 const pluginName = 'gallery';
@@ -42,17 +42,17 @@ dtable.updatePluginSettings(pluginName, pluginSettings);
 
 ## deletePluginSettings
 
-删除插件的配置参数
+Delete the configuration parameters of the plugin
 
 ```javascript
 dtable.deletePluginSettings(pluginName);
 ```
 
-其中
+Arguments
 
-* pluginName: 插件名字
+* pluginName: Plugin name
 
-例子
+Example
 
 ```javascript
 const pluginName = 'gallery';

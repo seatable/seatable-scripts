@@ -2,20 +2,20 @@
 
 ## appendRow
 
-添加行数据
+Add row data
 
 ```javascript
 dtable.appendRow(table, rowData, view, { collaborators } = {});
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* rowData: 行数据
-* view: 视图对象, 可以为 null
-* { collaborators } : 包含协作人列表的的对象参数
+* table: table object
+* rowData: data of row
+* view: view object, can be null
+* { collaborators } : Object parameter containing the list of collaborators
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
@@ -24,27 +24,27 @@ const viewName = 'Default View'
 const view = dtable.getViewByName(table, viewName);
 const collaborators = dtable.getRelatedUsers();
 const rowData = {
-  '名称': '小强',
-  '年龄': 28,
-  '工作': '程序员'
+  'Name': 'Mike',
+  'Age': 28,
+  'Job': 'Software engineer'
 };
 dtable.appendRow(table, rowData, view, { collaborators });
 ```
 
 ## deleteRowById
 
-通过 id 删除子表的行数据
+Delete the data of row of the table by id
 
 ```javascript
 dtable.deleteRowById(table, rowId);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* rowId: 删除行的 id 值
+* table: table object
+* rowId: Delete the id value of the row
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
@@ -60,47 +60,47 @@ dtable.deleteRowById(table, rowId);
 
 ## deleteRowsByIds
 
-通过 id 列表删除子表的多行数据
+Delete multiple data of row of tables through the id list
 
 ```javascript
 dtable.deleteRowsByIds(table, rowIds);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* rowIds: 删除多行数据的 id 列表
+* table: table object
+* rowIds: Delete the id list of multiple data of row
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
-const viewName = 'Default View'
+const viewName = 'Default View';
 const view = dtable.getViewByName(table, viewName);
 
 const rows = dtable.getViewRows(view, table);
 const rowIds = rows.map(row => row._id);
 
-// 删除前五行数据
+// Delete the first five data of row
 dtable.deleteRowsByIds(table, rowIds.slice(0, 5));
 ```
 
 ## modifyRow
 
-通过 name 获取列内容
+Get column content by name
 
 ```javascript
 dtable.modifyRow(table, row, updated);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* row: 行对象
-* updated: 新的参数值对象
+* table: table object
+* row: row object
+* updated: New parameter value object
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
@@ -111,64 +111,63 @@ const view = dtable.getViewByName(table, viewName);
 const rows = dtable.getViewRows(view, table);
 const rowId = rows[0];
 const updated = {
-  '年龄': 30,
-  '工作': '销售'
+  'Age': 30,
+  'Job': 'Teacher'
 };
 dtable.modifyRow(table, row, updated);
 ```
 
 ## forEachRow
 
-遍历行数据, 依据某些条件完成相应业务逻辑
+Traverse the data of row and complete the corresponding business logic according to certain conditions
 
 ```javascript
 dtable.forEachRow(tableName, viewName, callback, { username, userId } = {});
 ```
 
-其中
+Arguments
 
-* tableName: 子表名字
-* viewName: 视图名字
-* callback: 回调函数, 处理自定义业务逻辑
-* { username, userId }: 包含用户名字, 用户 id 的对象参数
+* tableName: table bane
+* viewName: view name
+* callback: Callback function, processing custom business logic
+* { username, userId }: Object parameters containing user name and user id
 
-注: username, userId: 在开发环境中可以从本地配置文件读取, 在集成环境中从 window.dtable 中读取
+Note: username, userId: can be read from the local configuration file in the development environment, and read from window.dtable in the integrated environment
 
-例子
+Example
 
 ```javascript
 import { username, userId } from 'setting.local';
 
 // const { username, userId } = window.dtable;
 
-// 业务需求: 如果 行数据中的 “任务状态” 列是 “完成” 状态, 将改行中 “合格” 列设置为 “是”
+// Business requirement: If the "task status" column in the data of row is "completed", set the "qualified" column in the changed row to "yes"
 const tableName = 'Table1';
 const viewName = 'Default View'
 dtable.forEachRow(tableName, viewName, (row) => {
-  // 实现业务需求
-  if (row['任务状态'] === '完成') {
+  // Realize business needs
+  if (row['task status'] === 'completed') {
     const table = dtable.getTableByName(tableName);
-    const updated = {'合格': '是'};
+    const updated = {'qualified': 'yes'};
     dtable.modifyRow(table, row, updated);
   }
 }, {username, userId});
-
 ```
 
 ## getTableLinkRows
 
-获取行数据关联其他表的所有行数据的 id 值
+Get the id value of all data of row related to other tables of data of row
 
 ```javascript
 dtable.getTableLinkRows(rows, table);
 ```
 
-其中
+Arguments
 
-* rows: 行数据
-* table: 行数据所属的子表对象
+* rows: data of row
+* table: data of row belongs to the table object
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
@@ -184,18 +183,18 @@ dtable.getTableLinkRows(finLinkRows, table);
 
 ## getViewRows
 
-获取视图的行数据
+Get the data of row of the view
 
 ```javascript
 dtable.getViewRows(view, table);
 ```
 
-其中
+Arguments
 
-* view: 视图对象
-* table: 子表对象
+* view: view object
+* table: table object
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
@@ -208,18 +207,18 @@ const rows = dtable.getViewRows(view, table);
 
 ## getGroupRows
 
-获取视图的行数据
+Get the data of group rows
 
 ```javascript
 dtable.getGroupRows(view, table);
 ```
 
-其中
+Arguments
 
-* view: 视图对象
-* table: 子表对象
+* view: view object
+* table: table object
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
@@ -232,19 +231,19 @@ const rows = dtable.getViewRows(view, table);
 
 ## getInsertedRowInitData
 
-获取新增行的默认数据(如果表格中包含排序, 分组, 过滤等功能, 可以直接通过 api 获取新增行的默认值)
+Get the default data of the new row (if the table contains sorting, group, filtering and other functions, you can directly get the default value of the new row through the api)
 
 ```javascript
 dtable.getInsertedRowInitData(view, table, rowId);
 ```
 
-其中
+Arguments
 
-* view: 视图对象
-* table: 子表对象
-* rowId: 新增行的前一行的 id 值
+* view: view object
+* table: table object
+* rowId: The id value of the row before the new row
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
@@ -260,106 +259,102 @@ const defaultRowData = dtable.getInsertedRowInitData(view, table, prevRow._id);
 
 ## getRowsByID
 
-通过 id 列表获取子表的相关行数据
+Get the relevant data of row of the table through the id list
 
 ```javascript
 dtable.getRowsByID(tableId, rowIds);
 ```
 
-其中
+Arguments
 
-* tableId: 子表的 id 值
-* rowIds: 查找行的 id 列表
+* tableId: Id value of the table
+* rowIds: the id list of the row
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
-
 const rowIds = ['aaa', 'bbb', 'cccc', 'dddd'];
-
 const rows = dtable.getRowsByID(table._id, rowIds);
 ```
 
 ## getRowById
 
-通过 id 列表获取子表的相关行数据
+Get the relevant data of row of the table through row id
 
 ```javascript
 dtable.getRowById(table, rowId);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* rowId: 查找行的 id 值
+* table: table object
+* rowId: Find the id value of the row
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
-
 const rowId = 'aaaa';
-
 const rows = dtable.getRowById(table, rowId);
 ```
 
 ## moveGroupRows
 
-通过 id 列表获取子表的相关行数据
+Move the rows in the group
 
 ```javascript
 dtable.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, updated, oldRows, groupbyColumns);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* targetIds: 移动行的目标位置行的 id 列表
-* movePosition:  移动的相对位置, move_above | move_below
-* movedRows: 移动的行数据列表
-* upperRowIds: 所有移动行之前所在位置的前一行的 id 列表
-* updated: 移动后移动行需要更新的新的属性值对象 (跨分组移动, 不同过滤条件的移动可能导致数据发生变化)
-* oldRows: 移动前移动行需要更新的旧的属性值对象
-* groupbyColumns: 当前视图分组的列数据
+* table: table object
+* targetIds: List of ids of the line where the line is moved
+* movePosition:  Relative position of movement, move_above | move_below
+* movedRows: Moved data of row list
+* upperRowIds: List of the ids of the previous row where all the moved rows were before
+* updated: The new attribute value object that needs to be updated after moving the row (moving across the group, the movement of different filter conditions may cause the data to change)
+* oldRows: The old attribute value object that needs to be updated before moving the row
+* groupbyColumns: Column data of the current view Group
 
-例子
+Example
 
 ```javascript
 const tableName = 'Table1';
 const table = dtable.getTableByName(tableName);
-// 1. 假设: 默认行数据列表如下, 按照分组列进行分组
+// 1. Assumption: The default data of row list is as follows, group according to the Group column
 const rows = [
-  {_id: 'aaa', '名称', '小强', '年龄': '29', '出生日期': '1992-09-09', '分组': 'a'},
-  {_id: 'bbb', '名称', '小明', '年龄': '25', '出生日期': '1996-09-09', '分组': 'a'},
-  {_id: 'ccc', '名称', '小红', '年龄': '24', '出生日期': '1997-09-09', '分组': 'a'},
-  {_id: 'ddd', '名称', '小丽', '年龄': '22', '出生日期': '1993-09-09', '分组': 'a'},
-  {_id: 'eee', '名称', '小菜', '年龄': '27', '出生日期': '1992-09-09', '分组': 'b'},
-  {_id: 'fff', '名称', '小龙', '年龄': '25', '出生日期': '1990-09-09', '分组': 'b'},
-  {_id: 'ggg', '名称', '小马', '年龄': '26', '出生日期': '1996-09-09', '分组': 'b'},
-  {_id: 'hhh', '名称', '小正', '年龄': '27', '出生日期': '1999-09-09', '分组': 'b'},
+  {_id: 'aaa', 'Name', 'Mike', 'Age': '29', 'Birthday': '1992-09-09', 'Group': 'a'},
+  {_id: 'bbb', 'Name', 'Tom', 'Age': '25', 'Birthday': '1996-09-09', 'Group': 'a'},
+  {_id: 'ccc', 'Name', 'Doris', 'Age': '24', 'Birthday': '1997-09-09', 'Group': 'a'},
+  {_id: 'ddd', 'Name', 'Judy', 'Age': '22', 'Birthday': '1993-09-09', 'Group': 'a'},
+  {_id: 'eee', 'Name', 'Tony', 'Age': '27', 'Birthday': '1992-09-09', 'Group': 'b'},
+  {_id: 'fff', 'Name', 'Michael', 'Age': '25', 'Birthday': '1990-09-09', 'Group': 'b'},
+  {_id: 'ggg', 'Name', 'Donald', 'Age': '26', 'Birthday': '1996-09-09', 'Group': 'b'},
+  {_id: 'hhh', 'Name', 'Jerry', 'Age': '27', 'Birthday': '1999-09-09', 'Group': 'b'},
 ];
 
-// 2. 将 小明,小丽移动到小正的下面, 相关参数如下
+// 2. Move Tom and Judy to the bottom of the Jerry row, the relevant parameters are as follows
 const targetIds = ['hhh', 'hhh'];
 const move_position = 'move_below';
 const movedRows = [
-  {_id: 'bbb', '名称', '小明', '年龄': '25', '出生日期': '1996-09-09', '分组': 'a'},
-  {_id: 'ddd', '名称', '小丽', '年龄': '22', '出生日期': '1993-09-09', '分组': 'a'},
+  {_id: 'bbb', 'Name', 'Tom', 'Age': '25', 'Birthday': '1996-09-09', 'Group': 'a'},
+  {_id: 'ddd', 'Name', 'Judy', 'Age': '22', 'Birthday': '1993-09-09', 'Group': 'a'},
 ];
 const upperRowIds = ['aaa', 'ccc'];
 const updated = {
-  'bbb': {'分组': 'b'},
-  'ddd': {'分组': 'b'},
+  'bbb': {'Group': 'b'},
+  'ddd': {'Group': 'b'},
 };
 const oldRows = {
-  'bbb': {'分组': 'a'},
-  'ddd': {'分组': 'a'},
+  'bbb': {'Group': 'a'},
+  'ddd': {'Group': 'a'},
 };
 
-const groupbyColumns = [{key: '分组', name: '分组', type: 'text', ...}];
+const groupbyColumns = [{key: 'Group', name: 'Group', type: 'text', ...}];
 
 const rows = dtable.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, updated, oldRows, groupbyColumns);
 ```

@@ -2,17 +2,18 @@
 
 ## getColumns
 
-获取子表所有的列内容
+Get all the columns of the table
 
 ```javascript
 dtable.getColumns(table);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
+* table: table object
 
-### 例子
+Example
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -21,18 +22,19 @@ const columns = dtable.getColumns(table);
 
 ## getShownColumns
 
-获取视图所有显示的列内容(不包含隐藏列)
+Get the contents of all displayed columns of the view (excluding hidden columns)
 
 ```javascript
 dtable.getShownColumns(table, view);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* view: 子表中的视图对象
+* table: table object
+* view: view objects in the table
 
-### 例子
+Example
+
 ```javascript
 const tableId = '0000';
 const viewId = '0000';
@@ -43,18 +45,19 @@ const shownColumns = dtable.getShownColumns(table, view);
 
 ## getColumnsByType
 
-获取子表中所有类型一样的列内容
+Get all the same type of column content in the table
 
 ```javascript
 dtable.getColumnsByType(table, type);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* type: 获取列的类型
+* table:  table object
+* type: get the type of column
 
-### 例子
+Example
+
 ```javascript
 import { CELL_TYPE } from 'dtable-sdk';
 
@@ -66,18 +69,19 @@ const sameTypeColumns = dtable.getColumnsByType(table, columnType);
 
 ## getColumnByName
 
-通过 name 获取列内容
+Get column content by name
 
 ```javascript
 dtable.getColumnByName(table, columnName);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* columnName: 获取列的名字
+* table:  table object
+* columnName: get the name of the column
 
-### 例子
+Example
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -87,18 +91,19 @@ const column = dtable.getColumnByName(table, columnName);
 
 ## getColumnByKey
 
-通过 key 获取列内容
+Get column content by key
 
 ```javascript
 dtable.getColumnByKey(table, columnKey);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* columnKey: 获取列的 key 值
+* table:  table object
+* columnKey: get the key value of the column
 
-### 例子
+Example
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);
@@ -108,19 +113,20 @@ const column = dtable.getColumnByKey(table, columnKey);
 
 ## modifyColumnData
 
-更新列的 data 属性
+Update the data attribute of the column
 
 ```javascript
 dtable.modifyColumnData(table, columnName, columnData);
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* columnName: 更新列的 name 值
-* columnData: 更新列的新 data 属性
+* table:  table object
+* columnName: update the name value of the column
+* columnData: update the new data attribute of the column
 
-### 例子
+Example
+
 ```javascript
 const tableId = '0000';
 const table = dtable.getTableById(tableId);

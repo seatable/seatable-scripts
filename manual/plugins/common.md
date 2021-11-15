@@ -2,13 +2,13 @@
 
 ## getRelatedUsers
 
-获取当前 base 关联的其他用户(表格的协作人, 表的被分享人等)
+Get other users associated with the current base (collaborators of the table, the shared person of the table, etc.)
 
 ```javascript
 dtable.getRelatedUsers()
 ```
 
-例子
+Example
 
 ```javascript
 const collaborators = dtable.getRelatedUsers();
@@ -16,18 +16,18 @@ const collaborators = dtable.getRelatedUsers();
 
 ## getCollaboratorsName
 
-获取协作者的名字列表
+Get a list of names of collaborators
 
 ```javascript
 dtable.getCollaboratorsName(collaborators, value)
 ```
 
-其中
+Arguments
 
-* collaborators: base 协作人列表
-* value: 协作者列的邮箱列表
+* collaborators: collaborator list in this base
+* value: email list of collaborators
 
-例子
+Example
 
 ```javascript
 const collaborators = dtable.getRelatedUsers();
@@ -37,18 +37,18 @@ const name = dtable.getCollaboratorsName(collaborators, value); // 'abc, shun'
 
 ## getTableFormulaResults
 
-获取子表计算公式列的数据
+Get the data in the calculation formula column of the table
 
 ```javascript
 dtable.getTableFormulaResults(table, rows)
 ```
 
-其中
+Arguments
 
-* table: 子表对象
-* rows: 需要获取 计算公式列相关数据的行数据
+* table: table object
+* rows: Need to obtain the row data of the relevant data of the calculation formula column
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';
@@ -62,19 +62,19 @@ const formulaResult = dtable.getTableFormulaResults(table, rows);
 
 ## getViewRowsColor
 
-获取视图中行数据的颜色属性
+Get the color attributes of the row data in the view
 
 ```javascript
 dtable.getViewRowsColor(rows, view, table)
 ```
 
-其中
+Arguments
 
-* rows: 需要获取 颜色属性 的行数据
-* view: 视图对象
-* table: 子表对象
+* rows: Need to get the row data of the color attribute
+* view: view object
+* table: table object
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';
@@ -88,25 +88,24 @@ const formulaResult = dtable.getViewRowsColor(rows, view, table);
 
 ## getLinkCellValue
 
-获取子表行数据关联其他表格的行数据的 id 列表
+Get the id list of the row data of the table associated with the row data of other tables
 
 ```javascript
 dtable.getLinkCellValue(linkId, tableId, otherTableId, rowId)
 ```
 
-其中
+Arguments
 
-* linkId: link 列对应的 link_id 值
-* tableId: 当前表格的 id 值
-* otherTableId: 关联表格的 id 值
-* rowId: 当前表格中行的 id 值
+* linkId: link The link_id value corresponding to the column
+* tableId: The id value of the current table
+* otherTableId: The id value of the associated table
+* rowId: The id value of the row in the current table
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
-
 
 const rows = table.rows;
 const row = rows[0];
@@ -122,24 +121,23 @@ const linkedRowIds = dtable.getLinkCellValue(link_id, table._id, linkedTableId, 
 
 ## getLinkDisplayString
 
-获取 link 列关联行的内容值
+Get the content value of the associated row of the link column
 
 ```javascript
 dtable.getLinkDisplayString(linkedRowIds, linkedTable, displayColumnKey)
 ```
 
-其中
+Arguments
 
-* linkedRowIds: 关联的行列表
-* linkedTable: 关联的子表对象
-* displayColumnKey: 关联的列对象
+* linkedRowIds: List of associated rows
+* linkedTable: Associated table object
+* displayColumnKey: Associated column object
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';
 const table = dtable.getTableByName(tableName);
-
 
 const rows = table.rows;
 const row = rows[0];
@@ -157,18 +155,18 @@ const results = dtable.getLinkDisplayString(linkedRowIds, linkedTable, display_c
 
 ## getNumberDisplayString
 
-获取 number 列的字符串显示(按照不同的format返回用户数据)
+Get the string display of the number column (return user data according to different formats)
 
 ```javascript
 dtable.getNumberDisplayString(value, columnData)
 ```
 
-其中
+Arguments
 
-* value: number 类型列对应的 value 值
-* columnData: number 类型列 对应的 column 的 data 配置属性
+* value: The value corresponding to the number type column
+* columnData: The data configuration attribute of the corresponding column of the number type column
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';
@@ -182,18 +180,18 @@ const name = dtable.getNumberDisplayString(value, column.data);
 
 ## getGeolocationDisplayString
 
-获取 geolocation 列的字符串显示(按照不同的配置参数返回用户数据)
+Get the string display of the geolocation column (return user data according to different configuration parameters)
 
 ```javascript
 dtable.getGeolocationDisplayString(value, columnData)
 ```
 
-其中
+Arguments
 
-* value: geolocation 类型列对应的 value 值
-* columnData: geolocation 类型列 对应的 column 的 data 配置属性
+* value: The value corresponding to the geolocation type column
+* columnData: The value value corresponding to the geolocation type column The data configuration attribute of the corresponding column geolocation type column
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';
@@ -201,24 +199,24 @@ const table = dtable.getTableByName(tableName);
 const columnName = 'dateColumn';
 const column = dtable.getColumnByName(table, columnName);
 
-const value = {city: "安庆市", detail: "nide" ,district: "迎江区", province: "安徽省"};
+const value = {country_region: 'Germany'};
 const name = dtable.getGeolocationDisplayString(value, column.data);
 ```
 
 ## getDurationDisplayString
 
-获取 duration 列的字符串显示(按照不同的配置参数返回用户数据)
+Get the string display of the duration column (return user data according to different configuration parameters)
 
 ```javascript
 dtable.getDurationDisplayString(value, columnData)
 ```
 
-其中
+Arguments
 
-* value: duration 类型列对应的 value 值
-* columnData: duration 类型列 对应的 column 的 data 配置属性
+* value: The value corresponding to the duration type column
+* columnData: The data configuration attribute of the corresponding column of the duration type column
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';
@@ -232,18 +230,18 @@ const name = dtable.getDurationDisplayString(value, column.data);
 
 ## getDateDisplayString
 
-获取 date 列的字符串显示(按照不同的配置参数返回用户数据)
+Get the string display of the date column (return user data according to different configuration parameters)
 
 ```javascript
 dtable.getDateDisplayString(value, columnData)
 ```
 
-其中
+Arguments
 
-* value: date 类型列对应的 value 值
-* columnData: date 类型列 对应的 column 的 data 配置属性
+* value: The value corresponding to the date type column
+* columnData: The data configuration attribute of the column corresponding to the date type column
 
-例子
+Example
 
 ```javascript
 const tableName = 'tableName';

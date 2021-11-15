@@ -2,19 +2,19 @@
 
 ## Query
 
-使用 sql 语句查询一个 dtable
+Use sql statement to query a dtable
 
 ```javascript
 dtable.sqlQuery(sql)
 ```
 
-其中
+Arguments
 
-* sql: 要执行的 SQL 语句
+* sql: SQL statement to be executed
 
-注意: 默认返回最多 100 条结果，如果需要更多结果，请在 sql 语句中加入 limit 参数
+Note: By default, up to 100 results are returned. If you need more results, please add the limit parameter in the sql statement
 
-可能的异常包括
+Possible abnormalities include
 
 * ValueError: sql can not be empty
 * ConnectionError: network error
@@ -22,15 +22,15 @@ dtable.sqlQuery(sql)
 * Exception: no such column
 * Exception: columns in group by should match columns in select
 
-## 例子
+## Example
 
-### 基础查询
+### Basic query
 
 ```javascript
 dtable.sqlQuery('select name, price, year from Bill')
 ```
 
-结果
+result
 
 ```javascript
 [
@@ -50,7 +50,7 @@ dtable.sqlQuery('select name, price, year from Bill')
 dtable.sqlQuery('select name, price from Bill where year = 2021 ')
 ```
 
-结果
+result
 
 ```javascript
 [
@@ -67,7 +67,7 @@ dtable.sqlQuery('select name, price from Bill where year = 2021 ')
 dtable.sqlQuery('select name, price, year from Bill order by year')
 ```
 
-结果
+result
 
 ```javascript
 [
@@ -87,7 +87,7 @@ dtable.sqlQuery('select name, price, year from Bill order by year')
 dtable.sqlQuery('select name, sum(price) from Bill group by name')
 ```
 
-结果
+result
 
 ```javascript
 [
@@ -104,7 +104,7 @@ dtable.sqlQuery('select name, sum(price) from Bill group by name')
 dtable.sqlQuery('select distinct name from Bill')
 ```
 
-结果
+result
 
 ```javascript
 [
@@ -113,3 +113,4 @@ dtable.sqlQuery('select distinct name from Bill')
     {'_id': 'EvwCWtX3RmKYKHQO9w2kLg', 'name': 'Jane'}
 ]
 ```
+

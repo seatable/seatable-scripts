@@ -1,15 +1,17 @@
 # dtable
 
 ## Init
-> 插件开发环境分为两种, 开发环境和集成环境, 由于环境不同, 所以初始化的方式也不同:
-> 在开发环境中, 编码人员需要提供插件所需的配置文件, 用于初始化插件, 获取插件需要的数据。
-> 在使用环境，用户安装插件后, 插件可以直接读取当前浏览器中的 base 的数据, 用于初始化插件。
+> The plugin development environment is divided into two types, the development environment and the production environment. Because of the different environments, the initialization methods are also different:
+>
+> In the development environment, you need to provide the configuration file required by the plugin, which is used to initialize the plugin and obtain the data required by the plugin.
+>
+> In the production environment, you need to install the plugin, then the plugin can directly read the data of the base in the current browser to initialize the plugin.
 
-### 初始化插件
+### Initialize the plugin
 
-#### init
+#### Development environment
 
-开发环境下初始化插件
+Initialize the plugin in the development environment
 
 ```javascript
 import DTable from 'dtable-sdk';
@@ -22,28 +24,28 @@ const settings = {
 await dtable.init(config);
 ```
 
-#### initBrowser
+#### Production environment
 
-使用环境下初始化插件
+Initialize the plugin in the production environment
 
 ```javascript
 import DTable from 'dtable-sdk';
 
 const dtable = new Dtable();
-const dtableStore = window.app.dtableStore; // 从集成环境中读取初始化数据
+const dtableStore = window.app.dtableStore; // Read initialization data from the production environment
 await dtable.initBrowser(dtableStore);
 ```
 
 
-### 监听事件变化
+### Monitoring event changes
 
-#### subscribe
+#### Subscribe
 
-|事件类型|描述 | 用途|
+|Event type|description | use |
 |-|-|-|
-|dtable-connect|表示与 server 已经建立链接, 数据加载完成 |  更新 state, 更新 UI 显示|
-|local-dtable-changed|表示本地执行了某些操作, 数据发生变化| 更新 state, 更新 UI 显示 |
-|remote-dtable-changed|表示本地执行了 server 端发送的某些操作, 数据发生变化| 更新 state, 更新 UI 显示 |
+|dtable-connect|Indicates that a link has been established with the server, and the data loading is complete | Update state and UI display |
+|local-dtable-changed|Indicates that some operations have been performed locally, and the data has changed| Update state and UI display |
+|remote-dtable-changed| Indicates that some operations sent by the server have been performed locally, and the data has changed | Update state and UI display |
 
 ```javascript
 import DTable from 'dtable-sdk';
@@ -54,9 +56,11 @@ dtable.subscribe('local-dtable-changed', () => {...});
 dtable.subscribe('remote-dtable-changed', () => {...});
 ```
 
-## 插件开发初始化例子
+## Example
 
-由于需要兼容两个环境, 所以一般插件开发的初始化操作如下:
+This is an initialization example in the development environment.
+
+Since two environments need to be compatible, the initialization operations for general plugin development are as follows:
 
 ```javascript
 import Dtable from 'dtable-sdk';
@@ -109,3 +113,4 @@ class App extends React.Component {
 
 }
 ```
+
