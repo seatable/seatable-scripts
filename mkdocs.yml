@@ -79,3 +79,14 @@ nav:
   - SQL:
     - SQL Reference: python/sql.md
     - SQL Function Reference: python/function.md
+  - Plugin development process and API:
+    - Plugin development process: plugins/README.md
+    - Base: plugins/base.md
+    - Common: plugins/common.md
+    - Tables: plugins/tables.md
+    - Views: plugins/views.md
+    - Columns: plugins/columns.md
+    - Rows: plugins/rows.md
+    - Query with SQL: plugins/query.md
+    - plugins: plugins/plugins.md
+    - Constants: plugins/constants.md
