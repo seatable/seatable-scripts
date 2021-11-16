@@ -11,7 +11,7 @@ dtable.addView(tableName, viewName);
 Arguments
 
 * tableName: name of table
-* viewName: Add the name of the view
+* viewName: name of view
 
 Example
 
@@ -30,7 +30,7 @@ dtable.deleteView(tableName, viewName);
 Arguments
 
 * tableName: name of table
-* viewName: Delete the name of the view
+* viewName: name of view
 
 Example
 
@@ -49,8 +49,8 @@ dtable.renameView(tableName, oldViewName, newViewName);
 Arguments
 
 * tableName: name of table
-* oldViewName: The old name of the view
-* newViewName: The new name of the view
+* oldViewName: old name of the view
+* newViewName: new name of the view
 
 Example
 
@@ -100,7 +100,7 @@ const views = dtable.getNonArchiveViews(table);
 
 ## getActiveView
 
-Get the view currently being accessed by base
+Get the current view being accessed by base
 
 ```javascript
 dtable.getActiveView();
@@ -114,7 +114,7 @@ const view = dtable.getActiveView();
 
 ## getViewByName
 
-Get view content by name
+Get view by name
 
 ```javascript
 dtable.getViewByName(table, viewName);
@@ -123,7 +123,7 @@ dtable.getViewByName(table, viewName);
 Arguments
 
 * table: table object
-* viewName: Get the name of the view
+* viewName: the name of the view
 
 Example
 
@@ -145,7 +145,7 @@ dtable.getViewById(table, viewId);
 Arguments
 
 * table: table object
-* viewId: Get the id of the view
+* viewId: the id of the view
 
 Example
 
@@ -167,7 +167,7 @@ dtable.isDefaultView(view, columns);
 Arguments
 
 * view: view object
-* columns: all column contents in the table
+* columns: all columns in the table
 
 Example
 
@@ -182,7 +182,7 @@ const isDefaultView = dtable.isDefaultView(view, columns);
 
 ## isGroupView
 
-Determine whether it is a view containing grouping (including grouping conditions)
+Check whether it is a view containing grouping (including grouping conditions)
 
 ```javascript
 dtable.isGroupView(view, columns);
@@ -191,7 +191,7 @@ dtable.isGroupView(view, columns);
 Arguments
 
 * view: view object
-* columns: all column contents in the table
+* columns: all columns in the table
 
 Example
 
@@ -206,7 +206,7 @@ const isGroupView = dtable.isGroupView(view, columns);
 
 ## isFilterView
 
-Determine whether it is a filter view (including filter conditions)
+Check whether it is a filter view (including filter conditions)
 
 ```javascript
 dtable.isFilterView(view, columns);
@@ -215,7 +215,7 @@ dtable.isFilterView(view, columns);
 Arguments
 
 * view: view object
-* columns: all column contents in the table
+* columns: all columns in the table
 
 Example
 

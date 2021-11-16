@@ -2,7 +2,7 @@
 
 ## addTable
 
-add table
+Add table
 
 ```javascript
 dtable.addTable(tableName);
@@ -10,7 +10,7 @@ dtable.addTable(tableName);
 
 Arguments
 
-* tableName: Add the name of the table
+* tableName: the name of the table
 
 Example
 
@@ -28,7 +28,7 @@ dtable.deleteTable(tableName);
 
 Arguments
 
-* tableName: Delete the name of the table
+* tableName: the name of the table
 
 Example
 
@@ -46,8 +46,8 @@ dtable.renameTable(oldTableName, newTableName);
 
 Arguments
 
-* oldTableName: Update the old name of the table
-* newTableName: Update the new name of the table
+* oldTableName: the old name of the table
+* newTableName: the new name of the table
 
 Example
 
@@ -71,7 +71,7 @@ const tables = dtable.getTables();
 
 ## getActiveTable
 
-Get the table currently being accessed by base
+Get the current table being accessed by base
 
 ```javascript
 dtable.getActiveTable();
@@ -85,7 +85,7 @@ const table = dtable.getActiveTable();
 
 ## getTableByName
 
-Get the contents of the table by name
+Get the table by table name
 
 ```javascript
 dtable.getTableByName(tableName);
@@ -93,7 +93,7 @@ dtable.getTableByName(tableName);
 
 Arguments
 
-* tableName: The name value of the table
+* tableName: the name of the table
 
 Example
 
@@ -111,7 +111,7 @@ dtable.getTableById(tableId);
 
 Arguments
 
-* tableId: Id value of the table
+* tableId: Id of the table
 
 Example
 
@@ -129,9 +129,9 @@ dtable.importDataIntoNewTable(tableName, columns, rows);
 
 Arguments
 
-- tableName: The name of the new table
-- columns: Column data of the new table
-- rows: Row data of the new table
+- tableName: name of the new table
+- columns: columns of the new table
+- rows: rows of the new table
 
 Example
 

@@ -46,7 +46,7 @@ dtable.getTableFormulaResults(table, rows)
 Arguments
 
 * table: table object
-* rows: Need to obtain the row data of the relevant data of the calculation formula column
+* rows: row data of the relevant data of the calculation formula column
 
 Example
 
@@ -70,7 +70,7 @@ dtable.getViewRowsColor(rows, view, table)
 
 Arguments
 
-* rows: Need to get the row data of the color attribute
+* rows: the rows of the color attribute
 * view: view object
 * table: table object
 
@@ -88,7 +88,7 @@ const formulaResult = dtable.getViewRowsColor(rows, view, table);
 
 ## getLinkCellValue
 
-Get the id list of the row data of the table associated with the row data of other tables
+Get the id list of the row data of the table linked with the row data of other tables
 
 ```javascript
 dtable.getLinkCellValue(linkId, tableId, otherTableId, rowId)
@@ -96,10 +96,10 @@ dtable.getLinkCellValue(linkId, tableId, otherTableId, rowId)
 
 Arguments
 
-* linkId: link The link_id value corresponding to the column
-* tableId: The id value of the current table
-* otherTableId: The id value of the associated table
-* rowId: The id value of the row in the current table
+* linkId: the link_id value corresponding to the column
+* tableId: the id value of the current table
+* otherTableId: the id value of the linked table
+* rowId: the id value of the row in the current table
 
 Example
 
@@ -121,7 +121,7 @@ const linkedRowIds = dtable.getLinkCellValue(link_id, table._id, linkedTableId, 
 
 ## getLinkDisplayString
 
-Get the content value of the associated row of the link column
+Get the content value of the linked row of the link column
 
 ```javascript
 dtable.getLinkDisplayString(linkedRowIds, linkedTable, displayColumnKey)
@@ -129,9 +129,9 @@ dtable.getLinkDisplayString(linkedRowIds, linkedTable, displayColumnKey)
 
 Arguments
 
-* linkedRowIds: List of associated rows
-* linkedTable: Associated table object
-* displayColumnKey: Associated column object
+* linkedRowIds: list of linked row ids
+* linkedTable: linked table object
+* displayColumnKey: display column key
 
 Example
 
@@ -163,8 +163,8 @@ dtable.getNumberDisplayString(value, columnData)
 
 Arguments
 
-* value: The value corresponding to the number type column
-* columnData: The data configuration attribute of the corresponding column of the number type column
+* value: the value corresponding to the number column
+* columnData: the data configuration attribute of the corresponding column of the number column
 
 Example
 
@@ -188,8 +188,8 @@ dtable.getGeolocationDisplayString(value, columnData)
 
 Arguments
 
-* value: The value corresponding to the geolocation type column
-* columnData: The value value corresponding to the geolocation type column The data configuration attribute of the corresponding column geolocation type column
+* value: the value corresponding to the geolocation column
+* columnData: the data configuration attribute of the corresponding column geolocation column
 
 Example
 
@@ -213,8 +213,8 @@ dtable.getDurationDisplayString(value, columnData)
 
 Arguments
 
-* value: The value corresponding to the duration type column
-* columnData: The data configuration attribute of the corresponding column of the duration type column
+* value: the value corresponding to the duration column
+* columnData: the data configuration attribute of the corresponding column of the duration column
 
 Example
 
@@ -238,8 +238,8 @@ dtable.getDateDisplayString(value, columnData)
 
 Arguments
 
-* value: The value corresponding to the date type column
-* columnData: The data configuration attribute of the column corresponding to the date type column
+* value: the value corresponding to the date column
+* columnData: the data configuration attribute of the column corresponding to the date column
 
 Example
 
@@ -252,3 +252,4 @@ const column = dtable.getColumnByName(table, columnName);
 const value = 'YYYY-MM-DD';
 const name = dtable.getDateDisplayString(value, column.data);
 ```
+

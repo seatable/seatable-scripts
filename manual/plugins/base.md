@@ -1,11 +1,11 @@
 # dtable
 
 ## Init
-> The plugin development environment is divided into two types, the development environment and the production environment. Because of the different environments, the initialization methods are also different:
->
-> In the development environment, you need to provide the configuration file required by the plugin, which is used to initialize the plugin and obtain the data required by the plugin.
->
-> In the production environment, you need to install the plugin, then the plugin can directly read the data of the base in the current browser to initialize the plugin.
+The plugin development environment is divided into two types, the development environment and the production environment. Because of the different environments, the initialization methods are also different:
+
+- In the development environment, you need to provide the configuration file required by the plugin, which is used to initialize the plugin and obtain the data required by the plugin.
+
+- In the production environment, you need to install the plugin, then the plugin can directly read the data of the base in the current browser to initialize the plugin.
 
 ### Initialize the plugin
 
@@ -32,14 +32,14 @@ Initialize the plugin in the production environment
 import DTable from 'dtable-sdk';
 
 const dtable = new Dtable();
-const dtableStore = window.app.dtableStore; // Read initialization data from the production environment
+const dtableStore = window.app.dtableStore; // Get initialization data from the production environment
 await dtable.initBrowser(dtableStore);
 ```
 
 
 ### Monitoring event changes
 
-#### Subscribe
+#### Subscribe events
 
 |Event type|description | use |
 |-|-|-|

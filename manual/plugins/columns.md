@@ -45,7 +45,7 @@ const shownColumns = dtable.getShownColumns(table, view);
 
 ## getColumnsByType
 
-Get all the same type of column content in the table
+Get all the same type of column in the table
 
 ```javascript
 dtable.getColumnsByType(table, type);
@@ -69,7 +69,7 @@ const sameTypeColumns = dtable.getColumnsByType(table, columnType);
 
 ## getColumnByName
 
-Get column content by name
+Get column by name
 
 ```javascript
 dtable.getColumnByName(table, columnName);
@@ -78,7 +78,7 @@ dtable.getColumnByName(table, columnName);
 Arguments
 
 * table:  table object
-* columnName: get the name of the column
+* columnName: the name of the column
 
 Example
 
@@ -91,7 +91,7 @@ const column = dtable.getColumnByName(table, columnName);
 
 ## getColumnByKey
 
-Get column content by key
+Get column by key
 
 ```javascript
 dtable.getColumnByKey(table, columnKey);
@@ -100,7 +100,7 @@ dtable.getColumnByKey(table, columnKey);
 Arguments
 
 * table:  table object
-* columnKey: get the key value of the column
+* columnKey: the key value of the column
 
 Example
 
@@ -122,8 +122,8 @@ dtable.modifyColumnData(table, columnName, columnData);
 Arguments
 
 * table:  table object
-* columnName: update the name value of the column
-* columnData: update the new data attribute of the column
+* columnName: the name of the column
+* columnData: the new data attribute of the column
 
 Example
 

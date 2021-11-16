@@ -2,7 +2,7 @@
 
 ## getPluginSettings
 
-Get the configuration parameters of the plug-in
+Get the configuration parameters of the plugin
 
 ```javascript
 dtable.getPluginSettings(pluginName);

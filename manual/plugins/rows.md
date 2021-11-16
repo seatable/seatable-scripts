@@ -42,7 +42,7 @@ dtable.deleteRowById(table, rowId);
 Arguments
 
 * table: table object
-* rowId: Delete the id value of the row
+* rowId: the id of the row
 
 Example
 
@@ -60,7 +60,7 @@ dtable.deleteRowById(table, rowId);
 
 ## deleteRowsByIds
 
-Delete multiple data of row of tables through the id list
+Delete multiple rows of table through the id list
 
 ```javascript
 dtable.deleteRowsByIds(table, rowIds);
@@ -69,7 +69,7 @@ dtable.deleteRowsByIds(table, rowIds);
 Arguments
 
 * table: table object
-* rowIds: Delete the id list of multiple data of row
+* rowIds: the id list of multiple data of row
 
 Example
 
@@ -88,7 +88,7 @@ dtable.deleteRowsByIds(table, rowIds.slice(0, 5));
 
 ## modifyRow
 
-Get column content by name
+modify row
 
 ```javascript
 dtable.modifyRow(table, row, updated);
@@ -98,7 +98,7 @@ Arguments
 
 * table: table object
 * row: row object
-* updated: New parameter value object
+* updated: new row value object
 
 Example
 
@@ -119,7 +119,7 @@ dtable.modifyRow(table, row, updated);
 
 ## forEachRow
 
-Traverse the data of row and complete the corresponding business logic according to certain conditions
+Traverse the data of row and complete the corresponding logic according to certain conditions
 
 ```javascript
 dtable.forEachRow(tableName, viewName, callback, { username, userId } = {});
@@ -129,10 +129,10 @@ Arguments
 
 * tableName: table bane
 * viewName: view name
-* callback: Callback function, processing custom business logic
+* callback: callback function, processing custom logic
 * { username, userId }: Object parameters containing user name and user id
 
-Note: username, userId: can be read from the local configuration file in the development environment, and read from window.dtable in the integrated environment
+Note: username and userId can be read from the local configuration file in the development environment, and read from window.dtable in the production environment
 
 Example
 
@@ -141,7 +141,9 @@ import { username, userId } from 'setting.local';
 
 // const { username, userId } = window.dtable;
 
-// Business requirement: If the "task status" column in the data of row is "completed", set the "qualified" column in the changed row to "yes"
+// Business requirement:
+// If the "task status" column in the data of row is "completed"
+// set the "qualified" column in the changed row to "yes"
 const tableName = 'Table1';
 const viewName = 'Default View'
 dtable.forEachRow(tableName, viewName, (row) => {
@@ -207,7 +209,7 @@ const rows = dtable.getViewRows(view, table);
 
 ## getGroupRows
 
-Get the data of group rows
+Get the rows of group
 
 ```javascript
 dtable.getGroupRows(view, table);
@@ -231,7 +233,7 @@ const rows = dtable.getViewRows(view, table);
 
 ## getInsertedRowInitData
 
-Get the default data of the new row (if the table contains sorting, group, filtering and other functions, you can directly get the default value of the new row through the api)
+Get the default data of the new row (if the table contains sorting, group, filtering and other functions, you can directly get the default value of the new row through this api)
 
 ```javascript
 dtable.getInsertedRowInitData(view, table, rowId);
@@ -241,7 +243,7 @@ Arguments
 
 * view: view object
 * table: table object
-* rowId: The id value of the row before the new row
+* rowId: the id of the row before the new row
 
 Example
 
@@ -268,7 +270,7 @@ dtable.getRowsByID(tableId, rowIds);
 Arguments
 
 * tableId: Id value of the table
-* rowIds: the id list of the row
+* rowIds: the id list of the rows
 
 Example
 
@@ -290,7 +292,7 @@ dtable.getRowById(table, rowId);
 Arguments
 
 * table: table object
-* rowId: Find the id value of the row
+* rowId: the id of the row
 
 Example
 
@@ -312,13 +314,13 @@ dtable.moveGroupRows(table, targetIds, movePosition, movedRows, upperRowIds, upd
 Arguments
 
 * table: table object
-* targetIds: List of ids of the line where the line is moved
-* movePosition:  Relative position of movement, move_above | move_below
-* movedRows: Moved data of row list
-* upperRowIds: List of the ids of the previous row where all the moved rows were before
-* updated: The new attribute value object that needs to be updated after moving the row (moving across the group, the movement of different filter conditions may cause the data to change)
-* oldRows: The old attribute value object that needs to be updated before moving the row
-* groupbyColumns: Column data of the current view Group
+* targetIds: list of row ids where the row is moved
+* movePosition:  relative position of movement, 'move_above' or 'move_below'
+* movedRows: moved data of row list
+* upperRowIds: the previous row ids where all the moved rows were before
+* updated: the new attribute value object that needs to be updated after moving the row (moving across the group, the movement of different filter conditions may cause the data changed)
+* oldRows: the old attribute value object that needs to be updated before moving the row
+* groupbyColumns: column data of the current view group
 
 Example
 

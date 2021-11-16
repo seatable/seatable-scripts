@@ -1,10 +1,10 @@
 # Constants
 
-There may be some constants in the script that we need to understand
+There are some constants in the script that we need to understand
 
 ## ColumnTypes
 
-Column type, when inserting/adding column, changing column type, obtaining formatter, etc. need to be used
+Column type, when inserting/adding column, changing column type, gettingng column formatter, etc. need to be used
 
 ```javascript
 import { CELL_TYPE } from 'dtable-sdk';
@@ -51,13 +51,12 @@ const singleSelectIconClass = COLUMNS_ICON_CONFIG[single_select];
 
 ...
 
-
-// Note: iconClass is used to display the icon of the column (dtable-font needs to be introduced)
+// Note: iconClass is used to display the icon of the column (dtable-font is needed)
 ```
 
 ## Column options
 
-The basic configuration information of the column, it is necessary to obtain the icon configuration of the column and the prompt information of different column types
+The basic configuration information of the column, it is necessary to get the icon configuration of the column and the prompt information of different column types
 
 ```javascript
 import { CELL_TYPE, COLUMN_OPTIONS } from 'dtable-sdk';
@@ -89,10 +88,9 @@ const singleSelectOption = COLUMN_OPTIONS.find(option => option.type === singleS
 
 ## Formula result type
 
-Formula column, link formula column calculation result type summary, used to determine the calculation result of the column type related to the calculation
+Formula column and link formula column calculation result type summary, used to determine the calculation result of the column type related to the calculation
 
 ```javascript
-
 import { FORMULA_RESULT_TYPE } from 'dtable-sdk';
 
 FORMULA_RESULT_TYPE.NUMBER     // number
@@ -100,15 +98,13 @@ FORMULA_RESULT_TYPE.STRING     // string
 FORMULA_RESULT_TYPE.DATE       // date
 FORMULA_RESULT_TYPE.BOOL       // bool
 FORMULA_RESULT_TYPE.ARRAY      // array
-
 ```
 
 ## Select option colors
 
-When creating and modifying single-choice column/multi-choice column options, the text color, background color, and border color of the option are provided
+When creating and modifying single select column/multiple select column options, the text color, background color, and border color of the option are provided
 
 ```javascript
-
 import { SELECT_OPTION_COLORS } from 'dtable-sdk';
 
 // const SELECT_OPTION_COLORS = [
@@ -152,9 +148,9 @@ Permission type of table
 ```javascript
 import { TABLE_PERMISSION_TYPE } from 'dtable-sdk';
 
-TABLE_PERMISSION_TYPE.DEFAULT              // defailt, default permissions
-TABLE_PERMISSION_TYPE.ADMINS               // admins, person with administrative rights  
-TABLE_PERMISSION_TYPE.SPECIFIC_USERS       // specific_users, Specific user 
-TABLE_PERMISSION_TYPE.NONE                 // none, No one can change
+TABLE_PERMISSION_TYPE.DEFAULT              // 'default', default permissions
+TABLE_PERMISSION_TYPE.ADMINS               // 'admins', person with administrative rights  
+TABLE_PERMISSION_TYPE.SPECIFIC_USERS       // 'specific_users', specific user
+TABLE_PERMISSION_TYPE.NONE                 // 'none', no one can change table
 ```
 

@@ -14,7 +14,7 @@ Arguments
 
 Note: By default, up to 100 results are returned. If you need more results, please add the limit parameter in the sql statement
 
-Possible abnormalities include
+Possible errors include
 
 * ValueError: sql can not be empty
 * ConnectionError: network error
