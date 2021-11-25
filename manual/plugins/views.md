@@ -60,7 +60,7 @@ dtable.renameView('tableName', 'oldViewName', 'newViewName');
 
 ## getViews
 
-Get all the views in the table
+Get the non-private views in the table
 
 ```javascript
 dtable.getViews(table);
@@ -80,7 +80,7 @@ const views = dtable.getViews(table);
 
 ## getNonArchiveViews
 
-Get all non-archive views in the table
+Get non-private and non-archive views in the table
 
 ```javascript
 dtable.getNonArchiveViews(table);
