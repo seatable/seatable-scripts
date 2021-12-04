@@ -10,7 +10,9 @@ base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None
 
 * order_by:  column name based on which ordering the data
 * start: start position of rows
-* limit:  number of rows returned
+* limit:  number of rows returned, the maximum value for limit is 50,000. 
+
+50,000 row will be returned in maximum.
 
 ##### Example
 
