@@ -7,7 +7,7 @@ You can use SQL to query data in SeaTable. If some tables in a base are archived
 Currently only `select` statements are supported. Select syntax below is supported:
 
 ```
-SELECT [DISTINCT] fields FROM table_name [WhereClause] [OrderByClause] [GroupByClause] [Limit Option]
+SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingClause] [OrderByClause] [Limit Option]
 ```
 
 Notes:
@@ -18,6 +18,7 @@ Notes:
     * `LIKE` only supports strings. The key word `ILIKE` can be used instead of `LIKE` to make the match case-insensitive.
     * `BETWEEN ... AND ...` only supports numbers and time. Time constants should be strings in ISO format (e.g. "2020-09-08 00:11:23").
 * `GROUP BY` uses strict syntax. The selected fields must appear in group by list, except for aggregation functions (`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`) and formulas (see extended syntax section below).
+* `HAVING` filters rows resulting from the group by clause. Only selected fields or aggregation functions can be referenced in having clause. Other syntax is the same as specified for the where clause.
 * Fields in "order by" list must be a column or an expression in the selected fields. For example, `select a from table order by b` is invalid; while `select a from table order by b` and `select abs(a), b from table order by abs(a)` are valid.
 * Limit options are in MySQL format. The general syntax is `OFFSET ... LIMIT ...`. You may obmit `OFFSET` or `LIMIT`.
 
