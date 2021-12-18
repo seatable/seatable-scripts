@@ -154,6 +154,8 @@ When passing a parameter with time or date type, you can specify a contant in "2
 
 ### Geo functions
 
+_Geo functions are available since version 2.7.0_
+
 | OPERATOR              | DESCRIPTION                                   | INPUT                 | RESULT |
 | :-------------------- | :-------------------------------------------- | :-------------------- | :----- |
 | province(geolocation) | Returns the province of a Geolocation column. | province(column_name) | 北京市  |
@@ -182,4 +184,4 @@ When passing a parameter with time or date type, you can specify a contant in "2
 | counta(textORnumber1, textORnumber2, ...)     | Counts the number of non-empty cells (textORnumber1, textORnumber2, ...). These cells can be text or numbers. In this example, 1 and 2 are numbers, '3' is text, and '' is an empty value. | counta(1, '', 2, '3')   | 3      |
 | countall(textORnumber1, textORnumber2, ...)   | Counts the number of elements (textORnumber1, textORnumber2, ...) including numbers (1, 2), text ('3') and empty cells ('').                                                               | countall(1, '', 2, '3') | 4      |
 | countblank(textORnumber1, textORnumber2, ...) | Counts the number of empty cells.                                                                                                                                                          | countall(1, '', 2, '3') | 1      |
-| countItems(column)                            | Counts the number of items in a column. The supported column types are multiple select, collaborator, file, image.                                                                         | countItems(column_name) | 2      |
+| countItems(column)                            | Counts the number of items in a column. The supported column types are multiple select, collaborator, file, image. (available since version 2.7.0)                                         | countItems(column_name) | 2      |
