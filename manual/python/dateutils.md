@@ -16,6 +16,14 @@ Return the ISO formatted date
 dateutils.date(2020, 5, 16) # 2020-05-16
 ```
 
+#### now
+
+Return the ISO formatted date time of current
+
+```python
+dateutils.now() # 2022-02-07T09:44:00.034494
+```
+
 #### dateadd
 
 Addition operation for a datetime by different units such as years, months, weeks, days, hours,  minutes and seconds, default by days
@@ -169,11 +177,29 @@ dateutils.isoweeknum('2012-1-2') # 1
 
 #### isomonth
 
-返回某个日期字符串的 ISO 格式的月份
-
 Return the ISO formatted month
 
 ~~~python
 dateutils.isomonth("2012-1-2") # 2012-01
 ~~~
 
+#### other examples
+
+The date info returned can also be assigned as a param of dateutils. Here are some examples:
+
+```python
+dt_now = dateutils.now()  # 2022-02-07T09:49:14.212954
+# 1. date after 10 days
+dt_10_days = dateutils.dateadd(dt_now, 10) # 2022-02-17T09:49:14.212954
+# 2. month after 10 days
+dt_month_10_days = dateutils.month(dt_10_days) # 2
+# 3. difference between 2 days
+dt_10_days_before = dateutils.dateadd(dt_now, -10)
+date_df = dateutils.datediff(dt_10_days_before, dt_10_days, unit="D") # 20
+# 4. handle the time string with time-zone info
+time_str = "2021-07-17T08:15:41.106+00:00"
+time_day = dateutils.day(time_str) # 17
+time_month = dateutils.month(time_str) # 7
+time_year = dateutils.year(time_str) # 2021
+time_date = dateuitls.date(time_year, time_month, time_day) # 2021-07-17
+```
