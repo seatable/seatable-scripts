@@ -21,7 +21,7 @@ dateutils.date(2020, 5, 16) # 2020-05-16
 Return the ISO formatted date time of current
 
 ```python
-dateutils.now() # 2022-02-07T09:44:00.034494
+dateutils.now() # 2022-02-07 09:44:00
 ```
 
 #### dateadd
@@ -32,13 +32,13 @@ Addition operation for a datetime by different units such as years, months, week
 time_str = "2020-6-15"
 time_str_s = "2020-6-15 15:23:21"
 
-dateutils.dateadd(time_str, -2, 'years') # 2018-06-15T00:00:00
-dateutils.dateadd(time_str, 3, 'months') # 2020-09-15T00:00:00
-dateutils.dateadd(time_str_s, 44, 'minutes') # 2020-06-15T16:07:21
-dateutils.dateadd(time_str_s, 1000, 'days') # 2023-03-12T15:23:21
-dateutils.dateadd(time_str_s, 3, 'weeks') # 2020-07-06T15:23:21
-dateutils.dateadd(time_str_s, -3, 'hours') # 2020-06-15T12:23:21
-dateutils.dateadd(time_str_s, 3, 'seconds') # 2020-06-15T15:23:24
+dateutils.dateadd(time_str, -2, 'years') # 2018-06-15
+dateutils.dateadd(time_str, 3, 'months') # 2020-09-15
+dateutils.dateadd(time_str_s, 44, 'minutes') # 2020-06-15 16:07:21
+dateutils.dateadd(time_str_s, 1000, 'days') # 2023-03-12 15:23:21
+dateutils.dateadd(time_str_s, 3, 'weeks') # 2020-07-06 15:23:21
+dateutils.dateadd(time_str_s, -3, 'hours') # 2020-06-15 12:23:21
+dateutils.dateadd(time_str_s, 3, 'seconds') # 2020-06-15 15:23:24
 ```
 
 #### datediff
@@ -188,9 +188,9 @@ dateutils.isomonth("2012-1-2") # 2012-01
 The date info returned can also be assigned as a param of dateutils. Here are some examples:
 
 ```python
-dt_now = dateutils.now()  # 2022-02-07T09:49:14.212954
+dt_now = dateutils.now()  # 2022-02-07 09:49:14
 # 1. date after 10 days
-dt_10_days = dateutils.dateadd(dt_now, 10) # 2022-02-17T09:49:14.212954
+dt_10_days = dateutils.dateadd(dt_now, 10) # 2022-02-17 09:49:14
 # 2. month after 10 days
 dt_month_10_days = dateutils.month(dt_10_days) # 2
 # 3. difference between 2 days
