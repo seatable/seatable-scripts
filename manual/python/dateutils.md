@@ -1,6 +1,8 @@
 # DateUtils
 
-We provide a set of functions for the date operations based on the datetime module of python. These functions have the same behavior as the functions provided by the formula-type column of SeaTable. At the same time, if the input time string  params has a timezone info, it will be automatically localized first. 
+We provide a set of functions for the date operations based on the datetime module of python. These functions have the same behavior as the functions provided by the formula column of SeaTable.
+
+About timezone: If the input time string has a timezone info, it will be automatically converted to local time. 
 
 #### function import
 
@@ -196,11 +198,11 @@ dt_month_10_days = dateutils.month(dt_10_days) # 2
 # 3. difference between 2 days
 dt_10_days_before = dateutils.dateadd(dt_now, -10)
 date_df = dateutils.datediff(dt_10_days_before, dt_10_days, unit="D") # 20
-# 4. handle the time string with time-zone info with local timezone of "Asia/Shanghai"
+# 4. handle the time string with time-zone info with local timezone of "Asia/Shanghai" (UTC+8)
 time_str = "2021-07-17T08:15:41.106+00:00"
 time_day = dateutils.day(time_str) # 17
 time_month = dateutils.month(time_str) # 7
 time_year = dateutils.year(time_str) # 2021
-time_hour = dateutils.hour(time_str) # 16，  8 hours more than UTC time in China
+time_hour = dateutils.hour(time_str) # 16
 time_date = dateuitls.date(time_year, time_month, time_day) # 2021-07-17
 ```
