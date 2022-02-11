@@ -1,6 +1,6 @@
 # DateUtils
 
-We provide a set of functions for the date operations based on the datetime module of python. These functions acts the same as the functions provided by the formula-type column of SeaTable. At the same time, if the input time string  params has a timezone info, it will be automatically localized first. 
+We provide a set of functions for the date operations based on the datetime module of python. These functions have the same behavior as the functions provided by the formula-type column of SeaTable. At the same time, if the input time string  params has a timezone info, it will be automatically localized first. 
 
 #### function import
 
