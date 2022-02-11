@@ -1,6 +1,8 @@
 # DateUtils
 
-We provide a set of functions for the date operations based on the datetime module of python
+We provide a set of functions for the date operations based on the datetime module of python. These functions have the same behavior as the functions provided by the formula column of SeaTable.
+
+About timezone: If the input time string has a timezone info, it will be automatically converted to local time. 
 
 #### function import
 
@@ -10,10 +12,18 @@ from seatable_api.date_utils import dateutils
 
 #### date
 
-Return the ISO formatted date
+Return the ISO formatted date string
 
 ```python
 dateutils.date(2020, 5, 16) # 2020-05-16
+```
+
+#### now
+
+Return the ISO formatted date time of current and accurated to seconds
+
+```python
+dateutils.now() # 2022-02-07 09:44:00
 ```
 
 #### dateadd
@@ -24,13 +34,13 @@ Addition operation for a datetime by different units such as years, months, week
 time_str = "2020-6-15"
 time_str_s = "2020-6-15 15:23:21"
 
-dateutils.dateadd(time_str, -2, 'years') # 2018-06-15T00:00:00
-dateutils.dateadd(time_str, 3, 'months') # 2020-09-15T00:00:00
-dateutils.dateadd(time_str_s, 44, 'minutes') # 2020-06-15T16:07:21
-dateutils.dateadd(time_str_s, 1000, 'days') # 2023-03-12T15:23:21
-dateutils.dateadd(time_str_s, 3, 'weeks') # 2020-07-06T15:23:21
-dateutils.dateadd(time_str_s, -3, 'hours') # 2020-06-15T12:23:21
-dateutils.dateadd(time_str_s, 3, 'seconds') # 2020-06-15T15:23:24
+dateutils.dateadd(time_str, -2, 'years') # 2018-06-15
+dateutils.dateadd(time_str, 3, 'months') # 2020-09-15
+dateutils.dateadd(time_str_s, 44, 'minutes') # 2020-06-15 16:07:21
+dateutils.dateadd(time_str_s, 1000, 'days') # 2023-03-12 15:23:21
+dateutils.dateadd(time_str_s, 3, 'weeks') # 2020-07-06 15:23:21
+dateutils.dateadd(time_str_s, -3, 'hours') # 2020-06-15 12:23:21
+dateutils.dateadd(time_str_s, 3, 'seconds') # 2020-06-15 15:23:24
 ```
 
 #### datediff
@@ -116,7 +126,7 @@ dateutils.hour("2020-1-1 12:20:30") # 12
 Return the hours difference of two given datetime
 
 ```python
-dateutils.hours("2019-6-3 20:1:12","2020-5-3 13:13:13") # 8034
+dateutils.hours("2019-6-3 20:1:12", "2020-5-3 13:13:13") # 8034
 ```
 
 #### minute
@@ -169,11 +179,30 @@ dateutils.isoweeknum('2012-1-2') # 1
 
 #### isomonth
 
-返回某个日期字符串的 ISO 格式的月份
-
 Return the ISO formatted month
 
 ~~~python
 dateutils.isomonth("2012-1-2") # 2012-01
 ~~~
 
+#### other examples
+
+The date info returned can also be assigned as a param of dateutils. Here are some examples:
+
+```python
+dt_now = dateutils.now()  # 2022-02-07 09:49:14
+# 1. date after 10 days
+dt_10_days = dateutils.dateadd(dt_now, 10) # 2022-02-17 09:49:14
+# 2. month after 10 days
+dt_month_10_days = dateutils.month(dt_10_days) # 2
+# 3. difference between 2 days
+dt_10_days_before = dateutils.dateadd(dt_now, -10)
+date_df = dateutils.datediff(dt_10_days_before, dt_10_days, unit="D") # 20
+# 4. handle the time string with time-zone info with local timezone of "Asia/Shanghai" (UTC+8)
+time_str = "2021-07-17T08:15:41.106+00:00"
+time_day = dateutils.day(time_str) # 17
+time_month = dateutils.month(time_str) # 7
+time_year = dateutils.year(time_str) # 2021
+time_hour = dateutils.hour(time_str) # 16
+time_date = dateuitls.date(time_year, time_month, time_day) # 2021-07-17
+```
