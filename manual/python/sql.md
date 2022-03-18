@@ -4,7 +4,9 @@ You can use SQL to query data in SeaTable. If some tables in a base are archived
 
 ## Supported SQL Syntax
 
-Currently only `select` statements are supported. Select syntax below is supported:
+Currently only `select`, `insert`, `update`, and `delete` statements are supported. (`insert`, `update`, and `delete` statements require version 2.7 or later)
+
+The synatx of `select` statement is:
 
 ```
 SELECT [DISTINCT] fields FROM table_name [WhereClause] [GroupByClause] [HavingClause] [OrderByClause] [Limit Option]
@@ -18,7 +20,6 @@ Notes:
     * `LIKE` only supports strings. The key word `ILIKE` can be used instead of `LIKE` to make the match case-insensitive.
     * `BETWEEN ... AND ...` only supports numbers and time.
     * Time constants should be strings in ISO format (e.g. "2020-09-08 00:11:23"). Since 2.8 version, strings in RFC 3339 format are supported (such as "2020-12-31T23:59:60Z").
-    * NULL values are handled similar to [MySQL](https://dev.mysql.com/doc/refman/8.0/en/working-with-null.html).
 * `GROUP BY` uses strict syntax. The selected fields must appear in group by list, except for aggregation functions (`COUNT`, `SUM`, `MAX`, `MIN`, `AVG`) and formulas (see extended syntax section below).
 * `HAVING` filters rows resulting from the group by clause. Only fields referred in the "GROUP BY" clause or aggregation functions (such as "SUM") can be used in having clause. Other syntax is the same as specified for the where clause.
 * Fields in "order by" list must be a column or an expression in the selected fields. For example, `select a from table order by b` is invalid; while `select a from table order by b` and `select abs(a), b from table order by abs(a)` are valid.
@@ -28,6 +29,28 @@ Notes:
     * Field alias cannot be referred in `where` clause. E.g., `select t.registration as r, count(*) from t group by r where r > "2020-01-01"` will report syntax error.
 
 Each returned row is a JSON map. The keys of the maps are the column keys, NOT column names. To use column names as keys, the `convert_keys` parameter (available since version 2.4) in query request should be TRUE.
+
+The synatx of `insert`, `update`, and `delete` statements are:
+
+```
+INSERT INTO table_name [column_list] VALUES value_list [, ...]
+
+UPDATE table_name SET column_name = value [, ...] [WhereClause]
+
+DELETE FROM table_name [WhereClause]
+
+```
+
+* `column_list` is a list of column names surrounded by parentheses. If omitted, it defaults to all updatable columns.
+* `value_list` is a list of values surrounded by parentheses. Values must be in the same order as the column list, for example: `(1, "2", 3.0)`.
+* Multivalued columns, such as multiple-select column type, requires values to be surrounded by parentheses, for example: `(1, "2", 3.0, ("foo", "bar"))`.
+* Values of single-select and multiple-select column types must be option names, not option keys.
+* `WhereClause` is optional. If omitted, all rows in the table are included.
+
+Note: these column types are *not* allowed to insert or update:
+
+* built-in columns, such as `_id`, `_ctime`.
+* image, file, formula, link, link-formula, geolocation, auto-number, button
 
 ## Data Types
 
@@ -92,6 +115,21 @@ When used in `group by` or `order by` clauses, the elements for each list will f
 If a list column is passed as parameter to a formula, and the parameter expects a scalar value, the first element will be used. And if the element is a linked record, the value of its display column will be used.
 
 When applying aggregate functions (min, max, sum, avg) to a list column, if there is only 1 element in the list, use that element; otherwise this row will not be aggregated.
+
+### NULL Values
+
+The NULL value is distinct from 0 or an empty string. It represents a missing value.
+
+In the `WhereClause`:
+
+* the value which can not be converted to the column type will be treated as NULL.
+* arithmetic operations on NULL values will return NULL.
+* `!=`, `NOT LIKE`, `NOT IN`, `NOT BETWEEN`, `HAS NONE OF`, `IS NOT TRUE`, and `IS NULL` operations will return true when the value is NULL.
+* `AND`, `OR`, `NOT` treat NULL values as false.
+* the aggregate functions (min, max, sum, avg) will ignore NULL values.
+* functions or formula columns that return error will be treated as NULL.
+
+In formulas, the NULL value will be converted to 0 or an empty string.
 
 ## Extended Syntax
 
