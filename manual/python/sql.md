@@ -123,12 +123,13 @@ The NULL value is distinct from 0 or an empty string. It represents a missing va
 In the `WhereClause`:
 
 * the value which can not be converted to the column type will be treated as NULL.
-* mathematical operations on NULL values will return NULL.
+* arithmetic operations on NULL values will return NULL.
 * `!=`, `NOT LIKE`, `NOT IN`, `NOT BETWEEN`, `HAS NONE OF`, `IS NOT TRUE`, and `IS NULL` operations will return true when the value is NULL.
 * `AND`, `OR`, `NOT` treat NULL values as false.
 * the aggregate functions (min, max, sum, avg) will ignore NULL values.
+* functions or formula columns that return error will be treated as NULL.
 
-In formulas, the NULL value will be converted to 0 or an empty string, then the calculation starts.
+In formulas, the NULL value will be converted to 0 or an empty string.
 
 ## Extended Syntax
 
