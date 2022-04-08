@@ -55,11 +55,11 @@ Caculation of the different between 2 date times by different units such as S, Y
 time_start = "2019-6-1"
 time_end = "2020-5-15"
 dateutils.datediff(start=time_start, end=time_end, unit='S') # seconds 30153600
-dateutils.datediff(start=time_start, end=time_end, unit='Y') # years 1
-dateutils.datediff(start=time_start, end=time_end, unit='D') # days 347
-dateutils.datediff(start=time_start, end=time_end, unit='H') # hours 8377
-dateutils.datediff(start=time_start, end=time_end, unit='M') # months 12
-dateutils.datediff(start=time_start, end=time_end, unit='YM') #  -1
+dateutils.datediff(start=time_start, end=time_end, unit='Y') # years 0
+dateutils.datediff(start=time_start, end=time_end, unit='D') # days 349
+dateutils.datediff(start=time_start, end=time_end, unit='H') # hours 8376
+dateutils.datediff(start=time_start, end=time_end, unit='M') # months 11
+dateutils.datediff(start=time_start, end=time_end, unit='YM') #  11
 dateutils.datediff(start=time_start, end=time_end, unit='MD') #  14
 dateutils.datediff("2019-1-28","2020-2-1", unit='YD') # 3
 ```
@@ -69,7 +69,7 @@ dateutils.datediff("2019-1-28","2020-2-1", unit='YD') # 3
 Return the last day of the next / last month of given date. Parameters direction can be set by 1 or -1
 
 ```python
-dateutils.emonth('2020-3-25', direction=-1) # 2021-02-28
+dateutils.emonth('2021-3-25', direction=-1) # 2021-02-28
 dateutils.emonth('2021-3-25', direction=1) # 2021-04-30
 ```
 
@@ -94,7 +94,7 @@ dateutils.month("2019-5-4") # 5
 Return the months difference of two given date
 
 ```python
-dateutils.month("2019-5-1","2020-5-4") # 12
+dateutils.months("2019-5-1","2020-5-4") # 12
 ```
 
 #### day
@@ -126,7 +126,7 @@ dateutils.hour("2020-1-1 12:20:30") # 12
 Return the hours difference of two given datetime
 
 ```python
-dateutils.hours("2019-6-3 20:1:12", "2020-5-3 13:13:13") # 8034
+dateutils.hours("2019-6-3 20:1:12", "2020-5-3 13:13:13") # 8033
 ```
 
 #### minute
