@@ -118,18 +118,21 @@ When applying aggregate functions (min, max, sum, avg) to a list column, if ther
 
 ### NULL Values
 
-The NULL value is distinct from 0 or an empty string. It represents a missing value.
+NULL value is distinct from 0. It represents a missing value. The following values are treated as NULL:
 
-In the `WhereClause`:
+* Values which cannot be converted to the column type will be treated as NULL.
+* Empty strings ("") will be treated as NULL too. This is different from standard SQL.
+* Lists are treated as NULL based on the rules described in the "List Types" section.
+* Functions or formula columns that return error will be treated as NULL.
 
-* the value which can not be converted to the column type will be treated as NULL.
-* arithmetic operations on NULL values will return NULL.
+In the `Where` clause:
+
+* Arithmetic operations (+, -, * etc.) on NULL values will return NULL.
 * `!=`, `NOT LIKE`, `NOT IN`, `NOT BETWEEN`, `HAS NONE OF`, `IS NOT TRUE`, and `IS NULL` operations will return true when the value is NULL.
 * `AND`, `OR`, `NOT` treat NULL values as false.
-* the aggregate functions (min, max, sum, avg) will ignore NULL values.
-* functions or formula columns that return error will be treated as NULL.
+* Aggregate functions (min, max, sum, avg) will ignore NULL values.
 
-In formulas, the NULL value will be converted to 0 or an empty string.
+In formulas, NULL values will be converted to 0 or an empty strings.
 
 ## Extended Syntax
 
