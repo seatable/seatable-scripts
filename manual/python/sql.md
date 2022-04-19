@@ -120,6 +120,7 @@ When applying aggregate functions (min, max, sum, avg) to a list column, if ther
 
 NULL value is distinct from 0. It represents a missing value. The following values are treated as NULL:
 
+* Empty cells in a table is treated as NULL.
 * Values which cannot be converted to the column type will be treated as NULL.
 * Empty strings ("") will be treated as NULL too. This is different from standard SQL.
 * Lists are treated as NULL based on the rules described in the "List Types" section.
