@@ -46,6 +46,8 @@ DELETE FROM table_name [WhereClause]
 * Multivalued columns, such as multiple-select column type, requires values to be surrounded by parentheses, for example: `(1, "2", 3.0, ("foo", "bar"))`.
 * Values of single-select and multiple-select column types must be option names, not option keys.
 * `WhereClause` is optional. If omitted, all rows in the table are included.
+* `INSERT` statement only supports bases that have been archived. The rows will be inserted into big-data storage. It'll return error if the base is not archived yet. If you want to insert rows into such bases, please use APIs provided by dtable-server.
+* `UPDATE` and `DELETE` statements allows updating/deleting rows in both normal and big-data storage.
 
 Note: these column types are *not* allowed to insert or update:
 
