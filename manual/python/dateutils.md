@@ -64,13 +64,15 @@ dateutils.datediff(start=time_start, end=time_end, unit='MD') #  14
 dateutils.datediff("2019-1-28","2020-2-1", unit='YD') # 3
 ```
 
-#### emonth
+#### eomonth
 
-Return the last day of the next / last month of given date. Parameters direction can be set by 1 or -1
+Return the last day of n months befor or after of given date. Parameter months refers to n.
 
 ```python
-dateutils.emonth('2021-3-25', direction=-1) # 2021-02-28
-dateutils.emonth('2021-3-25', direction=1) # 2021-04-30
+date = "2022-7-4"
+dateutils.eomonth(date, months=0) # 2022-07-31
+dateutils.eomonth(date, months=2) # 2022-09-30
+dateutils.eomonth(date, months=-5) # 2022-02-28
 ```
 
 #### year
