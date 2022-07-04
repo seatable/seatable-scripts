@@ -66,7 +66,7 @@ dateutils.datediff("2019-1-28","2020-2-1", unit='YD') # 3
 
 #### eomonth
 
-Return the last day of n months befor or after of given date. Parameter months refers to n.
+Return the last day of n months befor or after given date. Parameter months refers to n.
 
 ```python
 date = "2022-7-4"
