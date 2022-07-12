@@ -165,3 +165,9 @@ For more details, please refer to \[./function.md].
 Some column types in SeaTable have list values. The SeaTable UI supports a few special filters for such types. They are `HAS ANY OF`, `HAS ALL OF`, `HAS NONE OF`, `IS EXACTLY`. You may also use the same syntax to filter such columns with SQL.
 
 For example, if column "city" is of type multi-select, and we want to find out all rows that contains "New York" or "Paris" in the "city" column, you can query: `select * from table where city has any of ("New York", "Paris");`. The list of string constant are enclosed with brackets, just like the syntax for `IN`.
+
+## Indexes
+
+To improve query performance, SeaTable will automatically create indexes for the rows stored in big data storage engine. Currently, text, number, date, single-select, multiple-select, collaborators, creator, create date, modifier, modification date columns are indexed. No manual index manipulations are supported at the moment.
+
+When you add or delete a column in a table, the index for this column is not added/removed immediately. Index creation and deletion only happen in the next Archive operation.
