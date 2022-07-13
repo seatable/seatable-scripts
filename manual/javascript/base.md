@@ -441,21 +441,6 @@ rows.forEach((row) => {
 base.modifyRow(table, selectedRows, updatedRows);
 ```
 
-### filter
-
-Pass a conditional statement, filter out the rows that meet the conditions in the table, and return a querySet object
-
-* [查询语句规范](query-sentences.md)
-
-* [QuerySet](queryset.md)
-
-#### Example
-
-```javascript
-// Filter out rows whose number column is equal to 5, and return a querySet object
-const querySet = base.filter('Table1', 'Default', 'number = 5');
-```
-
 ## Links
 
 #### addLink
