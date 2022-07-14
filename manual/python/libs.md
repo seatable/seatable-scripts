@@ -14,3 +14,7 @@ The following modules are available
 * Date/time calculation tool library, [dateutils](https://pypi.org/project/dateutils/)
 * http request, [requests](https://pypi.org/project/requests/)
 * OpenSSL library, [pyOpenSSL](https://pypi.org/project/pyOpenSSL/)
+* Pillow library, [Pillow](https://pypi.org/project/Pillow/)
+* Barcode library, [python-barcode](https://pypi.org/project/python-barcode/)
+* Pandas library, [pandas](https://pypi.org/project/pandas/)
+* Numpy library, [numpy](https://pypi.org/project/numpy/)
