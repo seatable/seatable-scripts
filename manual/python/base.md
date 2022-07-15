@@ -113,3 +113,27 @@ The Base object provides interfaces for operating rows and columns, uploading an
 * [Columns](columns.md)
 * [Files](files.md)
 
+
+
+## Authorization expiration handling
+
+In some cases, we need to put the base operation logic into a `While` or `For` loop. Authorization may expire during execution and cause the program to break. We provide an exception called `TokenExpiredError` that can be caught for reauthorization.
+
+```python
+from seatable_api import Base, context
+from seatable_api.exception import TokenExpiredError
+
+server_url = context.server_url or 'https://cloud.seatable.cn'
+api_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
+
+base = Base(api_token, server_url)
+base.auth()
+
+while True:
+    try:
+        base.append_row('Table1', {"xxx":"xxx"})
+        ...
+    except TokenExpiredError:
+       base.auth()
+```
+
