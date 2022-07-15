@@ -13,7 +13,7 @@ Use the API Token of the base to get access authorization.
 ```
 from seatable_api import Base, context
 
-server_url = context.server_url or 'https://cloud.seatable.cn'
+server_url = context.server_url or 'https://cloud.seatable.io'
 api_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
 
 base = Base(api_token, server_url)
@@ -123,7 +123,7 @@ In some cases, we need to put the base operation logic into a `While` or `For` l
 from seatable_api import Base, context
 from seatable_api.exception import TokenExpiredError
 
-server_url = context.server_url or 'https://cloud.seatable.cn'
+server_url = context.server_url or 'https://cloud.seatable.io'
 api_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
 
 base = Base(api_token, server_url)
