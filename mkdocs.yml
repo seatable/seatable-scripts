@@ -8,7 +8,7 @@ repo_name: seatable/seatable-scripts
 repo_url: https://github.com/seatable/seatable-scripts/
 edit_uri: edit/master/manual/
 
-copyright: Copyright &copy; 2021 seatable
+copyright: Copyright &copy; 2022 seatable
 
 theme:
   name: material
@@ -68,7 +68,7 @@ nav:
     - Context: python/context.md
     - Dateutils: python/dateutils.md
     - Libraries supported in cloud environment: python/libs.md
-    - Get real-time data update notifications: python/websocket.md
+    - Get realtime data update notifications: python/websocket.md
   - JavaScript API:
     - Introduction: javascript-api/README.md
     - Base: javascript-api/base.md
