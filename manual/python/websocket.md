@@ -1,8 +1,8 @@
 # Websocket
 
-## Get real-time data updates
+## Get real-time data update notifications
 
-By using websocket, you can get real-time data updates of a Base just like the SeaTable webpage.
+By using websocket, you can get real-time data update notifications of a Base just like the SeaTable webpage.
 
 ##### Example
 
@@ -26,7 +26,7 @@ When Base has data updated, the following will be output in the terminal.
 {"op_type":"insert_row","table_id":"0000","row_id":"YFK9bD1XReSuQ7WP1YYjMA","row_insert_position":"insert_below","row_data":{"_id":"RngJuRa0SMGXyiA-SHDiAw","_participants":[],"_creator":"seatable@seatable.com","_ctime":"","_last_modifier":"seatable@seatable.com","_mtime":""},"links_data":{}}
 ```
 
-### After getting data updates, customize subsequent operations
+### After getting data update notifications, customize subsequent operations
 
 By overriding the UPDATE_DTABLE event, you can customize the subsequent operations.
 

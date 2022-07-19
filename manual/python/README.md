@@ -96,7 +96,7 @@ SeaTable API introduction:
 * [Context](context.md)
 * [Constants](constants.md): Some constant definitions
 * [Libs](libs.md): List of Python libraries supported for import in the cloud
-* [Websocket](websocket.md):Get real-time data updates
+* [Websocket](websocket.md):Get real-time data update notifications by Websocket
 * [Query Statements](query-sentences.md)
 
 
