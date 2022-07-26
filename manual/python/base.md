@@ -13,7 +13,7 @@ Use the API Token of the base to get access authorization.
 ```
 from seatable_api import Base, context
 
-server_url = context.server_url or 'https://cloud.seatable.cn'
+server_url = context.server_url or 'https://cloud.seatable.io'
 api_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
 
 base = Base(api_token, server_url)
@@ -112,4 +112,30 @@ The Base object provides interfaces for operating rows and columns, uploading an
 * [Links](links.md)
 * [Columns](columns.md)
 * [Files](files.md)
+
+
+
+## Authorization expiration handling
+
+In some cases, the program need to run for a long time, we put the base operation code into a while or for loop. Authorization may expire during execution and cause the program to break. We provide an exception called `AuthExpiredError` that can be caught for reauthorization.
+
+> Note, this feature works with SeaTable version 3.1+
+
+```python
+from seatable_api import Base, context
+from seatable_api.exception import AuthExpiredError
+
+server_url = context.server_url or 'https://cloud.seatable.io'
+api_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
+
+base = Base(api_token, server_url)
+base.auth()
+
+while True:
+    try:
+        base.append_row('Table1', {"xxx":"xxx"})
+        ...
+    except AuthExpiredError:
+       base.auth()
+```
 
