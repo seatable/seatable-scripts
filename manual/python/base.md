@@ -117,7 +117,9 @@ The Base object provides interfaces for operating rows and columns, uploading an
 
 ## Authorization expiration handling
 
-In some cases, we need to put the base operation logic into a while or for loop. Authorization may expire during execution and cause the program to break. We provide an exception called `AuthExpiredError` that can be caught for reauthorization.
+In some cases, the program need to run for a long time, we put the base operation code into a while or for loop. Authorization may expire during execution and cause the program to break. We provide an exception called `AuthExpiredError` that can be caught for reauthorization.
+
+> Note, this feature works with SeaTable version 3.1+
 
 ```python
 from seatable_api import Base, context
