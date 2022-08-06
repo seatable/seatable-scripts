@@ -522,3 +522,97 @@ const rows = base.getRows('contact', 'Default_view');
 // Update row links to [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id]
 base.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', [rows[0]._id, rows[1]._id, rows[2]._id, rows[3]._id])
 ```
+
+## query
+
+Use sql to query a base
+
+```javascript
+await base.query(sql)
+
+```
+
+#### BASIC
+
+```javascript
+const data = await base.query('select name, price, year from Bill')
+output.text(data)
+
+```
+
+result
+
+```
+[
+	{"name":"Bob","price":"300","year":"2021"},
+	{"name":"Bob","price":"300","year":"2019"},
+	{"price":"100","year":"2019","name":"Tom"},
+	{"name":"Tom","price":"100","year":"2020"},
+	{"name":"Tom","price":"200","year":"2021"},
+	{"name":"Jane","price":"200","year":"2020"},
+	{"name":"Jane","price":"200","year":"2021"}
+]
+
+```
+
+#### WHERE
+
+```
+const data = await base.query('select name, price from Bill where year = 2021')
+output.text(data)
+
+```
+
+Result
+
+```
+[
+	{"name":"Bob","price":"300"},
+	{"name":"Tom","price":"200"},
+	{"name":"Jane","price":"200"}
+]
+
+```
+
+#### GROUP BY
+
+```
+const data = await base.query('select name, price from Bill where year = 2021')
+output.text(data)
+
+```
+
+Result
+
+```
+[
+	{"price":"300","year":2019,"name":"Bob"},
+	{"price":"100","year":2019,"name":"Tom"},
+	{"name":"Tom","price":"100","year":2020},
+	{"price":"200","year":2020,"name":"Jane"},
+	{"name":"Bob","price":"300","year":2021},
+	{"name":"Tom","price":"200","year":2021},
+	{"name":"Jane","price":"200","year":2021}
+]
+
+```
+
+#### DISTINCT
+
+```
+const data = await base.query('select distinct name from Bill')
+output.text(data)
+
+```
+
+Result
+
+```
+[
+	{"name":"Bob"},
+	{"name":"Jane"},
+	{"name":"Tom"}
+]
+
+```
+
