@@ -527,10 +527,15 @@ base.updateLinks('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 
 
 Use sql to query a base
 
+```javascript
+await base.query(sql)
+
+```
+
 #### BASIC
 
 ```javascript
-const data = base.query('select name, price, year from Bill')
+const data = await base.query('select name, price, year from Bill')
 output.text(data)
 
 ```
