@@ -37,7 +37,7 @@ Requirements
 
 ## A simple example
 
-This following example shows how to query records from a base and update them using queryset.
+This following example shows how to operate records in a table.
 
 ```
 base = Base(api_token, server_url)
