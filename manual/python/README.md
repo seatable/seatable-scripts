@@ -37,21 +37,18 @@ Requirements
 
 ## A simple example
 
-This following example shows how to query records from a base and update them using queryset.
+This following example shows how to operate records in a table.
 
 ```
 base = Base(api_token, server_url)
 base.auth()
 
-queryset = base.filter('Table1', "age>18 and gender='male'")
-elder_queryset = queryset.filter("age > 70")
-for row in elder_queryset:
-    print(row)
+rows = base.list_rows("Table1")
 
-update_row_data = {'paid': True}
-updated_rows = elder_queryset.update(update_row_data)
-
-deleted_count = elder_queryset.delete()
+row_data = {'name': 'Tom', 'age': 18}
+base.append_row('Table1', row_data)
+base.update_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw', row_data)
+base.delete_row('Table1', 'U_eTV7mDSmSd-K2P535Wzw')
 ```
 
 ## How to monitor base changes when you run script locally
