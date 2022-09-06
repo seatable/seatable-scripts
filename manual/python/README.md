@@ -104,3 +104,4 @@ You can find some easy to understand examples through this link[https://github.c
 Detail as follow
 
 * [send_email.py](https://github.com/seatable/seatable-scripts/tree/master/examples/python/send_email.py): Read pictures/files in one table as attachments and send email to contacts in another table
+* [generate_barcode.py](https://github.com/seatable/seatable-scripts/tree/master/examples/python/generate_barcode.py): Transfer the text into barcode and save it into image type column of a base
