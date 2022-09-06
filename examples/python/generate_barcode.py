@@ -9,7 +9,7 @@ the image column
 """
 
 api_token = context.api_token or "859ad340d9a2b11b067c11f43078992e14853af5"
-server_url = context.server_url or "https://cloud.seatable.cn"
+server_url = context.server_url or "https://cloud.seatable.io"
 
 TEXT_COL = "Message"  # column which is expected to be transferred into barcode
 BARCODE_IMAGE_COL = "BarcodeImage"
