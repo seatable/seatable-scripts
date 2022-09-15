@@ -1,21 +1,21 @@
 # Links
 
-#### Get link records
+#### Get linked records
 
-List the link records of a of rows of a link-type column in a table
+List the linked records of rows. You can get the linked records of multiple rows.
 
 ```python
-base.get_link_records(table_id, link_column_key, rows)
+base.get_linked_records(table_id, link_column_key, rows)
 ```
 
 * table_id: the id of link table
 * link_column_key: the column key of the link column of link table ( not link_id )
-* rows:  a rows info list including row_id, offset and limit of link table
+* rows:  a list,  each item of the which contains a row info including row_id, offset (defualt by 0) and limit (default by 10) of link table
 
 ##### Example
 
 ```python
-base.get_link_records('0000', '89o4', rows=[
+base.get_linked_records('0000', '89o4', rows=[
         {'row_id': 'FzNqJxVUT8KrRjewBkPp8Q', 'limit': 2, 'offset': 0},
         {'row_id': 'Jmnrkn6TQdyRg1KmOM4zZg', 'limit': 20}
     ])
