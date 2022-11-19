@@ -68,6 +68,7 @@ nav:
     - Context: python/context.md
     - Dateutils: python/dateutils.md
     - Libraries supported in cloud environment: python/libs.md
+    - Notifications: python/notifications.md
     - Get realtime data update notifications: python/websocket.md
   - JavaScript API:
     - Introduction: javascript-api/README.md
