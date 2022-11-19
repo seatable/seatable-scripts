@@ -187,6 +187,64 @@ Return the ISO formatted month
 dateutils.isomonth("2012-1-2") # 2012-01
 ~~~
 
+#### quarter_from_yq
+
+Return a DateQuarter object, and params inlclude year and quarter.
+
+```python
+q = dateutils.quarter_from_yq(year=2022, quarter=3) # <DateQuarter-2022,3Q>
+```
+
+#### quarter_from_ym
+
+Return a DateQuarter object, and params inlclude year and month.
+
+```python
+q = dateutils.quarter_from_ym(year=2022, month=3) # <DateQuarter-2022,3Q>
+```
+
+#### to_quarter
+
+Return a DateQuarter object of a time string.
+
+```python
+time_str = "2022-07-17"
+q = dateutils.to_quarter(time_str) # DateQuarter obj: <DateQuarter-2022,3Q>
+```
+
+#### quarters_within
+
+Return a generator which will generate the DateQuater objects between a start date and end date. You can get the last quarter in the generator if you set param `include_last=True` which is False by default.
+
+```python
+qs = dateutils.quarters_within("2021-03-28", "2022-07-17", include_last=True) # 生成器
+list(qs) # [<DateQuarter-2021,1Q>, <DateQuarter-2021,2Q>,...., <DateQuarter-2022,3Q>]
+```
+
+#### Quarter operation
+
+Some operations are supported based on DateQuater object. Please refer the examples below:
+
+```python
+q = dateutils.quarter_from_yq(2022, 3)
+
+q.year # 2022
+q.quarter # 3
+
+q.start_date # 2022-07-01
+q.end_date # 2022-09-30
+
+q.days()  # generator, which will generate the date in such quarter
+list(q.days()) # [datetime.date(2022, 7, 1), datetime.date(2022, 7, 2),....., datetime.date(2022, 9, 30)]
+
+q + 10 # <DateQuarter-2025,1Q> 
+q1 = dateutils.quater_from_yq(2021, 1) # <DateQuarter-2021,1Q>
+q - q1 # 6
+q < q1 # False
+"2022-6-28" in q # False
+"2022-8-28" in q # True
+```
+
 #### other examples
 
 The date info returned can also be assigned as a param of dateutils. Here are some examples:
