@@ -8,6 +8,7 @@ Get all rows of the table
 base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None, limit=None)
 ```
 
+* table_name: the name or ID of the table
 * order_by:  column name based on which ordering the data
 * start: start position of rows
 * limit:  number of rows returned, the maximum value for limit is 50,000. 
@@ -29,6 +30,8 @@ Get a row of the table by row ID.
 base.get_row(table_name, row_id)
 ```
 
+* table_name: the name or ID of the table
+
 ##### Example
 
 ```python
@@ -42,6 +45,8 @@ Append a row
 ```python
 base.append_row(table_name, row_data)
 ```
+
+* table_name: the name or ID of the table
 
 ##### Example
 
@@ -61,6 +66,7 @@ Insert a row
 base.insert_row(table_name, row_data, anchor_row_id)
 ```
 
+* table_name: the name or ID of the table
 * anchor_row_id: the row under which the new row will be inserted
 
 ##### Example
@@ -80,6 +86,8 @@ Batch append rows
 ```python
 base.batch_append_rows(table_name, rows_data)
 ```
+
+* table_name: the name or ID of the table
 
 ##### Example
 
@@ -105,6 +113,8 @@ Update a row
 base.update_row(table_name, row_id, row_data)
 ```
 
+* table_name: the name or ID of the table
+
 ##### Example
 
 ```python
@@ -121,6 +131,8 @@ Batch update rows
 ```
 batch_update_rows(table_name, rows_data)
 ```
+
+* table_name: the name or ID of the table
 
 ##### Example
 
@@ -159,6 +171,8 @@ Delete a row
 base.delete_row(table_name, row_id)
 ```
 
+* table_name: the name or ID of the table
+
 ##### Example
 
 ```python
@@ -172,6 +186,8 @@ Batch delete rows
 ```python
 base.batch_delete_rows(table_name, row_ids)
 ```
+
+* table_name: the name or ID of the table
 
 ##### Example
 

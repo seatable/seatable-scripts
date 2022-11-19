@@ -46,8 +46,8 @@ base.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
 ```
 
 * link_id:  link_id in the data attribute of the link column
-* table_name: the name of the link table
-* other_table_name: the name of the linked table
+* table_name: the name or ID of the link table
+* other_table_name: the name of of the linked table
 * row_id: id of link row
 * other_row_id: id of the linked row 
 
@@ -118,6 +118,9 @@ Delete the link row
 base.remove_link(link_id, table_name, other_table_name, row_id, other_row_id)
 ```
 
+* table_name: the name or ID of the link table
+* other_table_name: the name of of the linked table
+
 ##### Example
 
 ```python
@@ -131,6 +134,8 @@ Get the link id by column name
 ```python
 base.get_column_link_id(table_name, column_name, view_name=None)
 ```
+
+* table_name: the name or ID of the table
 
 ##### Example
 
