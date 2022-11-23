@@ -8,7 +8,7 @@ List all rows of the table/view
 base.list_columns(table_name, view_name=None)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 
 ##### Example
 
@@ -25,7 +25,7 @@ Insert/Append column
 base.insert_column(table_name, column_name, column_type, column_key=None, column_data=None)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 * column_key: the key of column after which the new column will be inserted, it will be appended to the last column by default
 * column_type: please refer to [constants](constants.md)
 * column_data: config info of column, required for link-type column, optional for other type columns
@@ -50,7 +50,7 @@ Rename a column
 base.rename_column(table_name, column_key, new_column_name)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 
 ##### Example
 
@@ -66,7 +66,7 @@ Set a column width
 base.resize_column(table_name, column_key, new_column_width)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 
 ##### Example
 
@@ -84,7 +84,7 @@ Freeze a column
 base.freeze_column(table_name, column_key, frozen)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 * frozon: True/False
 
 ##### Example
@@ -99,7 +99,7 @@ base.freeze_column('Table1', '0000', True)
 base.move_column(table_name, column_key, target_column_key)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 * column_key:  the key of the column you want to move
 * target_column_key:  is the key of the anchor column, the moved column will be moved to the right of the column
 
@@ -119,7 +119,7 @@ Transform a column type
 base.modify_column_type(table_name, column_key, new_column_type)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 
 column_type please refer to [constants](constants.md)
 
@@ -139,7 +139,7 @@ Used by single-select or multiple-select type columns
 add_column_options(self, table_name, column, options)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 
 ##### Example
 
@@ -159,7 +159,7 @@ Used by single-select column, to add a limitation of child column options accord
 add_column_cascade_settings(table_name, child_column, parent_column, cascade_settings)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 * child_column: name of child column
 * parent_column: name of parent column
 
@@ -181,7 +181,7 @@ Delete a column
 base.delete_column(table_name, column_key)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 
 ##### Example
 

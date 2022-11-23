@@ -46,8 +46,8 @@ base.add_link(link_id, table_name, other_table_name, row_id, other_row_id)
 ```
 
 * link_id:  link_id in the data attribute of the link column
-* table_name: the name or ID of the link table
-* other_table_name: the name of of the linked table
+* table_name: the name or id of the link table
+* other_table_name: the name or id of the linked table
 * row_id: id of link row
 * other_row_id: id of the linked row 
 
@@ -62,12 +62,12 @@ base.add_link('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g', 'PA
 Modify the info of link-type column
 
 ```
-update_link(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
+update_link(self, link_id, table_name, other_table_name, row_id, other_rows_ids)
 ```
 
 * link_id:  link_id in the data attribute of the link column
-* table_id: the id of the link table
-* other_table_id:  the id of the linked table
+* table_name: the name or id of the link table
+* other_table_name: the name or id of the linked table
 * row_id:   id of link row
 * other_rows_ids: ids of the linked row 
 
@@ -76,8 +76,8 @@ update_link(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
 ```python
 base.update_link(
         link_id='r4IJ',
-        table_id='0000',
-        other_table_id='kFoO',
+        table_name='0000',
+        other_table_name='kFoO',
         row_id='BXhEm9ucTNu3FjupIk7Xug',
         other_rows_ids=[
           'exkb56fAT66j8R0w6wD9Qg',
@@ -91,8 +91,11 @@ base.update_link(
 Batch update infos of link-type columns
 
 ```
-base.batch_update_links(link_id, table_id, other_table_id, row_id_list, other_rows_ids_map)
+base.batch_update_links(link_id, table_name, other_table_name, row_id_list, other_rows_ids_map)
 ```
+
+* table_name: the name or id of the link table
+* other_table_name: the name or id of the linked table
 
 ##### Example
 
@@ -118,8 +121,8 @@ Delete the link row
 base.remove_link(link_id, table_name, other_table_name, row_id, other_row_id)
 ```
 
-* table_name: the name or ID of the link table
-* other_table_name: the name of of the linked table
+* table_name: the name or id of the link table
+* other_table_name: the name or id of the linked table
 
 ##### Example
 
@@ -135,7 +138,7 @@ Get the link id by column name
 base.get_column_link_id(table_name, column_name, view_name=None)
 ```
 
-* table_name: the name or ID of the table
+* table_name: the name or id of the table
 
 ##### Example
 
