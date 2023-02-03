@@ -1,6 +1,6 @@
 # Big data storage
 
-We provide some functions that can handle the data in the big data storage. Before calling these functions, please first turn on the big data features on web page.
+We provide some functions that can handle the data in the big data storage. Before calling these functions, please first turn on the big data feature on web page.
 
 #### Insert rows into big data storage
 
