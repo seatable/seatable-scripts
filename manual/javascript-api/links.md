@@ -26,7 +26,7 @@ await base.addLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J-g'
 Modify the info of link-type column
 
 ```
-base.updateLink(self, link_id, table_id, other_table_id, row_id, other_rows_ids)
+base.updateLink(link_id, table_id, other_table_id, row_id, other_rows_ids)
 ```
 
 * link_id:  link_id in the data attribute of the link column
@@ -94,11 +94,12 @@ await base.removeLink('5WeC', 'real-img-files', 'contact', 'CGtoJB1oQM60RiKT-c5J
 Get the link id by column name
 
 ```javascript
-const linkId = base.getColumnLinkId(table_name, column_name, view_name=None)
+base.getColumnLinkId(columns, column_name)
 ```
 
 ##### Example
 
 ```javascript
-await base.getColumnLinkId('Table1', 'Record') // return the link id such as 'aHL2'
+const columns = await base.listColumns('Table1'); // return table's columns
+const linkId = await base.getColumnLinkId(columns, 'Record') // return the link id such as 'aHL2'
 ```
