@@ -20,6 +20,30 @@ base = Base(api_token, server_url)
 base.auth()
 ```
 
+## Get authorization as a specific user
+
+Use the API Token and user login info to get access authorization.  Some APIs such as comments should be called by a granted user. The user login info includes:
+
+* Email and password
+* Phone number and password
+* Login id and password
+* Username and password
+
+##### Example
+
+```python
+from seatable_api import Base, context
+
+server_url = context.server_url or 'https://cloud.seatable.cn'
+api_token = context.api_token or 'c3c75dca2c369849455a39f4436147639cf02b2d'
+
+login = 'xxx'
+password = 'yyy'
+
+base = Base(api_token, server_url)
+base.auth_as_user(login, password)
+```
+
 ## Metadata
 
 #### Get metadata
