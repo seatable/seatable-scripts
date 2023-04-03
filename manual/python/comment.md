@@ -1,22 +1,6 @@
 # Comment
 
-The functions below are related to a series operation of comment within a base. **For calling these functions, please authorized a base by `Base.auth_as_user(login, password)` first.**
-
-#### Add a comment
-
-```python
-base.add_comment(table_id, row_id, comment)
-```
-
-##### Example
-
-```python
-table_id = '0000'
-row_id = 'IN6FfRQLR9GAYX-6VHPvvA'
-comment = 'comment from seatable-api'
-
-base.add_comment(table_id, row_id, comment) # {'success': True}
-```
+The functions below are related to a series operation of comment within a base.
 
 #### Get the count number of a row's comments
 
@@ -82,18 +66,6 @@ base.resolve_comment(comment_id)
 ~~~python
 base.resolve_comment(1) # {'success': True}
 ~~~
-
-#### Delete a comment
-
-```Python
-base.delete_comment(comment_id)
-```
-
-##### Example
-
-```Python
-base.delete_coment(1) # {'success': True}
-```
 
 #### Get comments of a base within days
 
