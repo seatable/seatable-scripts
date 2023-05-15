@@ -175,3 +175,85 @@ response = requests.post(upload_link, data={
     'file': (upload_file_name, open('/User/Desktop/file.txt', 'rb'))
 })
 ```
+
+## Custom Assets
+
+Additionally, we provide some functions for the operation of custom assets. You can get access these functions by turning on the asset management in a base. 
+
+#### List custom assets
+
+```python
+base.list_custom_assets(path)
+```
+
+##### Example
+
+```python
+folder_dir = "/Main/photos"
+
+base.list_custom_assets(folder_dir)
+# A dict will be returned including dir and file
+{
+  "dir": [{'name': "MyDir"}, ...]
+  "file":[{'name': "sky.png"}, ....]
+}
+```
+
+#### Get custom file info
+
+The data structure returned is available to be updated to the cell of file type column.
+
+```python
+base.get_custom_file_info(path, name)
+```
+
+##### Example
+
+```python
+folder_dir = "/Main/"
+file_name = "sky.png"
+info_dict = base.get_custom_file_info(path, name)
+row_id = "xxxx"
+file_col_name = "File"
+base.update_row('Table1', row_id, {"File": [info_dict]})
+```
+
+#### Download custom file to local
+
+```python
+base.download_custom_file(path, save_path)
+```
+
+* path: the custom asset path you want to download
+* save_path:  the local path you want to save
+
+##### Example
+
+```python
+custom_file_path = "/Main/sky.png"
+local_path = "/Users/Desktop/sky.png"
+base.download_custom_file(custom_file_path, local_path)
+```
+
+#### Upload local file to custom assets
+
+```python
+base.upload_local_file_to_custom_folder(self, local_path, custom_folder_path=None, name=None)
+```
+
+* local_path
+* custom_folder_path: default by the root '/'
+* name: the file name you want to save in the custom folders, if not set, the name will be same as that in the local 
+
+##### Example
+
+```python
+local_path = "/Users/Desktop/sky.png"
+custom_path = "/Main/"
+
+info_dict = base.upload_local_file_to_custom_folder(local_path， custom_path)
+row_id = "xxxx"
+file_col_name = "File"
+base.update_row('Table1', row_id, {"File": [info_dict]})
+```
+
