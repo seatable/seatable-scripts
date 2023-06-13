@@ -176,11 +176,11 @@ response = requests.post(upload_link, data={
 })
 ```
 
-## Custom Assets
+## Custom folders
 
-Additionally, we provide some functions for the operation of custom assets. You can get access these functions by turning on the asset management in a base. 
+The following functions provide access to files in custom folders.
 
-#### List custom assets
+#### List files in custom folders
 
 ```python
 base.list_custom_assets(path)
@@ -199,9 +199,9 @@ base.list_custom_assets(folder_dir)
 }
 ```
 
-#### Get custom file info
+#### Get file info
 
-The data structure returned is available to be updated to the cell of file type column.
+The data structure returned can be used to updated cells of file column.
 
 ```python
 base.get_custom_file_info(path, name)
@@ -218,14 +218,14 @@ file_col_name = "File"
 base.update_row('Table1', row_id, {"File": [info_dict]})
 ```
 
-#### Download custom file to local
+#### Download file to local
 
 ```python
 base.download_custom_file(path, save_path)
 ```
 
-* path: the custom asset path you want to download
-* save_path:  the local path you want to save
+* path: the path in custom folder you want to download
+* save_path: the local path you want to save to
 
 ##### Example
 
@@ -235,7 +235,7 @@ local_path = "/Users/Desktop/sky.png"
 base.download_custom_file(custom_file_path, local_path)
 ```
 
-#### Upload local file to custom assets
+#### Upload local file to custom folders
 
 ```python
 base.upload_local_file_to_custom_folder(self, local_path, custom_folder_path=None, name=None)
