@@ -9,11 +9,14 @@ base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None
 ```
 
 * table_name: the name or id of the table
-* order_by:  column name based on which ordering the data
-* start: start position of rows
-* limit:  number of rows returned, the maximum value for limit is 50,000. 
+* view_name: the name or ID of a view in a table. Only rows satisfy the filter conditions of the view will be returned, optional, string
+* start: starting position of the returned rows, optional, number, default by 0
+* limit: the number limit of the returned rows, optional, number, the limit is set to max 1000 even if a number >1000 is assigned.
 
-50,000 row will be returned in maximum.
+Additional parameters when view_name is not given:
+
+- order_by: a column's name , use this column to sort the rows
+- desc:  optional, boolean
 
 ##### Example
 
