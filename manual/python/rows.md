@@ -3,6 +3,7 @@
 The `seatable-api` module supports multiple functions to work with rows in a SeaTable base.
 
 The following parameter names are used in the function descriptions on this page:
+
 * table_name: the name or id of a table
 * row_id: the id of a row
 * row_data: a dictionary
@@ -42,14 +43,14 @@ base.list_rows(table_name, view_name=None, order_by=None, desc=False, start=None
 * start: start position of rows
 * limit:  number of rows returned, the maximum value for limit is 1 000. 
 
-The [query with SQL](./sql.md) allows to retrieve more rows and offers more filter options.
-
 ##### Example
 
 ```python
 rows = base.list_rows('Table1')
 rows = base.list_rows('Table1', view_name='default', order_by='Age', desc=True, start=5, limit=20)
 ```
+
+The [query with SQL](./sql.md) allows to retrieve more rows and offers more filter options.
 
 #### Get row
 
