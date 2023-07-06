@@ -9,5 +9,5 @@ context.server_url # Server URL, used to initialize Base
 context.api_token  # API token for access a base
 context.current_table  # The name of the table that the current user is viewing when the user runs a script manually
 context.current_row # When the user manually runs a script, the line where the cursor is currently located
-context.current_user_id # The id of the user who runs the script manually
+context.current_username # The id of the user who runs the script manually
 ```
