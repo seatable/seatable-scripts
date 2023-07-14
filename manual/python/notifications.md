@@ -5,7 +5,7 @@
 Send a nofication message which can be toasted on web page to a user.
 
 ```python
-base.send_toast_notification(user_id, msg, toast_type='success')
+base.send_toast_notification(username, msg, toast_type='success')
 ```
 
 * toast_type:  one of  "success", "warning", "danger"

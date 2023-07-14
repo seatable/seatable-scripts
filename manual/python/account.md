@@ -10,10 +10,10 @@ Use email/password to log in, if you want to call other APIs provided by Account
 
 ```python
 from seatable_api import Account
-email = 'xiongxxx@xxx.com'
+username = 'xiongxxx@xxx.com'
 password = 'xxxxxxx'
 server_url = 'https://cloud.seatable.cn/'
-account = Account(email, password, server_url)
+account = Account(username, password, server_url)
 account.auth()
 ```
 
