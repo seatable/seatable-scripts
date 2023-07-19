@@ -5,7 +5,7 @@
 A dict contains user's name and id in org will be returned
 
 ```python
-base.get_user_info（username）
+base.get_user_info(username)
 ```
 
 ##### Example
