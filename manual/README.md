@@ -1,5 +1,9 @@
 # SeaTable programming manual
 
+!!! danger "This manual is deprecated."
+
+    Please use the new [SeaTable Developer Manual](https://developer.seatable.io) instead.
+
 There are various ways to build extentions for SeaTable, including
 
 * Writing a [JavaScript script](javascript/README.md): The script runs directly in the current browser and is suitable for simple data processing.
