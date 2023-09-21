@@ -168,6 +168,9 @@ For example, if column "city" is of type multi-select, and we want to find out a
 
 ## Indexes
 
-To improve query performance, SeaTable will automatically create indexes for the rows stored in big data storage engine. Currently, text, number, date, single-select, multiple-select, collaborators, creator, create date, modifier, modification date columns are indexed. No manual index manipulations are supported at the moment.
+To improve query performance, SeaTable will automatically create indexes for the rows stored in big data storage engine. Currently, text, number, date, single-select, multiple-select, collaborators, creator, create date, modifier, modification date columns are indexed.
 
-When you add or delete a column in a table, the index for this column is not added/removed immediately. Index creation and deletion only happen in the next Archive operation.
+When you add or delete a column in a table, the index for this column is not added/removed immediately. Indexes creation and deletion are triggered in two cases:
+
+1. When you archive the table for the next time, indexes are created for new columns and indexes for remvoed columns are removed.
+2. Users may manage indexes from "index management" UI. You can open it from the "Big data management" menu in the base.
