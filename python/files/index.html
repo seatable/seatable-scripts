@@ -1,0 +1,1982 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="seatable">
+      
+      
+        <link rel="canonical" href="https://seatable.github.io/seatable-scripts/python/files/">
+      
+      
+        <link rel="prev" href="../columns/">
+      
+      
+        <link rel="next" href="../query/">
+      
+      
+      <link rel="icon" href="../../assets/seatable-favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>Files - SeaTable Programming Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#files" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SeaTable Programming Manual" class="md-header__button md-logo" aria-label="SeaTable Programming Manual" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SeaTable Programming Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Files
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/seatable/seatable-scripts/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SeaTable Programming Manual" class="md-nav__button md-logo" aria-label="SeaTable Programming Manual" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    SeaTable Programming Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/seatable/seatable-scripts/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript script
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript script
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python script and API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python script and API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Files
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Files
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-method_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple method
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simple method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upload-a-file-from-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload a file from memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-file-by-local-file-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload file by local file path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-imagefile-cells-in-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update image/file cells in table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-method_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom folders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom folders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-files-in-custom-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      List files in custom folders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-file-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get file info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-file-to-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download file to local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-local-file-to-custom-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload local file to custom folders
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../big_data_storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Big data storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dateutils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dateutils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Libraries supported in cloud environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../websocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get realtime data update notifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL Function Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plugin development process and API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Plugin development process and API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugin development process
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#download" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Download">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple method
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#upload" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Upload">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#simple-method_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simple method
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simple method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#upload-a-file-from-memory" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload a file from memory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-file-by-local-file-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload file by local file path
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-imagefile-cells-in-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update image/file cells in table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#detailed-method_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Detailed method
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Custom folders
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Custom folders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-files-in-custom-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      List files in custom folders
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-file-info" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get file info
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#download-file-to-local" class="md-nav__link">
+    <span class="md-ellipsis">
+      Download file to local
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-local-file-to-custom-folders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Upload local file to custom folders
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="files">Files<a class="headerlink" href="#files" title="Permanent link">&para;</a></h1>
+<p>We provides two sets of functions for file uploading and downloading. The first is simple ones, the second is detailed ones, which split the process of downloading/uploading into two steps: 1. get the downloading/uploading link; 2. downloading/uploading the files. The second set is for handling complicated situations such as large file uploading.</p>
+<h2 id="download">Download<a class="headerlink" href="#download" title="Permanent link">&para;</a></h2>
+<h3 id="simple-method">Simple method<a class="headerlink" href="#simple-method" title="Permanent link">&para;</a></h3>
+<p>Download a file to a local path</p>
+<div class="codehilite"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>file_url:  URL of the file, obtained from the cell of file or image column</li>
+<li>save_path: local path in which the file will be saved after downloading</li>
+</ul>
+<h5 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="n">file_url</span> <span class="o">=</span> <span class="s2">&quot;https://cloud.seatable.io/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip&quot;</span>
+<span class="n">save_path</span> <span class="o">=</span> <span class="s2">&quot;/tmp/files/custom.zip&quot;</span>
+<span class="n">base</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="detailed-method">Detailed method<a class="headerlink" href="#detailed-method" title="Permanent link">&para;</a></h3>
+<p>1)  Get the download link by the URL of the file</p>
+<p>Consider that your have a file in your base with URL https://dev.seafile.com/dtable-web/workspace/74/asset-preview/41cd05da-b29a-4428-bc31-bd66f4600817/files/2020-10/aur7e-jqc19.zip</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Call the API by using the part of the URL after the UUID str</span>
+<span class="n">download_link</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">get_file_download_link</span><span class="p">(</span><span class="s1">&#39;files/2020-10/aur7e-jqc19.zip&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>2)  Get the file content</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">download_link</span><span class="p">)</span>
+</code></pre></div>
+
+<h2 id="upload">Upload<a class="headerlink" href="#upload" title="Permanent link">&para;</a></h2>
+<h3 id="simple-method_1">Simple method<a class="headerlink" href="#simple-method_1" title="Permanent link">&para;</a></h3>
+<h4 id="upload-a-file-from-memory">Upload a file from memory<a class="headerlink" href="#upload-a-file-from-memory" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">upload_bytes_file</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>name: the file name after uploading </li>
+<li>content:  file content , which is a bytes object</li>
+<li>file_type:  image or file, default is file if not set</li>
+<li>replace: replace the file of save name,  default by False</li>
+</ul>
+<p>Return </p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>  
+    <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+<span class="p">}</span>
+</code></pre></div>
+
+<h5 id="example-1-upload-a-file-from-website">Example 1, upload a file from website<a class="headerlink" href="#example-1-upload-a-file-from-website" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">file_url</span> <span class="o">=</span> <span class="s1">&#39;http://www.google.com/xxx/xxx/xxx.txt&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">upload_bytes_file</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;my_uploaded_file.txt&#39;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</code></pre></div>
+
+<h5 id="example-2-upload-a-file-from-local">Example 2, upload a file from local<a class="headerlink" href="#example-2-upload-a-file-from-local" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="n">local_img_file</span> <span class="o">=</span> <span class="s1">&#39;/Users/Desktop/a.png&#39;</span>
+<span class="k">with</span> <span class="nb">open</span> <span class="p">(</span><span class="n">local_img_file</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+  <span class="n">content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">upload_bytes_file</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;my_uploaded_img.png&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<h4 id="upload-file-by-local-file-path">Upload file by local file path<a class="headerlink" href="#upload-file-by-local-file-path" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">upload_local_file</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;file&#39;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>file_path: loacl path of file</li>
+<li>name:  the file name after uploading, using local file name if it is not set</li>
+<li>file_type:  image or file, default is file if not set</li>
+<li>replace: replace the file of save name,  default by False</li>
+</ul>
+<p>Return </p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+    <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>  
+    <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> 
+    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+    <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> 
+<span class="p">}</span>
+</code></pre></div>
+
+<h5 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="n">local_file</span> <span class="o">=</span> <span class="s1">&#39;/Users/Desktop/a.png&#39;</span>
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">upload_local_file</span><span class="p">(</span><span class="n">local_file</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_uploaded_img.png&#39;</span><span class="p">,</span> <span class="n">file_type</span><span class="o">=</span><span class="s1">&#39;image&#39;</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+
+<h4 id="update-imagefile-cells-in-table">Update image/file cells in table<a class="headerlink" href="#update-imagefile-cells-in-table" title="Permanent link">&para;</a></h4>
+<p>The step we discussed above is just for uploading file. We need to update the contents of the cells using the returned information too. Here is an example of updating a table named 'Table1' in a base.  </p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Insert a image into a cell in the image column named &#39;img_col&#39;</span>
+<span class="n">img_url</span> <span class="o">=</span> <span class="n">info_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">)</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;img_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">img_url</span><span class="p">]</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Insert a file into a cell in the file column named &#39;file_col&#39;</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;file_col&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">info_dict</span><span class="p">]</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">)</span>
+
+<span class="c1"># Insert a file/image into a cell which already have contents</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;img_col&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">img_url</span><span class="p">])</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;TableName&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">)</span>
+<span class="n">row</span><span class="p">[</span><span class="s1">&#39;file_col&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">info_dict</span><span class="p">])</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;_id&#39;</span><span class="p">],</span> <span class="n">row</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="detailed-method_1">Detailed method<a class="headerlink" href="#detailed-method_1" title="Permanent link">&para;</a></h3>
+<p>Get a file upload link</p>
+<div class="codehilite"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">get_file_upload_link</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Return</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+  <span class="s2">&quot;parent_path&quot;</span><span class="p">:</span> <span class="s2">&quot;/asset/3a9d8266-78.....&quot;</span><span class="p">,</span>     
+  <span class="s2">&quot;upload_link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://..../upload-api/ea44c4f4...../&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<ul>
+<li>parent_path: the relative parent folder assigned by the server, which will be used when uploading files</li>
+</ul>
+<h5 id="example_2">Example<a class="headerlink" href="#example_2" title="Permanent link">&para;</a></h5>
+<p>Consider that we want to upload the local file "/User/Desktop/file.txt" to the server</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Get the upload link and file path allocated by server</span>
+<span class="n">upload_link_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">get_file_upload_link</span><span class="p">()</span>
+<span class="n">parent_dir</span> <span class="o">=</span> <span class="n">upload_link_dict</span><span class="p">[</span><span class="s1">&#39;parent_path&#39;</span><span class="p">]</span>
+<span class="n">upload_link</span> <span class="o">=</span> <span class="n">upload_link_dict</span><span class="p">[</span><span class="s1">&#39;upload_link&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;?ret-json=1&#39;</span>
+
+<span class="c1"># Upload the file</span>
+<span class="n">upload_file_name</span> <span class="o">=</span> <span class="s2">&quot;file_uploaded.txt&quot;</span> 
+<span class="n">replace</span> <span class="o">=</span> <span class="mi">1</span> 
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">upload_link</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;parent_dir&#39;</span><span class="p">:</span> <span class="n">parent_dir</span><span class="p">,</span>
+    <span class="s1">&#39;replace&#39;</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">replace</span> <span class="k">else</span> <span class="mi">0</span> 
+<span class="p">},</span> <span class="n">files</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;file&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">upload_file_name</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/User/Desktop/file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">))</span>
+<span class="p">})</span>
+</code></pre></div>
+
+<h2 id="custom-folders">Custom folders<a class="headerlink" href="#custom-folders" title="Permanent link">&para;</a></h2>
+<p>The following functions provide access to files in custom folders.</p>
+<h4 id="list-files-in-custom-folders">List files in custom folders<a class="headerlink" href="#list-files-in-custom-folders" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">list_custom_assets</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</code></pre></div>
+
+<h5 id="example_3">Example<a class="headerlink" href="#example_3" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="n">folder_dir</span> <span class="o">=</span> <span class="s2">&quot;/Main/photos&quot;</span>
+
+<span class="n">base</span><span class="o">.</span><span class="n">list_custom_assets</span><span class="p">(</span><span class="n">folder_dir</span><span class="p">)</span>
+<span class="c1"># A dict will be returned including dir and file</span>
+<span class="p">{</span>
+  <span class="s2">&quot;dir&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s2">&quot;MyDir&quot;</span><span class="p">},</span> <span class="o">...</span><span class="p">]</span>
+  <span class="s2">&quot;file&quot;</span><span class="p">:[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s2">&quot;sky.png&quot;</span><span class="p">},</span> <span class="o">....</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h4 id="get-file-info">Get file info<a class="headerlink" href="#get-file-info" title="Permanent link">&para;</a></h4>
+<p>The data structure returned can be used to updated cells of file column.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">get_custom_file_info</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+
+<h5 id="example_4">Example<a class="headerlink" href="#example_4" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="n">folder_dir</span> <span class="o">=</span> <span class="s2">&quot;/Main/&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;sky.png&quot;</span>
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">get_custom_file_info</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="n">row_id</span> <span class="o">=</span> <span class="s2">&quot;xxxx&quot;</span>
+<span class="n">file_col_name</span> <span class="o">=</span> <span class="s2">&quot;File&quot;</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;File&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">info_dict</span><span class="p">]})</span>
+</code></pre></div>
+
+<h4 id="download-file-to-local">Download file to local<a class="headerlink" href="#download-file-to-local" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">download_custom_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">save_path</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>path: the path in custom folder you want to download</li>
+<li>save_path: the local path you want to save to</li>
+</ul>
+<h5 id="example_5">Example<a class="headerlink" href="#example_5" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="n">custom_file_path</span> <span class="o">=</span> <span class="s2">&quot;/Main/sky.png&quot;</span>
+<span class="n">local_path</span> <span class="o">=</span> <span class="s2">&quot;/Users/Desktop/sky.png&quot;</span>
+<span class="n">base</span><span class="o">.</span><span class="n">download_custom_file</span><span class="p">(</span><span class="n">custom_file_path</span><span class="p">,</span> <span class="n">local_path</span><span class="p">)</span>
+</code></pre></div>
+
+<h4 id="upload-local-file-to-custom-folders">Upload local file to custom folders<a class="headerlink" href="#upload-local-file-to-custom-folders" title="Permanent link">&para;</a></h4>
+<div class="codehilite"><pre><span></span><code><span class="n">base</span><span class="o">.</span><span class="n">upload_local_file_to_custom_folder</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">local_path</span><span class="p">,</span> <span class="n">custom_folder_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</code></pre></div>
+
+<ul>
+<li>local_path</li>
+<li>custom_folder_path: default by the root '/'</li>
+<li>name: the file name you want to save in the custom folders, if not set, the name will be same as that in the local </li>
+</ul>
+<h5 id="example_6">Example<a class="headerlink" href="#example_6" title="Permanent link">&para;</a></h5>
+<div class="codehilite"><pre><span></span><code><span class="n">local_path</span> <span class="o">=</span> <span class="s2">&quot;/Users/Desktop/sky.png&quot;</span>
+<span class="n">custom_path</span> <span class="o">=</span> <span class="s2">&quot;/Main/&quot;</span>
+
+<span class="n">info_dict</span> <span class="o">=</span> <span class="n">base</span><span class="o">.</span><span class="n">upload_local_file_to_custom_folder</span><span class="p">(</span><span class="n">local_path</span><span class="err">，</span> <span class="n">custom_path</span><span class="p">)</span>
+<span class="n">row_id</span> <span class="o">=</span> <span class="s2">&quot;xxxx&quot;</span>
+<span class="n">file_col_name</span> <span class="o">=</span> <span class="s2">&quot;File&quot;</span>
+<span class="n">base</span><span class="o">.</span><span class="n">update_row</span><span class="p">(</span><span class="s1">&#39;Table1&#39;</span><span class="p">,</span> <span class="n">row_id</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;File&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">info_dict</span><span class="p">]})</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 seatable
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/seatable/seatable-scripts/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

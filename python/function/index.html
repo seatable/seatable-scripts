@@ -1,0 +1,2425 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="seatable">
+      
+      
+        <link rel="canonical" href="https://seatable.github.io/seatable-scripts/python/function/">
+      
+      
+        <link rel="prev" href="../sql/">
+      
+      
+        <link rel="next" href="../../plugins/">
+      
+      
+      <link rel="icon" href="../../assets/seatable-favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>SQL Function Reference - SeaTable Programming Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sql-function-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SeaTable Programming Manual" class="md-header__button md-logo" aria-label="SeaTable Programming Manual" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SeaTable Programming Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SQL Function Reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/seatable/seatable-scripts/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SeaTable Programming Manual" class="md-nav__button md-logo" aria-label="SeaTable Programming Manual" data-md-component="logo">
+      
+  <img src="../../assets/logo32_32.png" alt="logo">
+
+    </a>
+    SeaTable Programming Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/seatable/seatable-scripts/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    seatable/seatable-scripts
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../data-structure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Data structure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript script
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript script
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/output/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Output
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/utils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript/context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python script and API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Python script and API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../big_data_storage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Big data storage
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../context/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Context
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    User
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dateutils/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dateutils
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../libs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Libraries supported in cloud environment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notifications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Notifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../websocket/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get realtime data update notifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    JavaScript API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            JavaScript API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/links/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Links
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javascript-api/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    SQL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            SQL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sql/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SQL Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SQL Function Reference
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SQL Function Reference
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions-for-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions for SQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-with-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions with examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions with examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Date functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geo-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Geo functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical functions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Plugin development process and API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Plugin development process and API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugin development process
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/base/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Base
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/common/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Common
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/tables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/views/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Views
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/columns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Columns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/rows/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rows
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/query/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Query with SQL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/plugins/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    plugins
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugins/constants/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Constants
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions-for-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions for SQL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions-with-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functions with examples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Functions with examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mathematical functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Text functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#date-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Date functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geo-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Geo functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logical functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#statistical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Statistical functions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="sql-function-reference">SQL function reference<a class="headerlink" href="#sql-function-reference" title="Permanent link">&para;</a></h1>
+<p>You can use supported functions in SQL query statements.</p>
+<h2 id="functions-for-sql">Functions for SQL<a class="headerlink" href="#functions-for-sql" title="Permanent link">&para;</a></h2>
+<p>With functions you can transform, calculate, combine or merge the values of other columns from the current table. On top of that, functions can refer to each other.</p>
+<p>The functions supported in SQL are roughly the same as the set of functions supported by formulas in SeaTable.</p>
+<p>The basic syntax of functions is as follows:</p>
+<div class="codehilite"><pre><span></span><code>FunctionName(parameters...)
+</code></pre></div>
+
+<p>The parameters can be number,string,constants,column name or other functions. Column name cannot be an alias. If the column name contains "-", you can use "`" to enclose it.</p>
+<p>Currently SQL query offers the following functions:</p>
+<ul>
+<li>Operands</li>
+<li>Mathematical functions</li>
+<li>Text functions</li>
+<li>Date functions</li>
+<li>Geo functions</li>
+<li>Logical functions</li>
+<li>Statistical functions</li>
+</ul>
+<p>In this article, we will show you a complete overview of all functions with examples. If you are looking for a specific function, you can use the Ctrl+F to quickly find an entry on this page.</p>
+<h2 id="functions-with-examples">Functions with examples<a class="headerlink" href="#functions-with-examples" title="Permanent link">&para;</a></h2>
+<p>You can use the following constants in the function:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OPERATOR</th>
+<th style="text-align: left;">DESCRIPTION</th>
+<th style="text-align: left;">INPUT</th>
+<th style="text-align: left;">RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">e</td>
+<td style="text-align: left;">Returns the Euler number e=2.71828...</td>
+<td style="text-align: left;">e+1</td>
+<td style="text-align: left;">3.71828183</td>
+</tr>
+<tr>
+<td style="text-align: left;">pi</td>
+<td style="text-align: left;">Returns the circle number Pi.</td>
+<td style="text-align: left;">pi</td>
+<td style="text-align: left;">3.14159265</td>
+</tr>
+<tr>
+<td style="text-align: left;">true()</td>
+<td style="text-align: left;">Returns the logical value 'true'.</td>
+<td style="text-align: left;">true()</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr>
+<td style="text-align: left;">false()</td>
+<td style="text-align: left;">Returns the logical value 'false'.</td>
+<td style="text-align: left;">false()</td>
+<td style="text-align: left;">false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="operands">Operands<a class="headerlink" href="#operands" title="Permanent link">&para;</a></h3>
+<p>Parameters must be strings or numbers. If a number is passed to a parameter that expects a string, it'll be converted to string, and vice versa.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OPERATOR</th>
+<th style="text-align: left;">DESCRIPTION</th>
+<th style="text-align: left;">INPUT</th>
+<th style="text-align: left;">RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">add(num1,num2)</td>
+<td style="text-align: left;">Adds two numeric values (num1 and num2) and returns the result.</td>
+<td style="text-align: left;">add(1,2)</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">subtract(num1,num2)</td>
+<td style="text-align: left;">Subtracts one numeric value (num2) from another (num1).</td>
+<td style="text-align: left;">subtract(5,4)</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">multiply(num1,num2)</td>
+<td style="text-align: left;">Multiplies two numeric values.</td>
+<td style="text-align: left;">multiply(3,4)</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr>
+<td style="text-align: left;">divide(num1,num2)</td>
+<td style="text-align: left;">Divides one numeric value (num1) by another (num2).</td>
+<td style="text-align: left;">divide(3,2)</td>
+<td style="text-align: left;">1.5</td>
+</tr>
+<tr>
+<td style="text-align: left;">mod(num1,num2)</td>
+<td style="text-align: left;">Calculates the remainder of a division.</td>
+<td style="text-align: left;">mod(15,7)</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">power(num1,num2)</td>
+<td style="text-align: left;">Calculates the power (num2) of a number (num1).</td>
+<td style="text-align: left;">power(3,2)</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr>
+<td style="text-align: left;">greater(num1,num2)</td>
+<td style="text-align: left;">Checks if a numeric value (num1) is greater than another (num2) and returns the logical value 'true' or 'false'.</td>
+<td style="text-align: left;">greater(2,3)</td>
+<td style="text-align: left;">false</td>
+</tr>
+<tr>
+<td style="text-align: left;">lessthan(num1,num2)</td>
+<td style="text-align: left;">Checks if a numeric value (num1) is less than another (num2) and returns the logical value 'true' or 'false'.</td>
+<td style="text-align: left;">lessthan(2,3)</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr>
+<td style="text-align: left;">greatereq(num1,num2)</td>
+<td style="text-align: left;">Checks whether a numeric value (num1) is greater than or equal to another (num2) and returns the logical value 'true' or 'false'.</td>
+<td style="text-align: left;">greatereq(2,3)</td>
+<td style="text-align: left;">false</td>
+</tr>
+<tr>
+<td style="text-align: left;">lessthaneq(num1,num2)</td>
+<td style="text-align: left;">Checks whether a numeric value (num1) is less than or equal to another (num2) and returns the logical value 'true' or 'false'.</td>
+<td style="text-align: left;">lessthaneq(2,3)</td>
+<td style="text-align: left;">false</td>
+</tr>
+<tr>
+<td style="text-align: left;">equal(num1,num2)</td>
+<td style="text-align: left;">Checks if two values (number1, number 2) are equal and returns the logical value 'true' or 'false'.</td>
+<td style="text-align: left;">equal(`Old price`, `New price`)</td>
+<td style="text-align: left;">false</td>
+</tr>
+<tr>
+<td style="text-align: left;">unequal</td>
+<td style="text-align: left;">Checks whether two values (number1, number2) are not equal and returns the logical value 'true' or 'false'.</td>
+<td style="text-align: left;">unequal(`Old price`, `New price`)</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr>
+<td style="text-align: left;">concatenate(string1, string2, ...)</td>
+<td style="text-align: left;">Combines several character strings (string1, string 2, ...) into one character string.</td>
+<td style="text-align: left;">concatenate(`Supplier`, " has the product ", `Product`)</td>
+<td style="text-align: left;">Microsoft has the product Windows</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mathematical-functions">Mathematical functions<a class="headerlink" href="#mathematical-functions" title="Permanent link">&para;</a></h3>
+<p>Parameters must be numbers. If string is passed to a parameter, it'll be converted to number.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OPERATOR</th>
+<th style="text-align: left;">DESCRIPTION</th>
+<th style="text-align: left;">INPUT</th>
+<th style="text-align: left;">RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">abs(number)</td>
+<td style="text-align: left;">Returns the absolute value of a number.</td>
+<td style="text-align: left;">abs(-2)</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">ceiling(number, significance)</td>
+<td style="text-align: left;">Rounds a number to the nearest integer or to the nearest multiple of the specified significance. If either argument is non-numeric, the formula returns an empty value.</td>
+<td style="text-align: left;">ceiling(2.14)</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If the number is an exact multiple of the significance, then no rounding occurs. If the number and the significance are negative, then the rounding is away from 0. If the number is negative and the significance is positive, then the rounding is towards 0.</td>
+<td style="text-align: left;">ceiling(-2.14, 4)</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">even(number)</td>
+<td style="text-align: left;">Assigns a real number to the nearest larger even number.</td>
+<td style="text-align: left;">even(2.14)</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">exp(number)</td>
+<td style="text-align: left;">Exponential function for Euler's number e. Returns the value of e given high (number).</td>
+<td style="text-align: left;">expr(1)</td>
+<td style="text-align: left;">2.71828...</td>
+</tr>
+<tr>
+<td style="text-align: left;">floor(number, significance)</td>
+<td style="text-align: left;">Rounds a number to the nearest integer or to the nearest multiple of the specified significance. If either argument is non-numeric, the formula returns an empty value.</td>
+<td style="text-align: left;">floor(2.86)</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If the number is an exact multiple of the significance, then no rounding takes place. If the sign of the number is positive, then the rounding is towards 0. If the sign of the number is negative, then the rounding is away from 0.</td>
+<td style="text-align: left;">floor(-3.14, 5)</td>
+<td style="text-align: left;">-5</td>
+</tr>
+<tr>
+<td style="text-align: left;">int(number)</td>
+<td style="text-align: left;">Assigns the nearest smaller integer to a real number.</td>
+<td style="text-align: left;">int(-3.14)</td>
+<td style="text-align: left;">-4</td>
+</tr>
+<tr>
+<td style="text-align: left;">lg(number)</td>
+<td style="text-align: left;">Logarithm function (number) with 10 as base.</td>
+<td style="text-align: left;">lg(100)</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">log(number, base)</td>
+<td style="text-align: left;">Logarithm function (number) with definable base.</td>
+<td style="text-align: left;">log(81, 3)</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">But if no base is given, this function works exactly like lg(), with 10 as base.</td>
+<td style="text-align: left;">log(1000)</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">odd(number)</td>
+<td style="text-align: left;">Assigns a real number to the nearest larger odd number.</td>
+<td style="text-align: left;">odd(-2.14)</td>
+<td style="text-align: left;">-1</td>
+</tr>
+<tr>
+<td style="text-align: left;">round(number, digits)</td>
+<td style="text-align: left;">Rounds a number to the nearest integer. If no decimal place (digits) is specified, the number is rounded to the 1st digit to the left of the decimal point.</td>
+<td style="text-align: left;">round(3.14)</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If a positive decimal place (digits) is given, the digit to the right of the decimal point is rounded.</td>
+<td style="text-align: left;">round(3.14, 1)</td>
+<td style="text-align: left;">3.1</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If a negative decimal place (digits) is given, is rounded to the left of the decimal point.</td>
+<td style="text-align: left;">round(3.14, -3)</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">rounddown(number, digits)</td>
+<td style="text-align: left;">Rounds a number towards zero. If no decimal place (digits) is given, the number is rounded to the 1st digit left of the decimal point.</td>
+<td style="text-align: left;">rounddown(3.12, 1)</td>
+<td style="text-align: left;">3.1</td>
+</tr>
+<tr>
+<td style="text-align: left;">roundup(number, digits)</td>
+<td style="text-align: left;">Rounds a number from zero to the nearest whole number. If no decimal place (digits) is given, the number is rounded to the 1st digit left of the decimal point.</td>
+<td style="text-align: left;">roundup(-3.15)</td>
+<td style="text-align: left;">-4</td>
+</tr>
+<tr>
+<td style="text-align: left;">sign(number)</td>
+<td style="text-align: left;">Checks whether a number is greater, equal or less than 0. Returns the values 1, 0 and -1 respectively. In other words: it returns the sign of a number, for '+', 'zero' and '-' with 1, 0, and -1 respectively.</td>
+<td style="text-align: left;">sign(-2)</td>
+<td style="text-align: left;">-1</td>
+</tr>
+<tr>
+<td style="text-align: left;">sqrt(number)</td>
+<td style="text-align: left;">Returns the square root of a number.</td>
+<td style="text-align: left;">sqrt(81)</td>
+<td style="text-align: left;">9</td>
+</tr>
+</tbody>
+</table>
+<h3 id="text-functions">Text functions<a class="headerlink" href="#text-functions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OPERATOR</th>
+<th style="text-align: left;">DESCRIPTION</th>
+<th style="text-align: left;">INPUT</th>
+<th style="text-align: left;">RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">exact(string1, string2)</td>
+<td style="text-align: left;">Checks whether two character strings (string1, string2) are exactly identical. Returns the values 'true' or 'false' respectively. Case sensitive.</td>
+<td style="text-align: left;">exact('SeaTable', 'Seatable')</td>
+<td style="text-align: left;">false</td>
+</tr>
+<tr>
+<td style="text-align: left;">find(findString, sourceString, startPosition)</td>
+<td style="text-align: left;">Returns the start position of a string (findString) within another string (sourceString). It is case sensitive. Without find, 0 is returned. If the start position (startPosition) is given as decimal, it is rounded down. If the cell in the column for the keyword (findString) is still empty, 1 is returned. If the cell in the column for the target string (sourceString) is still empty, an empty value ('') is returned.</td>
+<td style="text-align: left;">find('Sea', 'seaTable', 1)</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">The search will start from the given 'startPosition'. This 'startPosition' has no influence on the result: it always returns the absolute start position. If the 'startPosition' of the character string to be searched for (findString) is given after the actual start position of the character string (sourceString), 0 is returned, since nothing was found from this position.</td>
+<td style="text-align: left;">find('table', 'big table', 4)</td>
+<td style="text-align: left;">5</td>
+</tr>
+<tr>
+<td style="text-align: left;">left(string, count)</td>
+<td style="text-align: left;">Returns the specified number (count) of characters at the beginning of a string.</td>
+<td style="text-align: left;">left('SeaTable', 3)</td>
+<td style="text-align: left;">Sea</td>
+</tr>
+<tr>
+<td style="text-align: left;">len(string)</td>
+<td style="text-align: left;">Returns the number of characters in a string.</td>
+<td style="text-align: left;">len('SeaTable')</td>
+<td style="text-align: left;">8</td>
+</tr>
+<tr>
+<td style="text-align: left;">lower(string)</td>
+<td style="text-align: left;">Converts a character string to lower case letters.</td>
+<td style="text-align: left;">lower('German)</td>
+<td style="text-align: left;">german</td>
+</tr>
+<tr>
+<td style="text-align: left;">mid(string, startPosition, count)</td>
+<td style="text-align: left;">Returns the specified number (count) of characters from the specified start position (startPosition) of a string.</td>
+<td style="text-align: left;">mid('SeaTable is the best', 1, 8)</td>
+<td style="text-align: left;">SeaTable</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Start position (startPosition) and count must not be empty, negative or zero. However, if start position (startPosition) and number (count) are given as decimal, they are rounded down. Too much count is ignored.</td>
+<td style="text-align: left;">mid('SeaTable is the best.', 10.9, 27.3)</td>
+<td style="text-align: left;">is the best.</td>
+</tr>
+<tr>
+<td style="text-align: left;">replace(sourceString, startPosition, count, newString)</td>
+<td style="text-align: left;">Replaces a part (count) of a character string (sourceString) from a certain start position (startPosition) with another character string (newString). The number (count) of characters is only taken into account for the old string (sourceString), but not for the new string (newString).</td>
+<td style="text-align: left;">replace('SeaTable is the best.', 1, 8, 'Seafile')</td>
+<td style="text-align: left;">Seafile is the best.</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If number (count) is given as zero, the new string (newString) is simply added to the old string (sourceString) from the start position (startPosition).</td>
+<td style="text-align: left;">replace('SeaTable is the best.', 1, 0, 'Seafile')</td>
+<td style="text-align: left;">SeafileSeaTable is the best.</td>
+</tr>
+<tr>
+<td style="text-align: left;">rept(string, number)</td>
+<td style="text-align: left;">Repeats a string as often (number) as specified.</td>
+<td style="text-align: left;">rept('Sea ', 3)</td>
+<td style="text-align: left;">SeaSeaSea</td>
+</tr>
+<tr>
+<td style="text-align: left;">right(string, count)</td>
+<td style="text-align: left;">Returns the specified number (count) of characters at the end of a string.</td>
+<td style="text-align: left;">right('SeaTable', 5)</td>
+<td style="text-align: left;">Table</td>
+</tr>
+<tr>
+<td style="text-align: left;">search(findString, sourceString, startPosition)</td>
+<td style="text-align: left;">Returns the start position of a string (findString) within another string (sourceString). It is not case-sensitive. Without find, 0 is returned. If the start position (startPosition) is given as decimal, it is rounded down. If the cell in the column for the keyword (findString) is still empty, 1 is returned. If the cell in the column for the target string (sourceString) is still empty, an empty value ('') is returned.</td>
+<td style="text-align: left;">search('Sea', 'seaTable', 1)</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">The search will start from the given 'startPosition'. This 'startPosition' has no influence on the result: it always returns the absolute start position. If the 'startPosition' of the character string to be searched for (findString) is given after the actual start position of the character string (sourceString), 0 is returned, since nothing was found from this position.</td>
+<td style="text-align: left;">search('table', 'big table', 6)</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">substitute(sourceString, oldString, newString, index)</td>
+<td style="text-align: left;">Replaces existing text (oldString) with new text (newString) in a string (sourceString). If there is more than one text (oldString) in the string (sourceString), only the 'index'-th text is replaced. The text is case-sensitive.</td>
+<td style="text-align: left;">substitute('SeaTableTable', 'Table', 'file', 1)</td>
+<td style="text-align: left;">SeafileTable</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If the index is given as 0 or not, all found text (oldString) will be replaced by the new text (newString).</td>
+<td style="text-align: left;">substitute('SeaTableTable', 'Table', 'file')</td>
+<td style="text-align: left;">Seafilefile</td>
+</tr>
+<tr>
+<td style="text-align: left;">T(value)</td>
+<td style="text-align: left;">Checks whether a value is text. If so, the text is returned. If no, the return value is empty.</td>
+<td style="text-align: left;">T('123')</td>
+<td style="text-align: left;">123</td>
+</tr>
+<tr>
+<td style="text-align: left;">text(number, format)</td>
+<td style="text-align: left;">Converts a number into text and formats it in the specified format. The format can be percent and number as well as dollar, euro and yuan.</td>
+<td style="text-align: left;">text(150, 'euro')</td>
+<td style="text-align: left;">€150</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">When a number is converted directly to percent, its absolute value is retained. In other words, 50 is converted into 5000%. But if you want 50%, you have to divide the number by 100 before the conversion.</td>
+<td style="text-align: left;">text(50, 'percent')</td>
+<td style="text-align: left;">5000%</td>
+</tr>
+<tr>
+<td style="text-align: left;">trim(string)</td>
+<td style="text-align: left;">Removes spaces at the beginning and end of a string.</td>
+<td style="text-align: left;">trim(' SeaTable ')</td>
+<td style="text-align: left;">SeaTable</td>
+</tr>
+<tr>
+<td style="text-align: left;">upper(string)</td>
+<td style="text-align: left;">Converts a string to uppercase letters.</td>
+<td style="text-align: left;">upper('German)</td>
+<td style="text-align: left;">GERMAN</td>
+</tr>
+<tr>
+<td style="text-align: left;">value(string)</td>
+<td style="text-align: left;">Converts a text (string) representing a number into a number.</td>
+<td style="text-align: left;">value('123')</td>
+<td style="text-align: left;">123</td>
+</tr>
+</tbody>
+</table>
+<h3 id="date-functions">Date functions<a class="headerlink" href="#date-functions" title="Permanent link">&para;</a></h3>
+<p>When passing a parameter with time or date type, you can specify a contant in "2021-09-01 12:00:01" or "2021-09-01" format. When you query the result of a date function in SQL, the result will be converted to a string in RFC3339 format, e.g. "2021-09-03T00:00:00+02:00". Please note that if a date function returns a date type, it cannot be used as parameter for text or maths functions.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OPERATOR</th>
+<th style="text-align: left;">DESCRIPTION</th>
+<th style="text-align: left;">INPUT</th>
+<th style="text-align: left;">RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">date(year, month, day)</td>
+<td style="text-align: left;">Returns a date in international format (ISO) from entered year, month and day. If the year is entered with two digits, it is automatically understood as a year in the 1900s. If the number of the month or day is too large (greater than 12 or 31 respectively), these months or days are automatically converted to the next year or month.</td>
+<td style="text-align: left;">date(2021, 1, 3)</td>
+<td style="text-align: left;">2021-01-03T00:00:00+02:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">dateAdd(date, count, unit)</td>
+<td style="text-align: left;">Adds the specified number (count) of years ('years'), months ('months'), weeks ('weeks'), days ('days'), hours ('hours'), minutes ('minutes') or seconds ('seconds') to a date/time ('date').</td>
+<td style="text-align: left;">dateAdd('2020-02-03', 2, 'days')</td>
+<td style="text-align: left;">2020-02-05T00:00:00+02:00</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Tip: if you want to add a complex duration (count) such as 1 day 12 hours, you can convert it to e.g. 24+12=36 hours ('hours') and enter it into the formula as a uniform duration (count). The duration is converted to the smallest unit: in this case, hours.</td>
+<td style="text-align: left;">dateAdd('2020-09-04 13:05:18', 36, 'hours') ODER dateAdd(`form submission`, 36, 'hours')</td>
+<td style="text-align: left;">2020-09-06T01:05:18+02:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">datedif(startDate, endDate, unit)</td>
+<td style="text-align: left;">Calculates the seconds, days, months, or years between two date values. The optional unit argument can be one of the following: S (seconds), D (full days), M (full months), Y (full years), YD (full days, ignoring years), YM (full months, ignoring days and years), MD (full days, ignoring months and years). If the startDate is empty, a default value of "1900-01-01" will be set. If both date values are empty, it will return 0.</td>
+<td style="text-align: left;">dateDif('2018-01-01', '2020-01-01')</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">The optional unit argument can be one of the following: S (seconds), D (full days), M (full months), Y (full years), YD (full days, ignoring years), YM (full months, ignoring days and years), MD (full days, ignoring months and years).</td>
+<td style="text-align: left;">dateDif('2019-10-11', '2020-12-12', 'M')</td>
+<td style="text-align: left;">14</td>
+</tr>
+<tr>
+<td style="text-align: left;">day(date)</td>
+<td style="text-align: left;">Returns the day of a date as a number. The returned number is between 1 and 31.</td>
+<td style="text-align: left;">day('2020-01-03)</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">eomonth(startDate, months)</td>
+<td style="text-align: left;">Determines the date of the last day of the month that is the specified number (months) of months after the specified date (startDate). If the number (months) is given as 0, the last day of the month is simply determined.</td>
+<td style="text-align: left;">eomonth('2020-01-01', 1)</td>
+<td style="text-align: left;">2020-02-29T00:00:00+02:00</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If the number (months) is given as negative, the date of the last day of the month that contains the absolute number (months) of months before the specified date (startDate) is determined.</td>
+<td style="text-align: left;">eomonth('2020-01-01', -1)</td>
+<td style="text-align: left;">2019-12-31T00:00:00+02:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">hour(date)</td>
+<td style="text-align: left;">Returns the hour of a date as a number. The number returned is between 0 and 23.</td>
+<td style="text-align: left;">hour('2020-02-14 13:14:52)</td>
+<td style="text-align: left;">13</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If no hour is contained in the time specification (date), 0 is returned.</td>
+<td style="text-align: left;">hour('2020-02-14)</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">hours(startDate, endDate)</td>
+<td style="text-align: left;">Returns the number of hours between two date values (startDate and endDate). The minutes in the date values are not taken into account.</td>
+<td style="text-align: left;">hours('2020-02-14 13:14', '2020-02-14 15:14')</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If no hours are included in the time specification (startDate or endDate), 0 o'clock on this day is automatically assumed.</td>
+<td style="text-align: left;">hours('2020-02-14', '2020-02-14 15:14')</td>
+<td style="text-align: left;">15</td>
+</tr>
+<tr>
+<td style="text-align: left;">minute(date)</td>
+<td style="text-align: left;">Returns the minutes of a time specification (date) as a number. The number returned is between 0 and 59.</td>
+<td style="text-align: left;">minute('2020-02-14 13:14:52</td>
+<td style="text-align: left;">14</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If no minutes are included in the time (date), 0 is returned.</td>
+<td style="text-align: left;">minute('2020-02-14)</td>
+<td style="text-align: left;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">month(date)</td>
+<td style="text-align: left;">Returns the month of a date as a number. The returned number is between 1 (January) and 12 (December).</td>
+<td style="text-align: left;">month('2020-02-14 13:14:52)</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;">months(startDate, endDate)</td>
+<td style="text-align: left;">Returns the number of months between two date values (startDate and endDate). The days and time in the date values are not taken into account.</td>
+<td style="text-align: left;">months('2020-02-01 13:14', '2020-03-31 15:54')</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If no month is given in the date values (startDate, endDate), January is automatically assumed to be the month.</td>
+<td style="text-align: left;">months('2020', '2021')</td>
+<td style="text-align: left;">12</td>
+</tr>
+<tr>
+<td style="text-align: left;">networkdays(startDate, endDate, holiday1, holiday2, ...)</td>
+<td style="text-align: left;">Returns the number of full working days between two dates (startDate and endDate). You can also define holidays other than Saturday and Sunday (holiday1, holiday2, etc.), which are also deducted. If you do not want to include public holidays, you can simply omit these parameters.</td>
+<td style="text-align: left;">networkdays('2020-01-01', '2020-01-07','2020-01-01')</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Please note that the specified last day (endDate) is also included in the formula. That means, as in this formula, three working days are counted: the 7th, 8th and 9th of September, 2020.</td>
+<td style="text-align: left;">networkdays('2020-09-07', '2020-09-09')</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">now()</td>
+<td style="text-align: left;">Returns the current date and time. This column is only updated automatically when the Base is reloaded.</td>
+<td style="text-align: left;">now()</td>
+<td style="text-align: left;">2020-09-07T12:59+02:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">second(date)</td>
+<td style="text-align: left;">Returns the seconds of a time (date) as a number. The number returned is between 0 and 59.</td>
+<td style="text-align: left;">second('2020-02-14 13:14:52')</td>
+<td style="text-align: left;">52</td>
+</tr>
+<tr>
+<td style="text-align: left;">today()</td>
+<td style="text-align: left;">Returns the current date. This column is only updated automatically if the Base has been reloaded.</td>
+<td style="text-align: left;">today()</td>
+<td style="text-align: left;">2020-09-07T00:00:00+02:00</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">This function is handy for calculating time between a certain date &amp; time and now. On each reload or recalculation of the Base, the calculation is updated.</td>
+<td style="text-align: left;">networkdays('2020-09-01', today())</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">weekday(date, weekStart)</td>
+<td style="text-align: left;">Returns the weekday of a date as a number. The returned number between 1 and 7, where you can define the first day of the week (weekStart): Monday ('Monday') or Sunday ('Sunday' or omitted, since the start as Sunday is the default). A third option is not possible. Upper/lower case is not considered.</td>
+<td style="text-align: left;">weekday('2020-01-01', 'Monday')</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If no 'weekStart' is given or if a 'weekStart' other than 'Monday' or 'Sunday' is given, it is always assumed to be 'Sunday'. So if it should be 'Monday', enter 'Monday'; if it should be 'Sunday', you can omit this parameter.</td>
+<td style="text-align: left;">weekday('2020-01-01', 'Thursday') OR weekday('2020-01-01')</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">weeknum(date, return_type)</td>
+<td style="text-align: left;">Returns the absolute week number of a date as a number. The returned number is between 1 and 53, where you can define the first day of the week (return_type). Enter the number 1 or 2, or 11 to 17, and 21 as "return_type" to define the start of a week: 1/Sunday、2/Monday、11/Monday、12/Tuesday、13/Wednesday、14/Thursday、15/Friday、16/Saturday、17/Sunday. If you want the week number to be returned according to ISO standard, specify the number of 21 as "return_type", or use the function isoweeknum.</td>
+<td style="text-align: left;">weeknum('2020-01-12', 11)</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If no 'return_type' is given, it is always assumed to be 'Sunday'.</td>
+<td style="text-align: left;">weeknum('2020-01-12')</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">year(date)</td>
+<td style="text-align: left;">Returns the year of a date as a number.</td>
+<td style="text-align: left;">year('2020-01-01')</td>
+<td style="text-align: left;">2020</td>
+</tr>
+<tr>
+<td style="text-align: left;">startofweek(date, weekStart)</td>
+<td style="text-align: left;">Returns the first day of the week in which the date is located. WeekStart defaults to sunday, or it can be set to monday.</td>
+<td style="text-align: left;">startofweek('2021-04-28')</td>
+<td style="text-align: left;">2021-4-25T00:00:00+02:00</td>
+</tr>
+<tr>
+<td style="text-align: left;">quarter(date)</td>
+<td style="text-align: left;">Returns the quarter of the date, the return value is 1, 2, 3, 4.</td>
+<td style="text-align: left;">quarter('2021-01-01')</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">isodate(date)</td>
+<td style="text-align: left;">Returns the ISO string representation of the date.</td>
+<td style="text-align: left;">isodate('2021-01-01 11:00:00')</td>
+<td style="text-align: left;">2021-01-01</td>
+</tr>
+<tr>
+<td style="text-align: left;">isomonth(date)</td>
+<td style="text-align: left;">Returns the ISO string representation of the year and month</td>
+<td style="text-align: left;">isomonth('2021-01-01 11:00:00')</td>
+<td style="text-align: left;">2021-01</td>
+</tr>
+</tbody>
+</table>
+<h3 id="geo-functions">Geo functions<a class="headerlink" href="#geo-functions" title="Permanent link">&para;</a></h3>
+<p><em>Geo functions are available since version 2.7.0</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OPERATOR</th>
+<th style="text-align: left;">DESCRIPTION</th>
+<th style="text-align: left;">INPUT</th>
+<th style="text-align: left;">RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">province(geolocation)</td>
+<td style="text-align: left;">Returns the province of a Geolocation column.</td>
+<td style="text-align: left;">province(column_name)</td>
+<td style="text-align: left;">北京市</td>
+</tr>
+<tr>
+<td style="text-align: left;">city(geolocation)</td>
+<td style="text-align: left;">Returns the city of a Geolocation column.</td>
+<td style="text-align: left;">city(column_name)</td>
+<td style="text-align: left;">北京市</td>
+</tr>
+<tr>
+<td style="text-align: left;">district(geolocation)</td>
+<td style="text-align: left;">Returns the district of a Geolocation column.</td>
+<td style="text-align: left;">district(column_name)</td>
+<td style="text-align: left;">朝阳区</td>
+</tr>
+</tbody>
+</table>
+<h3 id="logical-functions">Logical functions<a class="headerlink" href="#logical-functions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OPERATOR</th>
+<th style="text-align: left;">DESCRIPTION</th>
+<th style="text-align: left;">INPUT</th>
+<th style="text-align: left;">RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">and(logical1, logical2, ...)</td>
+<td style="text-align: left;">Checks if all arguments (logical1, logical2, ...) are true (valid, not empty and not equal to zero). If yes, 'true' is returned, otherwise 'false'.</td>
+<td style="text-align: left;">and(1, '', 2)</td>
+<td style="text-align: left;">false</td>
+</tr>
+<tr>
+<td style="text-align: left;">if(logical, value1, value2)</td>
+<td style="text-align: left;">Checks if an argument (logical) is true and if yes, returns the first value (value1) and if no, returns the second value (value2).</td>
+<td style="text-align: left;">if(1&gt;2, 3, 4)</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">For the condition (logical) only a comparison with is allowed. If you enter only condition (logical) and the first value (value1): it will return the first value (value1) if the condition (logical) is true; and it will return an empty value ('') if the condition (logical) is false.</td>
+<td style="text-align: left;">if(`Budget`&gt;`Price`, 'Yes')</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">ifs(logical1, value1, logical2, value2, ...)</td>
+<td style="text-align: left;">Checks if one or more conditions (logical1, logical2, ...) are true and returns a value (value1, value2, ...) that matches the first TRUE condition.</td>
+<td style="text-align: left;">ifs( 1&gt;2, 3, 5&gt;4, 9)</td>
+<td style="text-align: left;">9</td>
+</tr>
+<tr>
+<td style="text-align: left;">not(boolean)</td>
+<td style="text-align: left;">Inverts the logical value (boolean). In other words: converts 'true' to 'false' and 'false' to 'true'.</td>
+<td style="text-align: left;">not(and(1, '', 2))</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr>
+<td style="text-align: left;">or(logical1, logical2, ...)</td>
+<td style="text-align: left;">Checks if at least 1 of the arguments (value1, value2, ...) is true (valid, not empty and not equal to zero), and returns 'true' in this case. If all arguments are false, then returns 'false'.</td>
+<td style="text-align: left;">or(1,'',2)</td>
+<td style="text-align: left;">true</td>
+</tr>
+<tr>
+<td style="text-align: left;">switch(logical, matcher1, value1, matcher2, value2, ..., default)</td>
+<td style="text-align: left;">Evaluates an expression (logical) against a list of values (matcher) and returns the result (value) corresponding to the first matching value. If there is no match, an optional default value is returned. At least 3 parameters (logical, matcher, value) must be specified.</td>
+<td style="text-align: left;">switch(`grades`, 1, 'very good', 2, 'good', 3, 'satisfactory', 4, 'passed', 'failed')</td>
+<td style="text-align: left;">very good</td>
+</tr>
+<tr>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">If there are several identical values in the value list (matcher), only the first hit is taken into account.</td>
+<td style="text-align: left;">switch(int(68/10), 6, 'OK', 6, 'KO')</td>
+<td style="text-align: left;">OK</td>
+</tr>
+<tr>
+<td style="text-align: left;">xor(logical1, logical2, ...)</td>
+<td style="text-align: left;">Returns the contravalence of all arguments. In other words, checks if the number of true arguments is (logical) odd and returns 'true'.</td>
+<td style="text-align: left;">xor(1, 0, 2\&lt;1)</td>
+<td style="text-align: left;">false</td>
+</tr>
+</tbody>
+</table>
+<h3 id="statistical-functions">Statistical functions<a class="headerlink" href="#statistical-functions" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">OPERATOR</th>
+<th style="text-align: left;">DESCRIPTION</th>
+<th style="text-align: left;">INPUT</th>
+<th style="text-align: left;">RESULT</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">average(number1, number2, ...)</td>
+<td style="text-align: left;">Returns the average of the numbers (number1, number2, ...)</td>
+<td style="text-align: left;">average(1, 2, 3, 4, 5)</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">counta(textORnumber1, textORnumber2, ...)</td>
+<td style="text-align: left;">Counts the number of non-empty cells (textORnumber1, textORnumber2, ...). These cells can be text or numbers. In this example, 1 and 2 are numbers, '3' is text, and '' is an empty value.</td>
+<td style="text-align: left;">counta(1, '', 2, '3')</td>
+<td style="text-align: left;">3</td>
+</tr>
+<tr>
+<td style="text-align: left;">countall(textORnumber1, textORnumber2, ...)</td>
+<td style="text-align: left;">Counts the number of elements (textORnumber1, textORnumber2, ...) including numbers (1, 2), text ('3') and empty cells ('').</td>
+<td style="text-align: left;">countall(1, '', 2, '3')</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr>
+<td style="text-align: left;">countblank(textORnumber1, textORnumber2, ...)</td>
+<td style="text-align: left;">Counts the number of empty cells.</td>
+<td style="text-align: left;">countall(1, '', 2, '3')</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">countItems(column)</td>
+<td style="text-align: left;">Counts the number of items in a column. The supported column types are multiple select, collaborator, file, image. (available since version 2.7.0)</td>
+<td style="text-align: left;">countItems(column_name)</td>
+<td style="text-align: left;">2</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 seatable
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/seatable/seatable-scripts/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>
